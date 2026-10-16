@@ -372,14 +372,14 @@ CREATE TABLE `failed_jobs` (
 -- ====================================================================
 -- DỮ LIỆU KHỞI TẠO BAN ĐẦU
 -- Mật khẩu mặc định cho các tài khoản test: Password123@
--- Hash bcrypt: $2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j
+-- Hash bcrypt: $2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy
 -- ====================================================================
 
 -- 1. Tài khoản Test cho 3 Role
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `dob`, `role`, `status`) VALUES
-(1, 'Quản Trị Viên', 'admin@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0901234567', '1995-05-15', 'admin', 'active'),
-(2, 'Công Ty Công Nghệ FPT', 'employer@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0912345678', NULL, 'employer', 'active'),
-(3, 'Nguyễn Văn Ứng Viên', 'candidate@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0987654321', '2002-10-20', 'candidate', 'active');
+(1, 'Quản Trị Viên', 'admin@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0901234567', '1995-05-15', 'admin', 'active'),
+(2, 'Công Ty Công Nghệ FPT', 'employer@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0912345678', NULL, 'employer', 'active'),
+(3, 'Nguyễn Văn Ứng Viên', 'candidate@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0987654321', '2002-10-20', 'candidate', 'active');
 
 -- 2. Hồ sơ tương ứng
 INSERT INTO `candidate_profiles` (`id`, `user_id`, `title`, `experience_years`, `bio`, `city`) VALUES
