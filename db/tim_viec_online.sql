@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `companies`;
 DROP TABLE IF EXISTS `candidate_profiles`;
 DROP TABLE IF EXISTS `notifications`;
+DROP TABLE IF EXISTS `job_reports`;
 DROP TABLE IF EXISTS `failed_jobs`;
 DROP TABLE IF EXISTS `job_batches`;
 DROP TABLE IF EXISTS `queue_jobs`;
@@ -20,6 +21,7 @@ DROP TABLE IF EXISTS `cache`;
 DROP TABLE IF EXISTS `sessions`;
 DROP TABLE IF EXISTS `password_reset_tokens`;
 DROP TABLE IF EXISTS `personal_access_tokens`;
+DROP TABLE IF EXISTS `migrations`;
 DROP TABLE IF EXISTS `users`;
 
 DROP TABLE IF EXISTS `conversation`;
@@ -98,7 +100,8 @@ CREATE TABLE `companies` (
 CREATE TABLE `categories` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `categories_name_unique` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -177,7 +180,7 @@ CREATE TABLE `job_skills` (
 CREATE TABLE `saved_jobs` (
   `candidate_id` BIGINT UNSIGNED NOT NULL,
   `job_id` BIGINT UNSIGNED NOT NULL,
-  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm lưu việc làm',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm lưu việc làm',
   PRIMARY KEY (`candidate_id`, `job_id`),
   CONSTRAINT `fk_saved_candidate` FOREIGN KEY (`candidate_id`) REFERENCES `candidate_profiles` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_saved_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE
@@ -194,6 +197,8 @@ CREATE TABLE `applications` (
   `cv_path` VARCHAR(255) NOT NULL COMMENT 'Đường dẫn file CV PDF nộp cho đơn này',
   `cover_letter` TEXT DEFAULT NULL COMMENT 'Thư giới thiệu',
   `status` ENUM('applied', 'waiting', 'accepted', 'rejected', 'withdrawn') NOT NULL DEFAULT 'applied' COMMENT 'applied: Đã ứng tuyển, waiting: Đang xem xét, accepted: Trúng tuyển, rejected: Từ chối, withdrawn: Đã rút đơn',
+  `ai_analysis_status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+  `ai_analysis_error` TEXT DEFAULT NULL,
   `reviewed_at` TIMESTAMP NULL DEFAULT NULL COMMENT 'Thời điểm Nhà tuyển dụng mở xem CV lần đầu (chuyển sang waiting)',
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm nộp hồ sơ',
   `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm thay đổi trạng thái xét duyệt',
@@ -249,11 +254,13 @@ CREATE TABLE `messages` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `conversation_id` BIGINT UNSIGNED NOT NULL,
   `sender_id` BIGINT UNSIGNED NOT NULL COMMENT 'User ID người gửi',
-  `message` TEXT NOT NULL COMMENT 'Nội dung tin nhắn (1 đến 1000 ký tự)',
+  `message` TEXT DEFAULT NULL COMMENT 'Nội dung tin nhắn (1 đến 1000 ký tự; có thể NULL nếu chỉ gửi ảnh)',
+  `image_path` VARCHAR(255) DEFAULT NULL,
   `is_read` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '0: Chưa xem, 1: Đã xem',
-  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời gian gửi tin nhắn',
+  `read_at` TIMESTAMP NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời gian gửi tin nhắn',
   PRIMARY KEY (`id`),
-  KEY `messages_conversation_idx` (`conversation_id`),
+  KEY `messages_conversation_id_created_at_index` (`conversation_id`, `created_at`),
   CONSTRAINT `fk_msg_conversation` FOREIGN KEY (`conversation_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_msg_sender` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -274,6 +281,25 @@ CREATE TABLE `notifications` (
   PRIMARY KEY (`id`),
   KEY `notifications_user_read_idx` (`user_id`, `read_at`),
   CONSTRAINT `fk_notify_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `job_reports` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `job_id` BIGINT UNSIGNED NOT NULL,
+  `reporter_id` BIGINT UNSIGNED NOT NULL,
+  `reason` VARCHAR(100) NOT NULL,
+  `details` TEXT DEFAULT NULL,
+  `status` ENUM('pending', 'resolved', 'dismissed') NOT NULL DEFAULT 'pending',
+  `reviewed_by` BIGINT UNSIGNED DEFAULT NULL,
+  `reviewed_at` TIMESTAMP NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `job_reports_job_reporter_unique` (`job_id`, `reporter_id`),
+  KEY `job_reports_status_created_idx` (`status`, `created_at`),
+  CONSTRAINT `fk_job_reports_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_job_reports_reporter` FOREIGN KEY (`reporter_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_job_reports_reviewer` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -369,17 +395,31 @@ CREATE TABLE `failed_jobs` (
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `migrations` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` VARCHAR(255) NOT NULL,
+  `batch` INT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `migrations` (`migration`, `batch`) VALUES
+('0001_01_01_000000_create_users_table', 1),
+('0001_01_01_000001_create_cache_table', 1),
+('0001_01_01_000002_create_jobs_table', 1),
+('2026_10_12_154339_create_personal_access_tokens_table', 1),
+('2026_10_23_000001_create_domain_tables', 1);
+
 -- ====================================================================
 -- DỮ LIỆU KHỞI TẠO BAN ĐẦU
 -- Mật khẩu mặc định cho các tài khoản test: Password123@
--- Hash bcrypt: $2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j
+-- Hash bcrypt: $2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy
 -- ====================================================================
 
 -- 1. Tài khoản Test cho 3 Role
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `dob`, `role`, `status`) VALUES
-(1, 'Quản Trị Viên', 'admin@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0901234567', '1995-05-15', 'admin', 'active'),
-(2, 'Công Ty Công Nghệ FPT', 'employer@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0912345678', NULL, 'employer', 'active'),
-(3, 'Nguyễn Văn Ứng Viên', 'candidate@timviec.vn', '$2y$12$K8j7mZ0z/jG8o6P1A6h6eu6x3z5uX8wZ9mK1b2c3d4e5f6g7h8i9j', '0987654321', '2002-10-20', 'candidate', 'active');
+(1, 'Quản Trị Viên', 'admin@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0901234567', '1995-05-15', 'admin', 'active'),
+(2, 'Công Ty Công Nghệ FPT', 'employer@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0912345678', '1990-01-01', 'employer', 'active'),
+(3, 'Nguyễn Văn Ứng Viên', 'candidate@timviec.vn', '$2y$12$STO/zlCBm59OdpBAf7RxxekCuzOYssSZAj09mP.KgeRk9L2S8aXuy', '0987654321', '2002-10-20', 'candidate', 'active');
 
 -- 2. Hồ sơ tương ứng
 INSERT INTO `candidate_profiles` (`id`, `user_id`, `title`, `experience_years`, `bio`, `city`) VALUES

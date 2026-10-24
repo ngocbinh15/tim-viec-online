@@ -287,9 +287,9 @@ Trước khi bắt đầu, mọi thành viên trong nhóm bắt buộc phải c�
     - `GET /api/user`: Lấy thông tin user đăng nhập.
 * **Tuần 2 (Profile & Gemini AI Service):**
   - Viết API cập nhật hồ sơ cá nhân:
-    - `PUT /api/candidate/profile`: Upload CV PDF (<= 5MB, validate mime `application/pdf`), lưu vào `storage/app/public/resumes/`.
+    - `PUT /api/candidate/profile`: Upload CV PDF (<= 5MB, validate mime `application/pdf`), lưu vào private storage; chỉ tải qua endpoint có authorization.
     - `PUT /api/employer/company`: Cập nhật thông tin công ty, logo, website, quy mô.
-  - Tích hợp **Google Gemini 1.5 Flash API**:
+  - Tích hợp Google Gemini API qua model cấu hình `GEMINI_MODEL` (model mặc định trong `.env.example` hiện tại):
     - Tạo `app/Services/GeminiService.php`.
     - Truyền nội dung CV PDF và JD công việc vào Gemini Prompt với định dạng trả về **Structured JSON Output** (khớp 100% với các cột trong bảng `ai_cv_analyses`):
       ```json

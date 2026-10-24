@@ -25,7 +25,7 @@
 | **Khách** | Xem trang chủ, tìm kiếm và lọc việc làm, xem chi tiết tin tuyển dụng và thông tin công ty, đăng ký tài khoản. |
 | **Ứng viên** | Toàn bộ quyền của Khách, kèm theo: Cập nhật hồ sơ cá nhân, tải lên CV PDF, lưu việc làm yêu thích, nộp hồ sơ ứng tuyển, xem kết quả AI phân tích CV, nhắn tin realtime với nhà tuyển dụng của tin đã nộp. |
 | **Nhà tuyển dụng** | Toàn bộ quyền của Khách, kèm theo: Cập nhật thông tin công ty, đăng tin tuyển dụng, đóng/mở tin, xem danh sách ứng viên đã nộp, xem trước và tải CV, cập nhật trạng thái duyệt hồ sơ, nhắn tin realtime với ứng viên. |
-| **Quản trị viên** | Xem dashboard thống kê, phê duyệt hoặc từ chối tin tuyển dụng mới, khóa hoặc mở khóa tài khoản người dùng, quản lý danh mục ngành nghề và kỹ năng. |
+| **Quản trị viên** | Xem dashboard thống kê, kiểm tra và xử lý tin tuyển dụng bị báo cáo, khóa hoặc mở khóa tài khoản người dùng, quản lý danh mục ngành nghề và kỹ năng. Tin mới được đăng ở trạng thái `active` theo FR-04.5; quy trình phê duyệt trước khi đăng không thuộc phiên bản này. |
 
 ### 2.2. Ràng buộc chung
 - Người dùng đăng ký tài khoản phải từ [**15 tuổi trở lên**.](https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/tu-van-phap-luat/43713/quy-dinh-ve-do-tuoi-lao-dong-cua-nguoi-lao-dong-hien-nay)
@@ -42,7 +42,7 @@
 
 | Mã | Yêu cầu |
 |---|---|
-| FR-01.1 | Người dùng đăng ký bằng cách nhập: Họ tên, Email, Mật khẩu, Xác nhận mật khẩu, Số điện thoại và Vai trò (`Ứng viên` hoặc `Nhà tuyển dụng`). |
+| FR-01.1 | Người dùng đăng ký bằng cách nhập: Họ tên, Email, Ngày sinh, Mật khẩu, Xác nhận mật khẩu, Số điện thoại (tùy chọn) và Vai trò (`Ứng viên` hoặc `Nhà tuyển dụng`). Ngày sinh bắt buộc để xác minh ràng buộc tối thiểu 15 tuổi ở mục 2.2. |
 | FR-01.2 | Họ tên là thông tin bắt buộc, độ dài từ **2 đến 100 ký tự**, không chứa ký tự đặc biệt ngoài khoảng trắng và dấu gạch nối. |
 | FR-01.3 | Email phải đúng định dạng chuẩn RFC (ví dụ: `user@example.com`) và không được trùng với email đã có trong hệ thống (không phân biệt hoa thường). Nếu trùng, hệ thống hiển thị thông báo "Email đã được sử dụng" và yêu cầu nhập lại email khác (Không xóa thông tin đã nhập trước đó). |
 | FR-01.4 | Mật khẩu có độ dài **từ 8 đến 32 ký tự**, bắt buộc chứa **ít nhất một chữ cái thường, chữ cái in hoa, ký tự đặc biệt và số**. Ô "Xác nhận mật khẩu" phải trùng khớp 100% với mật khẩu đã nhập. |
@@ -82,7 +82,7 @@
 | FR-04.3 | Hạn chót nộp hồ sơ phải là ngày trong tương lai (lớn hơn ngày hiện tại ít nhất 1 ngày). Nếu chọn ngày hôm nay hoặc ngày trong quá khứ, hệ thống báo "Hạn nộp hồ sơ phải sau ngày hôm nay". |
 | FR-04.4 | Quy tắc nhập lương: Có 3 trường hợp thực tế:<br>- **Khoảng lương cụ thể:** Nhập Lương tối thiểu và Lương tối đa (Lương tối thiểu phải **nhỏ hơn hoặc bằng** Lương tối đa, cả hai đều lớn hơn 0).<br>- **Lương khởi điểm:** Chỉ nhập Lương tối thiểu, để trống Lương tối đa (hiển thị: "Từ X triệu VNĐ").<br>- **Thỏa thuận:** Tích chọn ô "Lương thỏa thuận" (cả hai ô lương bị khóa, hiển thị: "Thỏa thuận"). (drop box 3 options: lương cụ thể or khởi điểm or thỏa thuận)|
 | FR-04.5 | Tin sau khi tạo được lưu ở trạng thái "Đang tuyển" (`active`). |
-| FR-04.6 | **Quy tắc khi Đóng tin (`closed`):**<br>- **Ngừng nhận hồ sơ mới:** Hệ thống tự động ẩn nút "Ứng tuyển" hoặc thông báo "Tin tuyển dụng này đã đóng / hết hạn". Không cho phép ứng viên apply vào nữa.<br>- **Bảo lưu và xử lý hồ sơ cũ:**Tin ứng tuyển và các hồ sơ đã nộp trong thời gian mở tin vẫn được **bảo lưu nguyên vẹn** (nhà tuyển dụng có thể mở/đóng tin; admin có quyền xóa tin (xóa tin và hồ sơ)). Nhà tuyển dụng tiếp tục có đầy đủ quyền xem CV, duyệt trạng thái hồ sơ (Đang xem xét, Trúng tuyển, Từ chối*) để hoàn tất đợt tuyển dụng.<br>- **Bảo lưu hội thoại chat:** Các cuộc trò chuyện đã tạo giữa Nhà tuyển dụng và Ứng viên vẫn duy trì hoạt động gửi/nhận bình thường (kèm nhãn thông báo phụ "Tin tuyển dụng đã đóng") để hai bên tiếp tục phỏng vấn.<br>- **Mở lại tin:** Nhà tuyển dụng có quyền mở lại tin đã đóng bất kỳ lúc nào. |
+| FR-04.6 | **Quy tắc khi Đóng tin (`closed`):**<br>- **Ngừng nhận hồ sơ mới:** Hệ thống tự động ẩn nút "Ứng tuyển" hoặc thông báo "Tin tuyển dụng này đã đóng / hết hạn". Không cho phép ứng viên apply vào nữa.<br>- **Bảo lưu và xử lý hồ sơ cũ:** Tin ứng tuyển và hồ sơ đã nộp vẫn được bảo lưu (admin có quyền xóa tin và dữ liệu liên quan). Nhà tuyển dụng tiếp tục xem CV và duyệt trạng thái.<br>- **Bảo lưu hội thoại chat:** Các cuộc trò chuyện vẫn gửi/nhận bình thường kèm nhãn tin đã đóng/hết hạn.<br>- **Mở lại tin:** Nhà tuyển dụng có thể mở tin đã đóng. Nếu tin đã hết hạn, phải chọn hạn nộp mới trong tương lai trước khi tin được hiển thị và nhận hồ sơ. |
 | FR-04.7 | **Xem trang công ty công khai:** Người dùng (Khách và Ứng viên) có thể xem trang chi tiết của bất kỳ doanh nghiệp nào: Tên công ty, Logo, Website, Trụ sở, Giới thiệu (size, ...) và toàn bộ danh sách các tin tuyển dụng đang mở (`active`) của công ty đó. |
 
 ### FR-05. Tìm kiếm & Bộ lọc việc làm
@@ -103,7 +103,7 @@
 | FR-06.1 | Khách nhấn "Ứng tuyển" sẽ được hệ thống yêu cầu chuyển hướng đến trang Đăng nhập. Chỉ tài khoản Ứng viên mới có quyền nộp đơn. |
 | FR-06.2 | Khi nộp đơn, Ứng viên chọn 1 trong 2 hình thức: Sử dụng file CV sẵn có trong hồ sơ cá nhân HOẶC Tải lên một file CV PDF mới riêng cho vị trí này. |
 | FR-06.4 | Một ứng viên chỉ được nộp đơn **duy nhất 1 lần** cho cùng một tin tuyển dụng đang mở. Nếu đã nộp trước đó, nút ứng tuyển hiển thị trạng thái đã vô hiệu hóa kèm thông báo "Bạn đã nộp hồ sơ cho công việc này rồi". |
-| FR-06.5 | Vòng đời trạng thái hồ sơ ứng tuyển gồm 6 trạng thái:<br>1. `Đã ứng tuyển (Applied)`: Mặc định ngay sau khi ứng viên nộp hồ sơ.<br>2. `Đang xem xét (Waiting)`: Tự động chuyển khi xem CV của ứng viên lần đầu tiên.br>3. `Trúng tuyển (Accepted)`: Nhà tuyển dụng xác nhận đồng ý tuyển dụng.<br>4. `Từ chối (Rejected)`: Nhà tuyển dụng từ chối hồ sơ chưa phù hợp. |
+| FR-06.5 | Vòng đời trạng thái hồ sơ gồm 5 trạng thái:<br>1. `Đã ứng tuyển (Applied)`: Mặc định khi nộp.<br>2. `Đang xem xét (Waiting)`: Chuyển khi nhà tuyển dụng mở hồ sơ lần đầu.<br>3. `Trúng tuyển (Accepted)`: Nhà tuyển dụng đồng ý tuyển dụng.<br>4. `Từ chối (Rejected)`: Nhà tuyển dụng từ chối hồ sơ.<br>5. `Đã rút (Withdrawn)`: Ứng viên rút hồ sơ khi chưa được xem. Một ứng viên chỉ được nộp một lần cho mỗi tin, kể cả sau khi rút. |
 | FR-06.7 | Ứng viên có thể theo dõi danh sách toàn bộ các việc đã nộp kèm trạng thái xét duyệt hiện tại theo thời gian thực tại trang "Lịch sử ứng tuyển". |
 
 ### FR-07. AI Phân tích CV & Chấm điểm độ phù hợp (Match Score)
@@ -113,7 +113,7 @@
 | FR-07.1 | Ngay sau khi ứng viên nộp hồ sơ thành công, hệ thống tự động trích xuất nội dung chữ từ file CV PDF và nội dung bản mô tả công việc (JD) để gửi sang AI. |
 | FR-07.2 | Thuật toán đánh giá của AI dựa trên 4 tiêu chí trọng số định lượng:<br>- **Kỹ năng chuyên môn (Trọng số 40%):** Mức độ trùng khớp giữa kỹ năng CV có và kỹ năng JD yêu cầu.<br>- **Kinh nghiệm làm việc (Trọng số 30%):** Số năm kinh nghiệm và vị trí công việc tương đương.<br>- **Học vấn & Chứng chỉ (Trọng số 15%):** Chuyên ngành đào tạo và các chứng chỉ nghề nghiệp liên quan.<br>- **Định hướng & Trình độ ngôn ngữ (Trọng số 15%):** Trình độ ngoại ngữ và mục tiêu nghề nghiệp phù hợp với vị trí. |
 | FR-07.3 | Điểm số tương thích (Match Score) trả về là số nguyên từ **0 đến 100**. |
-| FR-07.4 | Kết quả phân tích phải trả về: Điểm số Match Score, từ **2 đến 4 điểm mạnh** phù hợp nhất, từ **1 đến 4 kỹ năng còn thiếu** mà JD đòi hỏi nhưng CV chưa có, và **1 đoạn đánh giá tổng quan CV ngắn gọn dưới 80 từ**.|
+| FR-07.4 | Kết quả phân tích phải trả về: Điểm Match Score, từ **2 đến 4 điểm mạnh**, từ **0 đến 4 kỹ năng còn thiếu** (mảng rỗng nếu CV đáp ứng đủ kỹ năng JD), và **1 đoạn đánh giá tổng quan dưới 80 từ**.|
 | FR-07.5 | Kết quả phân tích được lưu trữ vĩnh viễn vào hệ thống ứng với lần nộp hồ sơ đó, giúp Nhà tuyển dụng và Ứng viên xem lại tức thì mà không bị trễ thời gian gọi lại AI. |
 
 

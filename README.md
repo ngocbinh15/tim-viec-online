@@ -1,12 +1,14 @@
 # KẾ HOẠCH DỰ ÁN CUỐI KỲ: WEB TÌM VIỆC LÀM ONLINE
 
+> **Trạng thái implementation (2026-10):** README này giữ lại yêu cầu/phân công dự án, không phải báo cáo tính năng đã hoàn thành. Backend có các API theo [API Checklist](API_CHECKLIST.md), nhưng frontend hiện vẫn là trang Next.js starter và chưa có màn hình FR-01–FR-10. Vì vậy toàn sản phẩm chưa phải website tuyển dụng hoàn chỉnh. Dùng [FR Implementation Audit](docs/FR_IMPLEMENTATION_AUDIT.md), [Backend Guide](BACKEND_GUIDE.md) và [Backend Testing Guide](BACKEND_TESTING_GUIDE.md) làm nguồn trạng thái hiện hành.
+
 ## 1. Công nghệ & Kiến trúc hệ thống
 
 * **Kiến trúc Repository:** **Monorepo** (Backend và Frontend nằm chung trong cùng 1 Git repository):
   * `backend/`: Mã nguồn Laravel 11 RESTful API.
   * `frontend/`: Mã nguồn Next.js 14+ (App Router), TypeScript, Tailwind CSS.
 * **Backend:** **Laravel** (RESTful API, Laravel Sanctum, Eloquent ORM, Laravel Queue, Laravel Storage).
-* **AI Engine:** **Google Gemini API** (Gemini 1.5 Flash - Hỗ trợ truyền trực tiếp file PDF để đọc và phân tích kỹ năng, chấm điểm độ phù hợp Match Score).
+* **AI Engine:** Google Gemini API qua `GEMINI_MODEL` (mặc định cấu hình hiện tại `gemini-3.8-flash`); phân tích được đưa vào queue. Cần cấu hình API key và worker để chạy thật.
 * **Realtime Communication:** **Laravel Reverb** (hoặc **Pusher**) kết hợp **Laravel Echo** (Nhắn tin thời gian thực giữa Nhà tuyển dụng & Ứng viên).
 * **Database:** **MySQL** (Quản lý qua giao diện **phpMyAdmin** / Laragon / XAMPP).
   * *Quy trình chuẩn:* Dùng **Laravel Migration & Seeder** để đồng bộ code trong nhóm; cuối dự án export file `database/database_dump.sql` qua phpMyAdmin để nộp cho Giảng viên.
@@ -78,8 +80,8 @@ Bao gồm tất cả quyền của Khách, kèm theo:
 * **Tương tác việc làm:**
   * [ ] **Lưu việc làm:** Lưu lại các công việc quan tâm và xem lại trong trang "Việc làm đã lưu".
   * [ ] **Nộp hồ sơ ứng tuyển (Apply):** Chọn CV đã có hoặc upload file CV mới, viết thư giới thiệu (Cover Letter) để ứng tuyển vào công việc.
-  * [ ] **Hủy ứng tuyển (Rút hồ sơ):** Chủ động rút hồ sơ ứng tuyển khi đơn còn ở trạng thái `pending` (Chờ duyệt). Sau khi rút, có thể nộp lại hồ sơ mới nếu tin tuyển dụng còn hạn.
-  * [ ] **Lịch sử ứng tuyển:** Xem danh sách toàn bộ các công việc mình đã nộp đơn và theo dõi trạng thái phản hồi (*Đang chờ, Đã xem, Mời phỏng vấn, Từ chối, Chấp nhận, Đã rút hồ sơ*).
+  * [ ] **Hủy ứng tuyển (Rút hồ sơ):** Chỉ rút hồ sơ `applied` chưa được nhà tuyển dụng xem. Mỗi ứng viên chỉ nộp một lần cho một tin, kể cả sau khi rút.
+  * [ ] **Lịch sử ứng tuyển:** Backend hiện dùng `applied`, `waiting`, `accepted`, `rejected`, `withdrawn`; cần hoàn thiện UI để xem và theo dõi.
 * **Tính năng AI phân tích:**
   * [ ] **AI CV Match Score:** Xem điểm số đánh giá mức độ phù hợp giữa CV của mình và công việc (thang điểm 0 - 100%).
   * [ ] **Gợi ý từ AI:** Xem danh sách kỹ năng còn thiếu và các khuyến nghị của AI để cải thiện hồ sơ phù hợp hơn với vị trí ứng tuyển.
@@ -121,8 +123,7 @@ Bao gồm tất cả quyền của Khách, kèm theo:
   * [ ] Xem danh sách toàn bộ tài khoản người dùng và doanh nghiệp.
   * [ ] Khóa (Lock/Ban) hoặc Mở khóa tài khoản khi phát hiện tài khoản có hành vi gian lận hoặc vi phạm quy định.
 * **Kiểm duyệt tin tuyển dụng (Job Moderation):**
-  * [ ] Danh sách các tin tuyển dụng vừa đăng ở trạng thái chờ duyệt (`pending`).
-  * [ ] Duyệt (`Approve`) hoặc Từ chối (`Reject`) tin tuyển dụng để ngăn chặn tin rác, lừa đảo hoặc vi phạm tiêu chuẩn cộng đồng.
+  * [ ] Backend hiện hỗ trợ danh sách tin bị report và xử lý report, không có trạng thái `pending approval`. Tin tạo mới chuyển `active` theo FR-04.5; quy trình duyệt trước khi đăng cần thống nhất riêng trong SRS nếu muốn bổ sung.
 * **Quản lý danh mục hệ thống (Master Data Management):**
   * [ ] Thêm / Sửa / Xóa danh mục ngành nghề (Categories: CNTT, Kinh doanh, Marketing...).
   * [ ] Thêm / Sửa / Xóa danh mục kỹ năng (Skills: PHP, Next.js, Figma, English...).
