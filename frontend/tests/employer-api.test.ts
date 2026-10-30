@@ -40,6 +40,39 @@ test("employer application uses authenticated local CV route and preserves missi
   assert.deepEqual(application.skills, ["PHP"]);
 });
 
+test("employer application preserves the current candidate avatar and clears a removed avatar", () => {
+  const first = mapApplication({
+    ...raw,
+    candidate: {
+      ...raw.candidate,
+      avatar_url: "https://example.test/storage/avatars/first.jpg",
+    },
+  });
+  assert.equal(
+    first.avatar_url,
+    "https://example.test/storage/avatars/first.jpg",
+  );
+  const updated = mapApplication({
+    ...raw,
+    candidate: {
+      ...raw.candidate,
+      avatar_url: "https://example.test/storage/avatars/updated.jpg",
+    },
+  });
+  assert.equal(
+    updated.avatar_url,
+    "https://example.test/storage/avatars/updated.jpg",
+  );
+  assert.equal(
+    mapApplication({
+      ...raw,
+      candidate: { ...raw.candidate, avatar_url: null },
+    }).avatar_url,
+    null,
+  );
+  assert.equal(mapApplication(raw).avatar_url, null);
+});
+
 test("employer adapter maps completed AI and keeps pending/failure apart from zero", () => {
   const completed = mapApplication({
     ...raw,
