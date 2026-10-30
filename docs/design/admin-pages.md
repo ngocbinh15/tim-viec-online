@@ -1,6 +1,6 @@
 # Thiết kế lại khu vực quản trị
 
-> Bản HTML dưới đây là thiết kế gốc. Phần Next.js đã được tích hợp và đồng bộ trong [kế hoạch admin integration](../plans/admin-integration.md), bao gồm layout chung, giới hạn mock/API và kiểm tra quyền ở từng trang.
+> Bản HTML dưới đây là thiết kế gốc. Khu vực quản trị Next.js đã được tích hợp vào ứng dụng. Cấu hình và phân quyền hiện hành nằm trong [hướng dẫn tích hợp frontend–backend](../backend-frontend-integration.md).
 
 ## Phạm vi đã thống nhất
 
