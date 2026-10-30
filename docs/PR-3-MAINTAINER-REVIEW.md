@@ -1,6 +1,6 @@
 # Review tiếp nhận backend — PR #3
 
-> Cập nhật sau review: maintainer đã bổ sung bản sửa cho các lỗi bên dưới, kèm 37 test / 185 assertions đạt cục bộ, Composer audit sạch và CI cho PR từ fork. Nội dung còn lại lưu bằng chứng review bản gốc `c5ce29b`; xem [kế hoạch và kết quả sửa](plans/backend-pr-3-fixes.md) để theo dõi trạng thái mới. Chưa coi kết quả test fake là đã nghiệm thu Gemini/SMTP/realtime thật.
+> Cập nhật sau review: maintainer đã bổ sung bản sửa cho các lỗi bên dưới, kèm 37 test / 185 assertions đạt cục bộ, Composer audit sạch và CI cho PR từ fork. Nội dung còn lại lưu bằng chứng review bản gốc `c5ce29b`; [kế hoạch và kết quả sửa được giữ trong lịch sử Git](https://github.com/ngocbinh15/tim-viec-online/blob/0093c26d89c30f7192aeff27a541c1360b434104/docs/plans/backend-pr-3-fixes.md). Chưa coi kết quả test fake là đã nghiệm thu Gemini/SMTP/realtime thật.
 
 Đã review commit `c5ce29b9a817e973d5408b40441fa06565caa333` của `VoChiDanh:vcd-dev-api`.
 
