@@ -116,6 +116,7 @@
 | FR-06.4 | Một ứng viên chỉ được nộp đơn **duy nhất 1 lần** cho cùng một tin tuyển dụng đang mở. Nếu đã nộp trước đó, nút ứng tuyển hiển thị trạng thái đã vô hiệu hóa kèm thông báo "Bạn đã nộp hồ sơ cho công việc này rồi". |
 | FR-06.5 | Vòng đời trạng thái hồ sơ gồm 5 trạng thái:<br>1. `Đã ứng tuyển (Applied)`: Mặc định khi nộp.<br>2. `Đang xem xét (Waiting)`: Chuyển khi nhà tuyển dụng mở hồ sơ lần đầu.<br>3. `Trúng tuyển (Accepted)`: Nhà tuyển dụng đồng ý tuyển dụng.<br>4. `Từ chối (Rejected)`: Nhà tuyển dụng từ chối hồ sơ.<br>5. `Đã rút (Withdrawn)`: Ứng viên rút hồ sơ khi chưa được xem. Một ứng viên chỉ được nộp một lần cho mỗi tin, kể cả sau khi rút. |
 | FR-06.7 | Ứng viên có thể theo dõi danh sách toàn bộ các việc đã nộp kèm trạng thái xét duyệt hiện tại theo thời gian thực tại trang "Lịch sử ứng tuyển". |
+| FR-06.8 | Nhà tuyển dụng xuất danh sách ứng viên của một hoặc nhiều tin thuộc công ty mình: một file XLSX có sheet riêng cho từng tin, hoặc mỗi tin một file XLSX được gói trong ZIP. Mỗi lần tối đa 50 tin và 50.000 hồ sơ; lấy toàn bộ trạng thái, không thay đổi trạng thái khi xuất. Chi tiết tại [Xuất danh sách ứng viên](applicant-export.md). |
 
 ### FR-07. AI Phân tích CV & Chấm điểm độ phù hợp (Match Score)
 

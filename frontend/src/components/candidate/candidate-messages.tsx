@@ -34,6 +34,7 @@ import {
 } from "@/features/chat/chat-controls";
 import { WorkspaceFrame } from "./workspace-frame";
 import { WorkspaceEmpty, WorkspaceTitle, workspaceDate } from "./workspace-ui";
+import { CompanyLogo } from "@/components/employer/company-logo";
 
 const time = (value: string) =>
   new Intl.DateTimeFormat("vi-VN", {
@@ -48,12 +49,6 @@ const day = (value: string) =>
     month: "2-digit",
     day: "2-digit",
   }).format(new Date(value));
-const companyMark = (name: string) =>
-  name
-    .split(" ")
-    .map((word) => word[0])
-    .slice(0, 3)
-    .join("");
 function resizeComposer(node: HTMLTextAreaElement | null) {
   if (!node || !node.clientWidth) return;
   node.style.height = "auto";
@@ -265,9 +260,10 @@ export function CandidateMessages() {
                       );
                   }}
                 >
-                  <span className="cc-avatar">
-                    {companyMark(itemJob.company.name)}
-                  </span>
+                  <CompanyLogo
+                    company={itemJob.company}
+                    className="cc-avatar"
+                  />
                   <span className="cc-company-copy">
                     <span className="cc-company-title">
                       <strong>{itemJob.company.name}</strong>
@@ -311,9 +307,7 @@ export function CandidateMessages() {
                 >
                   <ArrowLeft aria-hidden="true" />
                 </Button>
-                <span className="cc-avatar">
-                  {companyMark(job.company.name)}
-                </span>
+                <CompanyLogo company={job.company} className="cc-avatar" />
                 <div className="cc-heading-copy">
                   <h2 id="chat-title" ref={heading} tabIndex={-1}>
                     {job.company.name}

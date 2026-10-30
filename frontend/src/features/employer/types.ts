@@ -55,6 +55,7 @@ export interface EmployerApplication {
   candidate_id: number;
   candidate_user_id: number;
   name: string;
+  avatar_url?: string | null;
   title: string;
   email: string;
   phone: string;

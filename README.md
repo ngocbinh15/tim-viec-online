@@ -17,6 +17,8 @@ Trình tạo CV có sáu mẫu: **Chuyên nghiệp, Hiện đại, Tối giản,
 
 AI là tính năng tùy chọn, tắt mặc định. Khi bật, tác vụ phân tích chạy sau khi nộp hồ sơ và chỉ trả kết quả cho nhà tuyển dụng sở hữu tin hoặc quản trị viên. Kết quả không tự quyết định nhận hay từ chối ứng viên. Trình tạo CV không gọi AI khi chỉnh sửa hoặc xuất PDF.
 
+Nhà tuyển dụng có thể [xuất danh sách ứng viên](docs/applicant-export.md) của một hoặc nhiều tin: một file Excel có sheet riêng cho từng tin, hoặc các file Excel riêng được gói trong ZIP.
+
 ## Giao diện sản phẩm
 
 Ảnh từ các lượt kiểm thử giao diện với dữ liệu mẫu. Bấm vào ảnh để xem kích thước đầy đủ.
