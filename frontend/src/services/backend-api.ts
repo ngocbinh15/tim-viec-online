@@ -70,7 +70,11 @@ export async function backendFetch(
       body: init.body,
       cache: "no-store",
       redirect: "error",
-      signal: AbortSignal.timeout(20_000),
+      signal: AbortSignal.timeout(
+        path === "/employer/applications/export" && method === "POST"
+          ? 85_000
+          : 20_000,
+      ),
     });
   } catch (error) {
     if (error instanceof ApiError) throw error;
