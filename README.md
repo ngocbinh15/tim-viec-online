@@ -1,8 +1,8 @@
-# TimViecOnline
+<h1 align="center">TimViecOnline</h1>
 
 Website tuyển dụng gồm trang tìm việc, tài khoản ứng viên, trang quản lý tuyển dụng và trang quản trị. Ứng viên có thể tải CV lên hoặc tạo CV theo mẫu, nộp hồ sơ và trao đổi với nhà tuyển dụng. Backend Laravel quản lý dữ liệu và phân quyền; frontend Next.js phục vụ giao diện.
 
-[Chạy local](#chạy-local) · [Triển khai production](#triển-khai-production) · [Kiểm thử](#kiểm-thử) · [Tài liệu](#tài-liệu)
+[Giao diện](#giao-diện-sản-phẩm) · [Kiến trúc](#kiến-trúc) · [Chạy local](#chạy-local) · [Triển khai production](#triển-khai-production) · [Kiểm thử](#kiểm-thử) · [Tài liệu](#tài-liệu)
 
 ## Chức năng
 
@@ -17,6 +17,14 @@ Trình tạo CV có sáu mẫu: **Chuyên nghiệp, Hiện đại, Tối giản,
 
 AI là tính năng tùy chọn, tắt mặc định. Khi bật, tác vụ phân tích chạy sau khi nộp hồ sơ và chỉ trả kết quả cho nhà tuyển dụng sở hữu tin hoặc quản trị viên. Kết quả không tự quyết định nhận hay từ chối ứng viên. Trình tạo CV không gọi AI khi chỉnh sửa hoặc xuất PDF.
 
+## Giao diện sản phẩm
+
+Ảnh từ các lượt kiểm thử giao diện với dữ liệu mẫu. Bấm vào ảnh để xem kích thước đầy đủ.
+
+| Trang chủ                                                                                           | Tìm kiếm việc làm                                                                                        | Tạo và xuất CV                                                                                                                  |
+| --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [![Trang chủ với ô tìm kiếm, việc làm và doanh nghiệp](docs/images/home.png)](docs/images/home.png) | [![Danh sách việc làm với bộ lọc và phân trang](docs/images/job-search.png)](docs/images/job-search.png) | [![Trình tạo CV với điều hướng từng mục, bản xem trước và nút tải PDF](docs/images/cv-builder.png)](docs/images/cv-builder.png) |
+
 ## Kiến trúc
 
 | Thành phần                  | Công nghệ                                                             |
@@ -27,6 +35,46 @@ AI là tính năng tùy chọn, tắt mặc định. Khi bật, tác vụ phân 
 | Chat và thông báo trực tiếp | Laravel Reverb, Laravel Echo, Pusher JS                               |
 | Tạo và xem CV               | React PDF, PDF.js, font Be Vietnam Pro cục bộ                         |
 | Đối chiếu CV                | Groq hoặc Gemini, xử lý tại backend                                   |
+
+```mermaid
+flowchart TB
+    browser["Trình duyệt"]
+    next["Next.js<br/>SSR và API proxy"]
+    api["Laravel API<br/>Sanctum và phân quyền"]
+    db[("MySQL<br/>queue_jobs")]
+    storage["Storage<br/>Public và private"]
+    reverb["Laravel Reverb"]
+    preview["Xem trước PDF<br/>Web Worker + PDF.js"]
+
+    subgraph workers["Worker Laravel"]
+        cv["Queue cv<br/>Node PDF renderer"]
+        emails["Queue emails<br/>Email thông báo"]
+        ai["Queue ai · tùy chọn<br/>Đối chiếu CV"]
+    end
+
+    smtp["SMTP"]
+    provider["Groq hoặc Gemini"]
+
+    browser <-->|HTTPS| next
+    next <-->|REST API| api
+    browser --> preview
+    api <--> db
+    api <--> storage
+    api -->|Broadcast| reverb
+    reverb <-->|WSS · kênh riêng| browser
+    db -->|cv| cv
+    db -->|emails| emails
+    db -->|ai| ai
+    cv -->|Lưu PDF| storage
+    ai -->|Đọc CV| storage
+    ai --> provider
+    emails --> smtp
+    api -->|Xác thực, khôi phục tài khoản| smtp
+```
+
+[Mở sơ đồ dạng SVG](docs/images/architecture.svg) nếu trình đọc Markdown không hỗ trợ Mermaid.
+
+Các queue dùng chung MySQL nhưng được xử lý bởi worker riêng. Xuất PDF cần Node renderer ở phía worker; xem trước PDF chạy tại trình duyệt. Email thông báo đi qua queue `emails`, còn email xác thực và khôi phục tài khoản được gửi đồng bộ từ API.
 
 ```text
 backend/         Laravel API, migrations, tác vụ nền và lưu trữ tệp
