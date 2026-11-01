@@ -60,8 +60,8 @@ class ChatController extends Controller
                 : $conv->candidate?->name;
 
             $partnerAvatar = $isCandidate
-                ? ($conv->employer?->company?->logo ? asset('storage/'.$conv->employer->company->logo) : null)
-                : ($conv->candidate?->candidateProfile?->avatar ? asset('storage/'.$conv->candidate->candidateProfile->avatar) : null);
+                ? ($conv->employer?->company?->logo ? '/storage/'.ltrim($conv->employer->company->logo, '/') : null)
+                : ($conv->candidate?->candidateProfile?->avatar ? '/storage/'.ltrim($conv->candidate->candidateProfile->avatar, '/') : null);
 
             $lastMsg = $conv->latestMessage;
 
@@ -301,8 +301,8 @@ class ChatController extends Controller
 
         $formatted = $messages->map(function ($msg) {
             $senderAvatar = $msg->sender?->isCandidate()
-                ? ($msg->sender?->candidateProfile?->avatar ? asset('storage/'.$msg->sender->candidateProfile->avatar) : null)
-                : ($msg->sender?->company?->logo ? asset('storage/'.$msg->sender->company->logo) : null);
+                ? ($msg->sender?->candidateProfile?->avatar ? '/storage/'.ltrim($msg->sender->candidateProfile->avatar, '/') : null)
+                : ($msg->sender?->company?->logo ? '/storage/'.ltrim($msg->sender->company->logo, '/') : null);
 
             return [
                 'id' => $msg->id,

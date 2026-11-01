@@ -19,7 +19,7 @@ class CompanyResource extends JsonResource
         if ($avatar) {
             $logoUrl = filter_var($avatar, FILTER_VALIDATE_URL)
                 ? $avatar
-                : asset('storage/'.ltrim($avatar, '/'));
+                : '/storage/'.ltrim($avatar, '/');
         }
 
         return [

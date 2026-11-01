@@ -500,7 +500,13 @@ class AdminController extends Controller
 
     public function storeCategory(Request $request): JsonResponse
     {
-        $request->validate(['name' => 'required|string|max:150|unique:categories,name']);
+        $request->validate([
+            'name' => ['required', 'string', 'max:150', 'unique:categories,name'],
+        ], [
+            'name.required' => 'Tên ngành nghề là bắt buộc.',
+            'name.unique' => 'Tên ngành nghề đã tồn tại.',
+            'name.max' => 'Tên ngành nghề tối đa 150 ký tự.',
+        ]);
         $category = Category::create(['name' => trim($request->name)]);
 
         return response()->json([
@@ -517,7 +523,13 @@ class AdminController extends Controller
             return response()->json(['success' => false, 'message' => 'Danh mục không tồn tại.'], 404);
         }
 
-        $request->validate(['name' => 'required|string|max:150|unique:categories,name,'.$id]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:150', 'unique:categories,name,'.$id],
+        ], [
+            'name.required' => 'Tên ngành nghề là bắt buộc.',
+            'name.unique' => 'Tên ngành nghề đã tồn tại.',
+            'name.max' => 'Tên ngành nghề tối đa 150 ký tự.',
+        ]);
         $category->update(['name' => trim($request->name)]);
 
         return response()->json([
@@ -604,7 +616,13 @@ class AdminController extends Controller
 
     public function storeSkill(Request $request): JsonResponse
     {
-        $request->validate(['name' => 'required|string|max:100|unique:skills,name']);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100', 'unique:skills,name'],
+        ], [
+            'name.required' => 'Tên kỹ năng là bắt buộc.',
+            'name.unique' => 'Tên kỹ năng đã tồn tại.',
+            'name.max' => 'Tên kỹ năng tối đa 100 ký tự.',
+        ]);
         $skill = Skill::create(['name' => trim($request->name)]);
 
         return response()->json([
@@ -621,7 +639,13 @@ class AdminController extends Controller
             return response()->json(['success' => false, 'message' => 'Kỹ năng không tồn tại.'], 404);
         }
 
-        $request->validate(['name' => 'required|string|max:100|unique:skills,name,'.$id]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100', 'unique:skills,name,'.$id],
+        ], [
+            'name.required' => 'Tên kỹ năng là bắt buộc.',
+            'name.unique' => 'Tên kỹ năng đã tồn tại.',
+            'name.max' => 'Tên kỹ năng tối đa 100 ký tự.',
+        ]);
         $skill->update(['name' => trim($request->name)]);
 
         return response()->json([

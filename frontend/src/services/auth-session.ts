@@ -12,23 +12,42 @@ import { authRequest } from "./auth-request";
 export const SESSION_COOKIE = "timviec_session";
 
 export async function assertAuthOrigin() {
-  const origin = (await headers()).get("origin");
-  try {
-    const trusted = new URL(process.env.AUTH_APP_URL ?? "");
-    const loopback = ["localhost", "127.0.0.1", "[::1]"].includes(
-      trusted.hostname,
+  const reqHeaders = await headers();
+  const origin = reqHeaders.get("origin");
+  if (!origin) {
+    throw new AuthApiError(
+      403,
+      "invalid_origin",
+      "Yêu cầu không hợp lệ. Vui lòng tải lại trang và thử lại.",
     );
+  }
+
+  try {
+    const originUrl = new URL(origin);
+    const host = reqHeaders.get("x-forwarded-host") || reqHeaders.get("host");
+
+    if (host && originUrl.host === host) {
+      return;
+    }
+
+    if (process.env.AUTH_APP_URL) {
+      const trusted = new URL(process.env.AUTH_APP_URL);
+      if (originUrl.origin === trusted.origin) {
+        return;
+      }
+    }
+
     if (
-      !origin ||
-      new URL(origin).origin !== trusted.origin ||
-      trusted.username ||
-      trusted.password ||
-      !["http:", "https:"].includes(trusted.protocol) ||
-      (process.env.NODE_ENV === "production" &&
-        trusted.protocol !== "https:" &&
-        !loopback)
-    )
-      throw new Error();
+      process.env.NODE_ENV !== "production" &&
+      (originUrl.hostname.endsWith(".ngrok-free.dev") ||
+        originUrl.hostname.endsWith(".ngrok-free.app") ||
+        originUrl.hostname.endsWith(".trycloudflare.com") ||
+        ["localhost", "127.0.0.1", "[::1]"].includes(originUrl.hostname))
+    ) {
+      return;
+    }
+
+    throw new Error();
   } catch {
     throw new AuthApiError(
       403,

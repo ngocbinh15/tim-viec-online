@@ -41,7 +41,7 @@ class CandidateProfileController extends Controller
                     'experience_years' => $profile->experience_years,
                     'bio' => $profile->bio,
                     'avatar' => $profile->avatar,
-                    'avatar_url' => $profile->avatar ? asset('storage/'.$profile->avatar) : null,
+                    'avatar_url' => $profile->avatar ? (filter_var($profile->avatar, FILTER_VALIDATE_URL) ? $profile->avatar : '/storage/'.ltrim($profile->avatar, '/')) : null,
                     'address' => $profile->address,
                     'city' => $profile->city,
                     'cv_url' => $profile->cv_file_path ? url('/api/candidate/cv/file') : null,
@@ -133,7 +133,7 @@ class CandidateProfileController extends Controller
                     'experience_years' => $profile->experience_years,
                     'bio' => $profile->bio,
                     'avatar' => $profile->avatar,
-                    'avatar_url' => $profile->avatar ? asset('storage/'.$profile->avatar) : null,
+                    'avatar_url' => $profile->avatar ? (filter_var($profile->avatar, FILTER_VALIDATE_URL) ? $profile->avatar : '/storage/'.ltrim($profile->avatar, '/')) : null,
                     'address' => $profile->address,
                     'city' => $profile->city,
                     'cv_url' => $profile->cv_file_path ? url('/api/candidate/cv/file') : null,
@@ -254,7 +254,7 @@ class CandidateProfileController extends Controller
             'success' => true,
             'message' => 'Cập nhật ảnh đại diện thành công.',
             'data' => [
-                'avatar_url' => asset('storage/'.$path),
+                'avatar_url' => '/storage/'.ltrim($path, '/'),
             ],
         ], 200, [], JSON_UNESCAPED_UNICODE);
     }

@@ -11,7 +11,7 @@ Tài liệu này tổng hợp toàn bộ các câu lệnh cần thiết để c�
 | Dịch vụ | Thư mục | Cổng / Hàng đợi | Lệnh chạy |
 | :--- | :--- | :--- | :--- |
 | **MySQL Database** | XAMPP | Cổng `3306` | Bật **MySQL** trong **XAMPP Control Panel** |
-| **Backend API** | `backend/` | `http://127.0.0.1:8000` | `php scripts/serve-local.php --port=8000` |
+| **Backend API** | `backend/` | `http://127.0.0.1:8000` | `php artisan serve --host=127.0.0.1 --port=8000` |
 | **Frontend UI** | `frontend/` | `http://localhost:3000` | `npm run dev` |
 | **Reverb WebSocket** | `backend/` | `127.0.0.1:8080` | `php artisan reverb:start --host=127.0.0.1 --port=8080` |
 | **Worker Email** | `backend/` | Queue `emails` | `php artisan queue:work database --queue=emails --sleep=1 --tries=3 --timeout=30` |

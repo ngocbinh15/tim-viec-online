@@ -54,7 +54,7 @@ class ApplicationResource extends JsonResource
                     'title' => $this->candidateProfile->title,
                     'experience_years' => $this->candidateProfile->experience_years,
                     'city' => $this->candidateProfile->city,
-                    'avatar_url' => $this->candidateProfile->avatar ? asset('storage/'.$this->candidateProfile->avatar) : null,
+                    'avatar_url' => $this->candidateProfile->avatar ? (filter_var($this->candidateProfile->avatar, FILTER_VALIDATE_URL) ? $this->candidateProfile->avatar : '/storage/'.ltrim($this->candidateProfile->avatar, '/')) : null,
                     'skills' => $this->candidateProfile->skills,
                 ];
             }),
