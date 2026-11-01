@@ -136,6 +136,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::patch('/jobs/{id}/status', [JobController::class, 'toggleStatus'])->middleware('email.verified');
 
         // Applicant Management
+        Route::post('/applications/export', \App\Http\Controllers\Api\ApplicantExportController::class)->middleware('throttle:6,1');
         Route::get('/applications', [ApplicationController::class, 'employerApplications']);
         Route::get('/jobs/{id}/applications', [ApplicationController::class, 'jobApplicants']);
         Route::get('/applications/{id}', [ApplicationController::class, 'showEmployerApplication']);

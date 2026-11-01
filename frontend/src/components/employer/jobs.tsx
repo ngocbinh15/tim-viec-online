@@ -2,7 +2,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Eye, Pencil, Plus, Search, BriefcaseBusiness } from "lucide-react";
+import {
+  Download,
+  Eye,
+  Pencil,
+  Plus,
+  Search,
+  BriefcaseBusiness,
+} from "lucide-react";
 import { toast } from "sonner";
 import { useEmployer } from "./employer-provider";
 import { effectiveJobStatus } from "@/features/employer/rules";
@@ -11,6 +18,8 @@ import { normalizeSearch } from "@/features/jobs/query";
 import { formatSalary } from "@/features/jobs/formatters";
 import { SelectionField } from "@/components/forms/selection-field";
 import { Pagination } from "@/components/layout/pagination";
+import { Checkbox } from "@/modules/cores/shadcn/components/ui/checkbox";
+import { ApplicantExportDialog } from "./applicant-export-dialog";
 import "./employer-overview.css";
 import {
   AlertDialog,
@@ -86,7 +95,16 @@ function StatusAction({ job }: { job: EmployerJob }) {
   );
 }
 export function EmployerJobs({ compact = false }: { compact?: boolean }) {
-  const { jobs, applications, today } = useEmployer();
+  const { jobs, applications, today, apiMode } = useEmployer();
+  const [selection, setSelection] = useState<number[]>([]);
+  const [exportIds, setExportIds] = useState<number[]>([]);
+  const selectedIds = selection.filter((id) =>
+    jobs.some((job) => job.id === id),
+  );
+  const exportJobs = exportIds.flatMap((id) => {
+    const job = jobs.find((item) => item.id === id);
+    return job ? [job] : [];
+  });
   const params = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -130,6 +148,19 @@ export function EmployerJobs({ compact = false }: { compact?: boolean }) {
   const visible = compact
     ? filtered.slice(0, 4)
     : filtered.slice((page - 1) * size, page * size);
+  const pageSelected = visible.filter((job) =>
+    selectedIds.includes(job.id),
+  ).length;
+  function selectJobs(ids: number[], checked: boolean) {
+    const next = checked
+      ? [...new Set([...selectedIds, ...ids])]
+      : selectedIds.filter((id) => !ids.includes(id));
+    if (next.length > 50) {
+      toast.error("Chọn tối đa 50 tin cho mỗi lần xuất.");
+      return;
+    }
+    setSelection(next);
+  }
   const pageUrl = (number: number) => {
     const next = new URLSearchParams(params);
     next.set("page", String(number));
@@ -217,6 +248,51 @@ export function EmployerJobs({ compact = false }: { compact?: boolean }) {
                 ]}
               />
             </div>
+            <div className="applicant-export-toolbar">
+              <label className="applicant-export-select-page">
+                <Checkbox
+                  checked={
+                    pageSelected === visible.length && visible.length > 0
+                      ? true
+                      : pageSelected > 0
+                        ? "indeterminate"
+                        : false
+                  }
+                  disabled={!apiMode || visible.length === 0}
+                  onCheckedChange={(checked) =>
+                    selectJobs(
+                      visible.map((job) => job.id),
+                      checked === true,
+                    )
+                  }
+                />
+                Chọn trang này
+              </label>
+              <span role="status">Đã chọn {selectedIds.length}/50 tin</span>
+              {selectedIds.length > 0 && (
+                <button
+                  type="button"
+                  className="ep-text-link"
+                  onClick={() => setSelection([])}
+                >
+                  Bỏ chọn
+                </button>
+              )}
+              <button
+                type="button"
+                className="ep-button"
+                disabled={!apiMode || selectedIds.length === 0}
+                title={
+                  !apiMode
+                    ? "Xuất danh sách chỉ dùng được khi kết nối máy chủ."
+                    : undefined
+                }
+                onClick={() => setExportIds(selectedIds)}
+              >
+                <Download size={16} aria-hidden="true" />
+                Xuất danh sách
+              </button>
+            </div>
           </>
         )}
         {visible.length ? (
@@ -237,19 +313,33 @@ export function EmployerJobs({ compact = false }: { compact?: boolean }) {
                 return (
                   <tr key={job.id}>
                     <td>
-                      <Link
-                        className="ep-job-title"
-                        href={`/employer/jobs/${job.id}/edit`}
-                        aria-label={`Xem/sửa tin ${job.title}`}
-                      >
-                        {job.title}
-                      </Link>
-                      <div className="ep-job-meta">
-                        #{job.id} · {job.city} · {job.job_level}
-                      </div>
-                      <div className="ep-job-meta">
-                        {formatSalary(job)} · Hạn{" "}
-                        {job.deadline.split("-").reverse().join("/")}
+                      <div className="applicant-export-job-title">
+                        {!compact && (
+                          <Checkbox
+                            aria-label={`Chọn tin ${job.title}`}
+                            checked={selectedIds.includes(job.id)}
+                            disabled={!apiMode}
+                            onCheckedChange={(checked) =>
+                              selectJobs([job.id], checked === true)
+                            }
+                          />
+                        )}
+                        <div>
+                          <Link
+                            className="ep-job-title"
+                            href={`/employer/jobs/${job.id}/edit`}
+                            aria-label={`Xem/sửa tin ${job.title}`}
+                          >
+                            {job.title}
+                          </Link>
+                          <div className="ep-job-meta">
+                            #{job.id} · {job.city} · {job.job_level}
+                          </div>
+                          <div className="ep-job-meta">
+                            {formatSalary(job)} · Hạn{" "}
+                            {job.deadline.split("-").reverse().join("/")}
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td>
@@ -292,6 +382,22 @@ export function EmployerJobs({ compact = false }: { compact?: boolean }) {
                           Sửa tin
                         </Link>
                         <StatusAction job={job} />
+                        {!compact && (
+                          <button
+                            type="button"
+                            disabled={!apiMode}
+                            aria-label={`Xuất ứng viên cho ${job.title}`}
+                            title={
+                              !apiMode
+                                ? "Xuất danh sách chỉ dùng được khi kết nối máy chủ."
+                                : undefined
+                            }
+                            onClick={() => setExportIds([job.id])}
+                          >
+                            <Download size={15} aria-hidden="true" />
+                            Xuất ứng viên
+                          </button>
+                        )}
                       </div>
                     </td>
                   </tr>
@@ -347,6 +453,16 @@ export function EmployerJobs({ compact = false }: { compact?: boolean }) {
           <span>Hồ sơ vẫn được lưu khi đóng tin</span>
         </div>
       </section>
+      {!compact && (
+        <ApplicantExportDialog
+          jobs={exportJobs}
+          apiMode={apiMode}
+          open={exportIds.length > 0}
+          onOpenChange={(open) => {
+            if (!open) setExportIds([]);
+          }}
+        />
+      )}
     </>
   );
 }

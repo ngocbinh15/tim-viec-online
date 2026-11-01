@@ -22,6 +22,7 @@ const routes: [RegExp, string[]][] = [
   [/^\/applications\/[1-9]\d*\/ai-analyze$/, ["POST"]],
   [/^\/employer\/company$/, ["GET", "POST"]],
   [/^\/employer\/(?:my-jobs|applications)$/, ["GET"]],
+  [/^\/employer\/applications\/export$/, ["POST"]],
   [/^\/employer\/jobs$/, ["POST"]],
   [/^\/employer\/jobs\/\d+$/, ["PUT"]],
   [/^\/employer\/jobs\/\d+\/status$/, ["PATCH"]],
@@ -75,6 +76,6 @@ export const invalidatesPublicDirectory = (path: string, method: string) =>
   );
 
 export const protectedFilePath = (path: string) =>
-  /^\/(?:candidate\/cv\/file|candidate\/resumes\/[1-9]\d*\/assets\/[1-9]\d*|candidate\/resume-exports\/[1-9]\d*\/file|applications\/\d+\/cv|conversations\/\d+\/messages\/\d+\/image)$/.test(
+  /^\/(?:employer\/applications\/export|candidate\/cv\/file|candidate\/resumes\/[1-9]\d*\/assets\/[1-9]\d*|candidate\/resume-exports\/[1-9]\d*\/file|applications\/\d+\/cv|conversations\/\d+\/messages\/\d+\/image)$/.test(
     path.split("?")[0],
   );

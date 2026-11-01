@@ -10,6 +10,7 @@
         "laravel/reverb": "^1.12",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "openspout/openspout": "~4.28.0",
         "smalot/pdfparser": "^2.13"
     },
     "require-dev": {

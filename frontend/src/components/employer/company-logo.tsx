@@ -2,18 +2,20 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import type { EmployerCompany } from "@/features/employer/types";
+import type { Company } from "@/features/jobs/types";
 
 export function CompanyLogo({
   company,
+  className = "ep-company-logo",
 }: {
-  company: Pick<EmployerCompany, "name" | "logo">;
+  company: Pick<Company, "name" | "logo">;
+  className?: string;
 }) {
   const [failedSource, setFailedSource] = useState<string | null>(null);
   const source = company.logo;
 
   return (
-    <span className="ep-company-logo" aria-hidden="true">
+    <span className={className} aria-hidden="true">
       {source && failedSource !== source ? (
         <Image
           key={source}

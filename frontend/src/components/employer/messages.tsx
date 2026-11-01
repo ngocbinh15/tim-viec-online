@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLiveRefresh } from "@/features/api/live";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   ArrowDown,
@@ -60,6 +61,33 @@ const initials = (name: string) =>
     .slice(-2)
     .map((part) => part[0])
     .join("");
+
+function CandidateChatAvatar({
+  name,
+  source,
+}: {
+  name: string;
+  source?: string | null;
+}) {
+  const [failedSource, setFailedSource] = useState<string | null>(null);
+  return (
+    <span className="em-chat-avatar" aria-hidden="true">
+      {source && failedSource !== source ? (
+        <Image
+          key={source}
+          src={source}
+          alt=""
+          width={40}
+          height={40}
+          unoptimized
+          onError={() => setFailedSource(source)}
+        />
+      ) : (
+        initials(name)
+      )}
+    </span>
+  );
+}
 function resizeComposer(node: HTMLTextAreaElement | null) {
   if (!node?.clientWidth) return;
   node.style.height = "auto";
@@ -288,9 +316,10 @@ export function EmployerMessages() {
                     );
                   }}
                 >
-                  <span className="em-chat-avatar">
-                    {initials(person.name)}
-                  </span>
+                  <CandidateChatAvatar
+                    name={person.name}
+                    source={person.avatar_url}
+                  />
                   <span className="em-chat-thread-copy">
                     <span className="em-chat-thread-top">
                       <strong>{person.name}</strong>
@@ -350,9 +379,10 @@ export function EmployerMessages() {
                 >
                   <ArrowLeft aria-hidden="true" />
                 </Button>
-                <span className="em-chat-avatar">
-                  {initials(application.name)}
-                </span>
+                <CandidateChatAvatar
+                  name={application.name}
+                  source={application.avatar_url}
+                />
                 <div>
                   <h2 id="em-chat-title" ref={heading} tabIndex={-1}>
                     {application.name}

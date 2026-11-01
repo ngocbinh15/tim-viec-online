@@ -36,6 +36,7 @@ export type RawApplication = Pick<
   candidate: {
     user_id: number;
     name: string;
+    avatar_url?: string | null;
     email: string;
     phone: string | null;
     title: string | null;
@@ -120,6 +121,7 @@ export function mapApplication(raw: RawApplication): EmployerApplication {
     candidate_id: raw.candidate_id,
     candidate_user_id: person.user_id,
     name: person.name,
+    avatar_url: person.avatar_url ?? null,
     email: person.email,
     phone: person.phone ?? "",
     title: person.title ?? "",
