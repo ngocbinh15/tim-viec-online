@@ -14,6 +14,7 @@ use App\Models\Message;
 use App\Models\Notification;
 use App\Models\User;
 use App\Services\NotificationEmailService;
+use App\Support\PublicImageUrl;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,8 +61,8 @@ class ChatController extends Controller
                 : $conv->candidate?->name;
 
             $partnerAvatar = $isCandidate
-                ? ($conv->employer?->company?->logo ? '/storage/'.ltrim($conv->employer->company->logo, '/') : null)
-                : ($conv->candidate?->candidateProfile?->avatar ? '/storage/'.ltrim($conv->candidate->candidateProfile->avatar, '/') : null);
+                ? PublicImageUrl::from($conv->employer?->company?->avatar ?: $conv->employer?->company?->logo)
+                : PublicImageUrl::from($conv->candidate?->candidateProfile?->avatar);
 
             $lastMsg = $conv->latestMessage;
 
@@ -301,8 +302,8 @@ class ChatController extends Controller
 
         $formatted = $messages->map(function ($msg) {
             $senderAvatar = $msg->sender?->isCandidate()
-                ? ($msg->sender?->candidateProfile?->avatar ? '/storage/'.ltrim($msg->sender->candidateProfile->avatar, '/') : null)
-                : ($msg->sender?->company?->logo ? '/storage/'.ltrim($msg->sender->company->logo, '/') : null);
+                ? PublicImageUrl::from($msg->sender?->candidateProfile?->avatar)
+                : PublicImageUrl::from($msg->sender?->company?->avatar ?: $msg->sender?->company?->logo);
 
             return [
                 'id' => $msg->id,

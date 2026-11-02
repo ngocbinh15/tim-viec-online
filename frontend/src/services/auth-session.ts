@@ -8,47 +8,14 @@ import type { AuthRole, AuthUser } from "@/features/auth/types";
 import { safeJobReturnPath } from "@/lib/return-path";
 import { authEnabled } from "./auth-mode";
 import { authRequest } from "./auth-request";
+import { isTrustedAuthOrigin } from "@/lib/auth-origin";
 
 export const SESSION_COOKIE = "timviec_session";
 
 export async function assertAuthOrigin() {
   const reqHeaders = await headers();
   const origin = reqHeaders.get("origin");
-  if (!origin) {
-    throw new AuthApiError(
-      403,
-      "invalid_origin",
-      "Yêu cầu không hợp lệ. Vui lòng tải lại trang và thử lại.",
-    );
-  }
-
-  try {
-    const originUrl = new URL(origin);
-    const host = reqHeaders.get("x-forwarded-host") || reqHeaders.get("host");
-
-    if (host && originUrl.host === host) {
-      return;
-    }
-
-    if (process.env.AUTH_APP_URL) {
-      const trusted = new URL(process.env.AUTH_APP_URL);
-      if (originUrl.origin === trusted.origin) {
-        return;
-      }
-    }
-
-    if (
-      process.env.NODE_ENV !== "production" &&
-      (originUrl.hostname.endsWith(".ngrok-free.dev") ||
-        originUrl.hostname.endsWith(".ngrok-free.app") ||
-        originUrl.hostname.endsWith(".trycloudflare.com") ||
-        ["localhost", "127.0.0.1", "[::1]"].includes(originUrl.hostname))
-    ) {
-      return;
-    }
-
-    throw new Error();
-  } catch {
+  if (!isTrustedAuthOrigin(origin, process.env)) {
     throw new AuthApiError(
       403,
       "invalid_origin",

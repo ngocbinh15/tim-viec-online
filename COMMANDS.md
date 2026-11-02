@@ -2,6 +2,12 @@
 
 Tài liệu này tổng hợp toàn bộ các câu lệnh cần thiết để cài đặt, khởi chạy hằng ngày và bảo trì dự án **TimViecOnline** (Laravel 12 API + Next.js 16 + MySQL + Reverb WebSocket + Queue Workers).
 
+## Truy cập qua tunnel
+
+Trong `frontend/.env.local`, giữ `AUTH_APP_URL` là origin chính và thêm chính xác origin tunnel vào `AUTH_TRUSTED_ORIGINS`, ví dụ `https://your-tunnel.ngrok-free.app`. Nhiều origin ngăn cách bằng dấu phẩy. Khởi động lại `npm run dev` khi đổi cấu hình. Danh sách bổ sung chỉ dùng trong development; production chỉ chấp nhận `AUTH_APP_URL` và yêu cầu HTTPS với địa chỉ công khai.
+
+Frontend chuyển tiếp ảnh tại `/storage/avatars/...` và `/storage/company_logos/...` đến backend theo `AUTH_API_URL` tại thời điểm nhận request. Cấu hình `AUTH_API_URL` có đường dẫn `/api`, ví dụ `http://127.0.0.1:8000/api`. Backend cần `php artisan storage:link`; tuyến ảnh này không phục vụ file CV riêng.
+
 ---
 
 ## 📌 BẢNG TỔNG HỢP CÁC DỊCH VỤ CẦN CHẠY
@@ -54,10 +60,7 @@ php artisan key:generate
 #    DB_PASSWORD=
 
 # 6. Chuẩn bị cơ sở dữ liệu (chọn 1 trong 2 cách):
-#    Cách A (Khuyên dùng): Import file database có sẵn vào MySQL:
-#       mysql -u root tim_viec_online < ../db/tim_viec_online.sql
-#
-#    Cách B: Chạy migrations và seed dữ liệu mặc định:
+#    Dùng database mới và chạy migrations, seeders trong repository:
 #       php artisan migrate --seed
 
 # 7. Tạo liên kết lưu trữ công khai (cho avatar, logo công ty)
@@ -207,6 +210,8 @@ npm start
 ```powershell
 # Chạy Unit/Feature Tests Backend
 cd backend
+# Cấu hình DB_DATABASE và TEST_DB_NAME trùng nhau, tên kết thúc bằng _test.
+# Xem README trước khi chạy; không dùng database đang sử dụng.
 php artisan test
 
 # Chạy Tests Frontend
@@ -222,7 +227,7 @@ npm test
 
 Dự án đã có sẵn file script tự động mở đồng thời tất cả các cửa sổ terminal cần thiết:
 
-- **Cách 1 (Khuyên dùng):** Nhấp đúp chuột vào file [`start-dev.bat`](file:///D:/xampp/htdocs/tim-viec-online/start-dev.bat) ở thư mục gốc (hoặc gõ `.\start-dev.bat` trong cmd/powershell).
+- **Cách 1:** Dùng các lệnh chạy dịch vụ trong [hướng dẫn backend](docs/backend-run-guide.md).
 - **Cách 2:** Copy và chạy đoạn lệnh sau trong PowerShell tại thư mục gốc:
 
 ```powershell
