@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicImageUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,9 +18,7 @@ class CompanyResource extends JsonResource
         $logoUrl = null;
         $avatar = $this->avatar ?: $this->logo;
         if ($avatar) {
-            $logoUrl = filter_var($avatar, FILTER_VALIDATE_URL)
-                ? $avatar
-                : '/storage/'.ltrim($avatar, '/');
+            $logoUrl = PublicImageUrl::from($avatar);
         }
 
         return [

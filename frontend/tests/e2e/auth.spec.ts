@@ -224,6 +224,37 @@ test("cross-origin login submissions cannot establish a session", async ({
   ).toBe(false);
 });
 
+test("API mutations reject untrusted origins even when host headers match", async ({
+  request,
+}) => {
+  const rejectedHeaders: Record<string, string>[] = [
+    {
+      origin: "https://evil.example.test",
+      "x-forwarded-host": "evil.example.test",
+    },
+    { origin: "https://evil.example.test", host: "evil.example.test" },
+    { origin: "https://localhost:3119" },
+    { origin: "https://unconfigured.ngrok-free.dev" },
+    { origin: "https://unconfigured.trycloudflare.com" },
+    { origin: "null" },
+    {},
+  ];
+  for (const headers of rejectedHeaders) {
+    const response = await request.post("/api/backend/candidate/profile", {
+      headers,
+      data: {},
+    });
+    expect(response.status()).toBe(403);
+    expect((await response.json()).success).toBe(false);
+  }
+  // A legitimate origin reaches the separate authentication check.
+  const allowed = await request.post("/api/backend/candidate/profile", {
+    headers: { origin: "http://localhost:3119" },
+    data: {},
+  });
+  expect(allowed.status()).toBe(401);
+});
+
 test("roles come from the authenticated API user and restrict employer/admin pages", async ({
   page,
 }) => {

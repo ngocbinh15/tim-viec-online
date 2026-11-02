@@ -1,7 +1,15 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect, type Page, type Locator } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
 const origin = "http://localhost:3127";
+async function expectImageSource(image: Locator, source: string) {
+  await expect(image).toHaveCount(1);
+  await expect
+    .poll(
+      async () => new URL((await image.getAttribute("src")) ?? "", origin).href,
+    )
+    .toBe(new URL(source, origin).href);
+}
 const png = Buffer.from(
   "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aRFsAAAAASUVORK5CYII=",
   "base64",
@@ -79,15 +87,13 @@ test("chat shows current company logo and candidate avatar on both sides", async
     const logo = (await response.json()).data.logo;
     await page.reload();
     await employer.reload();
-    await expect(companyImage).toHaveAttribute("src", logo);
-    await expect(page.locator(".cc-company .cc-avatar img")).toHaveAttribute(
-      "src",
-      logo,
-    );
-    await expect(candidateImage).toHaveAttribute("src", firstAvatar);
-    await expect(
+    await expectImageSource(companyImage, logo);
+    await expectImageSource(page.locator(".cc-company .cc-avatar img"), logo);
+    await expectImageSource(candidateImage, firstAvatar);
+    await expectImageSource(
       employer.locator(".em-chat-thread .em-chat-avatar img"),
-    ).toHaveAttribute("src", firstAvatar);
+      firstAvatar,
+    );
     for (const image of [companyImage, candidateImage])
       await expect
         .poll(() =>
@@ -100,7 +106,7 @@ test("chat shows current company logo and candidate avatar on both sides", async
     await employer.evaluate(() =>
       window.dispatchEvent(new Event("backend:refresh")),
     );
-    await expect(candidateImage).toHaveAttribute("src", nextAvatar);
+    await expectImageSource(candidateImage, nextAvatar);
   } finally {
     await context.close();
   }

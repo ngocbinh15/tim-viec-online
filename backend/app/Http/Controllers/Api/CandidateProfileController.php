@@ -8,6 +8,7 @@ use App\Http\Requests\UploadCvRequest;
 use App\Models\CandidateProfile;
 use App\Services\ApplicationCvStorage;
 use App\Services\EmailVerificationService;
+use App\Support\PublicImageUrl;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -41,7 +42,7 @@ class CandidateProfileController extends Controller
                     'experience_years' => $profile->experience_years,
                     'bio' => $profile->bio,
                     'avatar' => $profile->avatar,
-                    'avatar_url' => $profile->avatar ? (filter_var($profile->avatar, FILTER_VALIDATE_URL) ? $profile->avatar : '/storage/'.ltrim($profile->avatar, '/')) : null,
+                    'avatar_url' => PublicImageUrl::from($profile->avatar),
                     'address' => $profile->address,
                     'city' => $profile->city,
                     'cv_url' => $profile->cv_file_path ? url('/api/candidate/cv/file') : null,
@@ -133,7 +134,7 @@ class CandidateProfileController extends Controller
                     'experience_years' => $profile->experience_years,
                     'bio' => $profile->bio,
                     'avatar' => $profile->avatar,
-                    'avatar_url' => $profile->avatar ? (filter_var($profile->avatar, FILTER_VALIDATE_URL) ? $profile->avatar : '/storage/'.ltrim($profile->avatar, '/')) : null,
+                    'avatar_url' => PublicImageUrl::from($profile->avatar),
                     'address' => $profile->address,
                     'city' => $profile->city,
                     'cv_url' => $profile->cv_file_path ? url('/api/candidate/cv/file') : null,

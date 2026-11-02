@@ -1,13 +1,9 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { configuredDevHostnames } from "./src/lib/auth-origin";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: [
-    "superscientific-revisory-morton.ngrok-free.dev",
-    "*.ngrok-free.dev",
-    "*.ngrok-free.app",
-    "*.trycloudflare.com",
-  ],
+  allowedDevOrigins: configuredDevHostnames(process.env),
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -18,14 +14,6 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/storage/:path*",
-        destination: "http://127.0.0.1:8000/storage/:path*",
-      },
-    ];
   },
 };
 
