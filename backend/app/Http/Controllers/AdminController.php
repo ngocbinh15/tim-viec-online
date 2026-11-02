@@ -347,7 +347,13 @@ class AdminController extends Controller
     // --- Quản lý Categories ---
     public function storeCategory(Request $request): JsonResponse
     {
-        $request->validate(['name' => 'required|string|max:150|unique:categories,name']);
+        $request->validate([
+            'name' => ['required', 'string', 'max:150', 'unique:categories,name'],
+        ], [
+            'name.required' => 'Tên ngành nghề là bắt buộc.',
+            'name.unique' => 'Tên ngành nghề đã tồn tại.',
+            'name.max' => 'Tên ngành nghề tối đa 150 ký tự.',
+        ]);
         $category = Category::create(['name' => $request->name]);
 
         return response()->json([
@@ -362,7 +368,13 @@ class AdminController extends Controller
         $category = Category::find($id);
         if (!$category) return response()->json(['success' => false, 'message' => 'Danh mục không tồn tại.'], 404);
 
-        $request->validate(['name' => 'required|string|max:150|unique:categories,name,' . $id]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:150', 'unique:categories,name,' . $id],
+        ], [
+            'name.required' => 'Tên ngành nghề là bắt buộc.',
+            'name.unique' => 'Tên ngành nghề đã tồn tại.',
+            'name.max' => 'Tên ngành nghề tối đa 150 ký tự.',
+        ]);
         $category->update(['name' => $request->name]);
 
         return response()->json(['success' => true, 'message' => 'Cập nhật danh mục thành công.', 'data' => $category]);

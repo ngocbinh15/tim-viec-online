@@ -8,28 +8,14 @@ import type { AuthRole, AuthUser } from "@/features/auth/types";
 import { safeJobReturnPath } from "@/lib/return-path";
 import { authEnabled } from "./auth-mode";
 import { authRequest } from "./auth-request";
+import { isTrustedAuthOrigin } from "@/lib/auth-origin";
 
 export const SESSION_COOKIE = "timviec_session";
 
 export async function assertAuthOrigin() {
-  const origin = (await headers()).get("origin");
-  try {
-    const trusted = new URL(process.env.AUTH_APP_URL ?? "");
-    const loopback = ["localhost", "127.0.0.1", "[::1]"].includes(
-      trusted.hostname,
-    );
-    if (
-      !origin ||
-      new URL(origin).origin !== trusted.origin ||
-      trusted.username ||
-      trusted.password ||
-      !["http:", "https:"].includes(trusted.protocol) ||
-      (process.env.NODE_ENV === "production" &&
-        trusted.protocol !== "https:" &&
-        !loopback)
-    )
-      throw new Error();
-  } catch {
+  const reqHeaders = await headers();
+  const origin = reqHeaders.get("origin");
+  if (!isTrustedAuthOrigin(origin, process.env)) {
     throw new AuthApiError(
       403,
       "invalid_origin",

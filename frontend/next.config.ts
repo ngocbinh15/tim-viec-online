@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { configuredDevHostnames } from "./src/lib/auth-origin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: configuredDevHostnames(process.env),
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {

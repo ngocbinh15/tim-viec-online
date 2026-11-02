@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicImageUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -54,7 +55,7 @@ class ApplicationResource extends JsonResource
                     'title' => $this->candidateProfile->title,
                     'experience_years' => $this->candidateProfile->experience_years,
                     'city' => $this->candidateProfile->city,
-                    'avatar_url' => $this->candidateProfile->avatar ? asset('storage/'.$this->candidateProfile->avatar) : null,
+                    'avatar_url' => PublicImageUrl::from($this->candidateProfile->avatar),
                     'skills' => $this->candidateProfile->skills,
                 ];
             }),
