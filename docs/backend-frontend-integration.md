@@ -24,6 +24,8 @@ Nếu trang đăng nhập/đăng ký báo “Yêu cầu không hợp lệ. Vui l
 
 Lệnh `npm run dev` đã cố định cổng **3000** để không tự chuyển sang 3001 khi một frontend khác đang chạy. Chỉ chạy một frontend; dừng bản `next start` cũ trước khi chạy development. Mở `http://localhost:3000/login`. Nếu chủ động dùng cổng khác, cập nhật đồng bộ `AUTH_APP_URL`, `FRONTEND_URL` ở backend và cấu hình CORS/Reverb liên quan, rồi khởi động lại dịch vụ. Không tắt kiểm tra origin để tránh lỗi cấu hình.
 
+Backend chỉ bổ sung `http://localhost:3000` và `http://127.0.0.1:3000` vào CORS khi `APP_ENV=local`; danh sách loại bỏ các origin trùng nhau. Các môi trường khác dùng origin trong `FRONTEND_URL`. Việc cho phép CORS không thay thế kiểm tra `AUTH_APP_URL` của frontend hoặc xác thực và phân quyền tại API. Sau khi đổi cấu hình backend, chạy `php artisan config:clear` hoặc tạo lại config cache của môi trường triển khai.
+
 ## Chat và thông báo
 
 Backend cần `BROADCAST_CONNECTION=reverb`, cùng `REVERB_APP_ID`, `REVERB_APP_KEY`, `REVERB_APP_SECRET`, `REVERB_HOST`, `REVERB_PORT`, `REVERB_SCHEME`, `REVERB_ALLOWED_ORIGINS`. Chạy `php artisan reverb:start`. Chỉ public key được đưa vào frontend; không đưa secret sang biến `NEXT_PUBLIC_*`.
