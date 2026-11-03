@@ -1,0 +1,313 @@
+.selection-field {
+  position: relative;
+  color: var(--foreground);
+}
+.selection-field .selection-trigger {
+  width: 100%;
+  height: 38px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+}
+.selection-trigger > :is([data-slot="select-value"], .selection-value) {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selection-trigger > [data-slot="select-value"] {
+  display: block;
+}
+.selection-value > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selection-trigger > svg {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  width: 16px;
+  height: 16px;
+}
+.selection-count {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+}
+.selection-field[data-active="true"] .selection-trigger {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+.selection-field[data-active="true"]
+  .selection-trigger
+  > :is([data-slot="select-value"], .selection-value) {
+  max-width: calc(100% - 54px);
+  padding-inline: 6px;
+  background: var(--selection-background);
+  border-radius: 4px;
+}
+.selection-field .selection-trigger:hover,
+.selection-field .selection-trigger[data-state="open"] {
+  border-color: var(--brand-blue);
+}
+.selection-field[data-clearable="false"][data-active="true"]
+  .selection-trigger
+  > [data-slot="select-value"] {
+  max-width: calc(100% - 24px);
+}
+.selection-field .selection-trigger:focus-visible {
+  border-color: var(--field-focus-border);
+  box-shadow: 0 0 0 2px var(--field-focus-halo);
+}
+@media (forced-colors: active) {
+  .selection-field .selection-trigger:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+}
+.selection-clear {
+  position: absolute;
+  right: 29px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--selection-background);
+  color: var(--brand-blue);
+  cursor: pointer;
+}
+.selection-clear:hover {
+  background: var(--selection-hover);
+}
+.selection-clear:focus-visible {
+  outline: 2px solid var(--field-focus-border);
+  outline-offset: 1px;
+}
+.selection-menu {
+  z-index: 60;
+  width: max(220px, var(--radix-select-trigger-width, 220px));
+  max-width: calc(100vw - 24px);
+  max-height: min(340px, var(--radix-select-content-available-height, 340px));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 5px;
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--selection-shadow);
+  font-size: 13px;
+  outline: none;
+}
+.selection-menu [data-radix-select-viewport] {
+  padding: 0;
+  height: auto;
+}
+.selection-menu .selection-option {
+  min-height: 38px;
+  padding: 8px 30px 8px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+/* Match the category checkboxes visually; Radix keeps single-select semantics. */
+.selection-menu:not(.birth-calendar-menu) .selection-option {
+  min-height: 42px;
+  gap: 10px;
+  padding: 8px 10px;
+}
+.selection-menu:not(.birth-calendar-menu) .selection-option::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border: 1px solid var(--input);
+  border-radius: 4px;
+  background: var(--card);
+}
+.selection-menu:not(.birth-calendar-menu)
+  .selection-option[data-state="checked"]::before {
+  border-color: var(--brand-blue);
+  background: var(--brand-blue);
+}
+.selection-menu:not(.birth-calendar-menu) .selection-option > span:first-child {
+  left: 10px;
+  right: auto;
+  width: 16px;
+  height: 16px;
+  color: var(--primary-foreground);
+}
+.selection-menu:not(.birth-calendar-menu)
+  .selection-option
+  > span:first-child
+  svg {
+  width: 14px;
+  height: 14px;
+  color: var(--primary-foreground);
+}
+.selection-menu .selection-option[data-state="checked"] {
+  color: var(--brand-blue);
+  background: var(--selection-background);
+}
+.selection-menu .selection-option[data-highlighted] {
+  color: var(--brand-blue);
+  background: var(--selection-hover);
+}
+.selection-menu .selection-option[data-highlighted] * {
+  color: inherit;
+}
+.selection-multiple-menu {
+  width: 340px;
+  max-height: var(--radix-popover-content-available-height);
+  padding: 10px;
+  gap: 8px;
+}
+.selection-search {
+  position: relative;
+}
+.selection-searchable-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 300px;
+  max-height: min(380px, var(--radix-popover-content-available-height));
+  padding: 10px;
+}
+.selection-searchable-menu .selection-search {
+  flex-shrink: 0;
+}
+.selection-plain-menu {
+  width: max(220px, var(--radix-popover-trigger-width));
+  padding: 5px;
+  gap: 0;
+}
+.selection-searchable-menu .selection-options {
+  min-height: 0;
+}
+.selection-searchable-menu .selection-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+.selection-searchable-menu .selection-option:is(:hover, :focus-visible) {
+  background: var(--selection-hover);
+  color: var(--brand-blue);
+  outline: none;
+}
+.selection-single-check {
+  position: absolute;
+  display: grid;
+  place-items: center;
+}
+.selection-search > svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+}
+.selection-search input {
+  height: 38px;
+  padding-left: 34px;
+  font-size: 13px;
+}
+.selection-options {
+  display: grid;
+  gap: 2px;
+  max-height: min(280px, 45dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.selection-check-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.selection-check-option[data-selected="true"] {
+  color: var(--brand-blue);
+  background: var(--selection-background);
+}
+.selection-check-option:hover {
+  background: var(--selection-hover);
+}
+.selection-empty {
+  padding: 18px 10px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  text-align: center;
+}
+.header-city-selection {
+  width: 130px;
+}
+.header-city-selection .selection-trigger {
+  height: 28px;
+  padding: 1px 3px;
+  border-color: transparent;
+  font-size: 10.8px;
+  font-weight: 500;
+}
+.header-city-selection[data-active="true"]
+  .selection-trigger
+  > :is([data-slot="select-value"], .selection-value) {
+  max-width: calc(100% - 38px);
+}
+.header-city-selection .selection-trigger > svg {
+  width: 11px;
+  height: 11px;
+}
+.header-city-selection .selection-clear {
+  right: 15px;
+  width: 24px;
+  height: 24px;
+}
+@media (max-width: 600px) {
+  .selection-field .selection-trigger {
+    height: 44px;
+  }
+  .header-city-selection {
+    width: 112px;
+  }
+  .header-city-selection .selection-trigger {
+    height: 32px;
+    font-size: 11px;
+  }
+  .selection-option,
+  .selection-check-option {
+    min-height: 44px;
+  }
+  .selection-search input {
+    font-size: 16px;
+  }
+}

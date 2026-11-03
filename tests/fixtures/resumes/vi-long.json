@@ -1,0 +1,137 @@
+{
+  "name": "CV tổng hợp kiểm thử",
+  "template_key": "classic",
+  "template_version": 1,
+  "schema_version": 1,
+  "content": {
+    "basics": {
+      "full_name": "Nguyễn Minh An",
+      "headline": "Kỹ sư phần mềm",
+      "email": "an@example.test",
+      "phone": "",
+      "city": "Hà Nội",
+      "summary": "Phát triển phần mềm phục vụ cộng đồng.",
+      "links": [],
+      "photo_asset_id": null
+    },
+    "experience": [
+      {
+        "id": "d5a8bbed-3fbb-48d7-a71d-ed2c6c8e1818",
+        "company": "Doanh nghiệp tổng hợp 1",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "a224f38a-cf74-4eb8-8990-e45bb3ddade9",
+        "company": "Doanh nghiệp tổng hợp 2",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "1c15217b-de5e-45a9-9104-049cea2d60c2",
+        "company": "Doanh nghiệp tổng hợp 3",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "46720ed5-6f4a-4aa0-87d2-f8a12ca56249",
+        "company": "Doanh nghiệp tổng hợp 4",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "8d061804-6d9f-425d-b896-9f070605893e",
+        "company": "Doanh nghiệp tổng hợp 5",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "e2c7235f-7174-4bd4-b5b5-16a05064ca20",
+        "company": "Doanh nghiệp tổng hợp 6",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "583f05f3-d215-4b68-a3ed-9e94cb2d7b7c",
+        "company": "Doanh nghiệp tổng hợp 7",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "0f022190-a31e-44c9-a8e0-2e1e536bcc25",
+        "company": "Doanh nghiệp tổng hợp 8",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "1b5b084a-7930-49e1-a752-daf407c4e754",
+        "company": "Doanh nghiệp tổng hợp 9",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      },
+      {
+        "id": "8b13df73-9645-4549-8c22-70d72ba0875d",
+        "company": "Doanh nghiệp tổng hợp 10",
+        "position": "Lập trình viên",
+        "start_month": "2023-01",
+        "end_month": "2025-12",
+        "current": false,
+        "description": "Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. Phân tích yêu cầu và xây dựng ứng dụng cho người dùng Việt Nam. "
+      }
+    ],
+    "education": [],
+    "skills": [
+      {
+        "id": "1f7a3d73-1f55-4a4e-a85a-24160bb9cf9b",
+        "name": "TypeScript",
+        "detail": "Laravel, MySQL"
+      }
+    ],
+    "projects": [],
+    "certifications": [],
+    "languages": [],
+    "activities": []
+  },
+  "settings": {
+    "accent": "blue",
+    "font_size": "normal",
+    "line_spacing": "normal",
+    "section_order": [
+      "experience",
+      "education",
+      "skills",
+      "projects",
+      "certifications",
+      "languages",
+      "activities"
+    ],
+    "hidden_sections": []
+  }
+}

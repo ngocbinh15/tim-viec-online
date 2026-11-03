@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng nhập | TimViecOnline</title>
+  <meta name="description" content="Đăng nhập TimViecOnline để kết nối cơ hội việc làm và tuyển dụng phù hợp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../shared/auth.css">
+  <link rel="stylesheet" href="../shared/site-footer.css">
+</head>
+<body class="auth-page" data-auth-page="login">
+  <a href="#authForm" class="auth-skip">Đến biểu mẫu đăng nhập</a>
+  <header class="auth-header"><div class="auth-header-inner"><a class="auth-brand" href="../page_home/index.html" aria-label="TimViecOnline - Trang chủ"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#005AFF"/><path d="M10 18L16 24L26 12" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="12" r="3" fill="#FF6A39"/></svg><span class="auth-brand-copy"><strong>TimViec<span>Online</span></strong><small>Cổng Việc Làm & Tuyển Dụng</small></span></a><nav class="auth-header-links" aria-label="Điều hướng tài khoản"><a href="../page_jobs/index.html">Tìm việc làm</a><a href="../page_register/index.html?role=employer">Dành cho nhà tuyển dụng</a><a class="auth-header-action" href="../page_register/index.html">Đăng ký</a></nav></div></header>
+
+  <main class="auth-main">
+    <aside class="auth-story" aria-label="Giới thiệu nền tảng"><span class="auth-story-label">Cơ hội mới bắt đầu từ đây</span><h2>Công việc phù hợp.<span>Tương lai rộng mở.</span></h2><p class="auth-story-intro">Một nơi để khám phá cơ hội, gửi hồ sơ và bắt đầu cuộc trò chuyện về bước tiếp theo của bạn.</p><div class="auth-visual" aria-hidden="true"><div class="auth-job-card"><div class="auth-job-header"><span class="auth-company-mark">FPT</span><div><strong>FPT Software</strong><small>Hà Nội · Toàn thời gian</small></div></div><h3>Lập trình viên Backend Laravel</h3><p>18 – 28 triệu VNĐ · Middle</p><div class="auth-skills"><span>PHP</span><span>Laravel</span><span>MySQL</span></div></div><div class="auth-match"><span class="auth-match-score">88%</span><div><strong>CV phù hợp với vị trí</strong><small>Kết nối từ những thế mạnh của bạn</small></div></div></div><div class="auth-feature"><span class="auth-feature-icon"><i data-lucide="scan-text" class="auth-icon" aria-hidden="true"></i></span><div><strong>Hiểu rõ độ phù hợp của CV</strong><p>Nhận diện thế mạnh và kỹ năng cần bổ sung cho từng vị trí.</p></div></div><div class="auth-feature"><span class="auth-feature-icon"><i data-lucide="messages-square" class="auth-icon" aria-hidden="true"></i></span><div><strong>Trao đổi trực tiếp với nhà tuyển dụng</strong><p>Tiếp tục kết nối sau khi bạn gửi hồ sơ ứng tuyển.</p></div></div><p class="auth-story-foot"><i data-lucide="arrow-up-right" class="auth-icon" aria-hidden="true"></i>Cùng bạn trên hành trình phát triển sự nghiệp.</p></aside>
+    <section class="auth-card" aria-labelledby="authTitle"><span class="auth-card-label">Chào mừng đến TimViecOnline</span><h1 id="authTitle">Chào mừng trở lại.</h1><p class="auth-card-intro">Đăng nhập để tiếp tục hành trình của bạn.</p>
+      <form class="auth-form" id="authForm" novalidate>
+        <div class="auth-field"><label for="email">Địa chỉ email</label><input class="auth-input" id="email" name="email" type="email" placeholder="ban@example.com" required maxlength="100" autocomplete="username" inputmode="email" aria-describedby="emailError"><p class="auth-error" id="emailError" hidden></p></div>
+        <div class="auth-field"><div class="auth-label-row"><label for="password">Mật khẩu</label><a href="../page_forgot_password/index.html">Quên mật khẩu?</a></div><div class="auth-password"><input class="auth-input" id="password" name="password" type="password" placeholder="Nhập mật khẩu" required autocomplete="current-password" aria-describedby="passwordError"><button type="button" class="auth-toggle-password" data-password-toggle="password" aria-controls="password" aria-label="Hiện mật khẩu" aria-pressed="false"><i data-lucide="eye" class="auth-icon" aria-hidden="true"></i></button></div><p class="auth-error" id="passwordError" hidden></p></div>
+        <label class="auth-check"><input type="checkbox" name="remember">Ghi nhớ đăng nhập</label>
+        <button class="auth-submit" type="submit">Đăng nhập <i data-lucide="arrow-right" class="auth-icon" aria-hidden="true"></i></button>
+        <div class="auth-status" id="authStatus" role="status" aria-live="polite" hidden></div>
+      </form>
+      <div class="auth-switch">Chưa có tài khoản?<a href="../page_register/index.html">Đăng ký ngay</a></div><p class="auth-prototype">Bản thiết kế giao diện · Chưa kết nối xác thực</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách bảo mật</a></div>
+    </div>
+  </footer>
+
+<!-- FLOATING ROUTES (18) DRAWER BUTTON -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="toggleRoutesDrawer" class="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#002B7F] hover:bg-[#002366] text-white shadow-2xl border-2 border-white/20 text-xs font-bold transition active:scale-95">
+      <i data-lucide="map" class="w-4 h-4 text-cyan-300"></i>
+      <span>Routes (18)</span>
+    </button>
+  </div>
+
+  <div id="routesDrawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="routesDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 bg-[#002B7F] text-white flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="compass" class="w-5 h-5 text-cyan-300"></i>
+        <h3 class="font-bold text-base">Hệ Thống 18 Màn Hình</h3>
+      </div>
+      <button id="closeRoutesDrawer" aria-label="Đóng danh sách trang" class="p-1.5 rounded-full hover:bg-white/10 text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="p-4 flex-1 overflow-y-auto space-y-4 text-xs">
+      <div>
+        <div class="font-bold text-slate-400 uppercase text-[10px] tracking-wider mb-2">1. Dành Cho Khách & Ứng Viên</div>
+        <div class="space-y-1">
+          <a href="../page_home/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>1. Trang Chủ</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_jobs/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>2. Tìm Kiếm Việc Làm</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_job_detail/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>3. Chi Tiết Việc Làm</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_companies/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>4. Top Doanh Nghiệp Hàng Đầu</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_company_detail/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>5. Hồ Sơ Doanh Nghiệp</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_saved_jobs/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>6. Việc Làm Đã Lưu</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_candidate_dashboard/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>7. Hồ Sơ CV & Lịch Sử Nộp Đơn</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_settings/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>8. Cài Đặt Tài Khoản & Mật Khẩu</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold text-slate-400 uppercase text-[10px] tracking-wider mb-2">2. Dành Cho Nhà Tuyển Dụng</div>
+        <div class="space-y-1">
+          <a href="../page_employer_dashboard/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>9. Dashboard Tuyển Dụng</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_post_job/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>10. Đăng Tin Tuyển Dụng</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_employer_candidates/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>11. Quản Lý & Lọc Ứng Viên Bằng AI</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_ai_cv_report/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>12. Báo Cáo Phân Tích AI Ứng Viên</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="font-bold text-slate-400 uppercase text-[10px] tracking-wider mb-2">3. Realtime & Quản Trị</div>
+        <div class="space-y-1">
+          <a href="../page_chat/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>13. Nhắn Tin Realtime 1-1</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_notifications/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>14. Trung Tâm Thông Báo</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_admin_portal/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>15. Cổng Quản Trị Hệ Thống (Admin)</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_login/index.html" class="flex items-center justify-between p-2 rounded-lg bg-blue-50 text-[#002B7F] font-bold"><span>16. Đăng Nhập</span><span class="text-[10px] text-emerald-600">Đang xem</span></a>
+          <a href="../page_register/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>17. Đăng Ký Tài Khoản</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+          <a href="../page_forgot_password/index.html" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-100 text-slate-700"><span>18. Quên Mật Khẩu</span><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../shared/auth.js"></script>
+</body>
+</html>

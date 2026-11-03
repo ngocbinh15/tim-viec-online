@@ -1,0 +1,488 @@
+.candidate-area.candidate-messaging {
+  padding-bottom: 24px;
+}
+.candidate-messaging .cu-content {
+  gap: 16px;
+}
+.candidate-messaging .cu-title {
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  min-height: 42px;
+  animation: none;
+}
+.candidate-messaging .cu-title h1 {
+  font-size: 24px;
+}
+.cc-workspace {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: max(480px, calc(100dvh - 175px));
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  animation: none;
+}
+.cc-companies {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+  min-height: 0;
+}
+.cc-list-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 20px 16px;
+}
+.cc-list-heading h2 {
+  font-size: 16px;
+  margin: 0;
+}
+.cc-list-heading > span {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.cc-search {
+  padding: 0 16px 16px;
+}
+.cc-search-control {
+  position: relative;
+}
+.cc-search-control > svg {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+.candidate-area .cc-search-control input {
+  padding-inline: 37px 34px;
+  font-size: 12px;
+  background: var(--background);
+}
+.cc-search-control > button {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 36px;
+  display: grid;
+  place-items: center;
+  color: var(--muted-foreground);
+}
+.cc-thread-list {
+  overflow-y: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+.cc-company {
+  width: 100%;
+  padding: 18px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  text-align: left;
+  border-block: 1px solid transparent;
+}
+.cc-company:hover {
+  background: var(--background);
+}
+.cc-company[aria-pressed="true"] {
+  background: var(--selection-background);
+  border-color: var(--border);
+  box-shadow: inset 3px 0 var(--brand-blue);
+}
+.cc-company:focus-visible {
+  outline: 2px solid var(--field-focus-border);
+  outline-offset: -3px;
+}
+.cc-avatar {
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--brand-navy);
+  border-radius: 12px;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.cc-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+.cc-company-copy {
+  min-width: 0;
+  flex: 1;
+}
+.cc-company-title {
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cc-company-title strong {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cc-company-title time {
+  font-size: 10px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+.cc-company-position,
+.cc-company small {
+  display: block;
+  color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.cc-company-position {
+  margin: 3px 0 6px;
+  font-size: 11px;
+}
+.cc-list-note {
+  border-top: 1px solid var(--border);
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.cc-no-results {
+  padding: 28px 20px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.cc-no-results strong {
+  color: var(--foreground);
+}
+.cc-conversation {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.cc-heading {
+  display: flex;
+  gap: 12px;
+  padding: 16px 22px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.cc-heading-copy {
+  min-width: 0;
+  flex: 1;
+}
+.cc-heading h2 {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.cc-heading p {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  margin-top: 2px;
+}
+.cc-company-link {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+}
+.cc-company-link:hover {
+  background: var(--background);
+  color: var(--brand-blue);
+}
+.cc-context {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+}
+.cc-context > svg {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+.cc-context > div {
+  min-width: 0;
+}
+.cc-context strong {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.cc-context strong svg {
+  flex-shrink: 0;
+}
+.cc-context p {
+  margin-top: 3px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.cc-history {
+  position: relative;
+  min-height: 0;
+  background: var(--background);
+}
+.cc-messages {
+  height: 100%;
+  padding: 20px 24px 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: auto;
+  overflow-anchor: none;
+}
+.cc-messages:focus-visible {
+  outline: 2px solid var(--field-focus-border);
+  outline-offset: -3px;
+}
+.cc-date {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px;
+}
+.cc-date time {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 12px;
+}
+.cc-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: min(88%, 520px);
+  width: fit-content;
+  margin-bottom: 16px;
+}
+.cc-message p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 11px 15px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 4px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.cc-message small {
+  margin-top: 5px;
+  padding-inline: 2px;
+  color: var(--muted-foreground);
+  font-size: 10px;
+}
+.cc-outgoing {
+  margin-left: auto;
+  align-items: flex-end;
+}
+.cc-outgoing p {
+  background: var(--brand-blue);
+  color: var(--primary-foreground);
+  border-color: var(--brand-blue);
+  border-radius: 14px 14px 4px 14px;
+}
+.cc-scroll-bottom[data-slot="button"] {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  min-height: 36px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px var(--field-focus-halo);
+}
+.cc-composer {
+  padding: 14px 20px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}
+.cc-composer-box {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  gap: 4px;
+  align-items: end;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+.cc-composer-box:has(textarea:focus-visible) {
+  border-color: var(--field-focus-border);
+  box-shadow: 0 0 0 2px var(--field-focus-halo);
+}
+.cc-composer-box[data-invalid="true"] {
+  border-color: var(--destructive);
+}
+.cc-composer-box[data-invalid="true"]:has(textarea:focus-visible) {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--destructive) 12%, transparent);
+}
+.candidate-area .cc-composer [data-slot="textarea"] {
+  field-sizing: fixed;
+  width: 100%;
+  min-height: 44px;
+  max-height: 132px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  resize: none;
+  font-size: 14px;
+  line-height: 22px;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+}
+@media (forced-colors: active) {
+  .cc-composer-box:has(textarea:focus-visible),
+  .cc-composer-box[data-invalid="true"]:has(textarea:focus-visible) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+}
+.cc-send[data-slot="button"] {
+  width: 44px;
+  height: 44px;
+  border-radius: 9px;
+}
+.cc-composer-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 7px 2px 0;
+  color: var(--muted-foreground);
+  font-size: 10px;
+}
+.cc-preview-note {
+  margin-top: 6px;
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.cc-back[data-slot="button"] {
+  display: none;
+}
+.cc-missing {
+  grid-row: 1 / -1;
+  padding: 20px;
+  overflow-y: auto;
+}
+@media (max-width: 1100px) {
+  .cc-workspace {
+    height: max(480px, calc(100dvh - 231px));
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .candidate-messaging .cu-content {
+    gap: 10px;
+  }
+  .candidate-messaging .cu-title {
+    min-height: 34px;
+  }
+  .candidate-messaging .cu-title h1 {
+    font-size: 20px;
+  }
+  .cc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    height: max(440px, calc(100dvh - 211px));
+    border-radius: 12px;
+  }
+  .cc-workspace[data-open="false"] .cc-conversation,
+  .cc-workspace[data-open="true"] .cc-companies {
+    display: none;
+  }
+  .cc-companies {
+    border-right: 0;
+  }
+  .cc-company {
+    padding: 18px;
+  }
+  .cc-company-title strong {
+    font-size: 14px;
+  }
+  .cc-company small {
+    font-size: 13px;
+  }
+  .cc-back[data-slot="button"] {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: -8px;
+  }
+  .cc-heading {
+    padding: 12px;
+    gap: 8px;
+  }
+  .cc-heading .cc-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 10px;
+  }
+  .cc-heading h2 {
+    font-size: 14px;
+  }
+  .cc-heading p {
+    font-size: 10px;
+  }
+  .cc-context {
+    padding: 10px 16px;
+  }
+  .cc-context p {
+    font-size: 10px;
+  }
+  .cc-messages {
+    padding: 16px 14px 8px;
+  }
+  .cc-message {
+    max-width: 91%;
+  }
+  .cc-message p {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .cc-composer {
+    padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+  }
+  .candidate-area .cc-composer [data-slot="textarea"] {
+    font-size: 16px;
+  }
+  .cc-composer-meta,
+  .cc-preview-note {
+    font-size: 9px;
+  }
+}
+@media (max-width: 700px) {
+  .candidate-messaging:has(.cc-workspace[data-open="true"]) > .cu-sidebar {
+    display: none;
+  }
+}

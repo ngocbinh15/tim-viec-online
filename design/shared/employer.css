@@ -1,0 +1,41 @@
+/* Shared form and content patterns for the employer design pages. */
+.employer-page h1, .employer-page h2, .employer-page h3, .employer-page p { margin-top: 0; }
+.employer-page .ep-user { color: var(--ep-text); }
+.employer-page .ep-main { min-height: calc(100dvh - 76px); }
+.employer-page input, .employer-page select, .employer-page textarea { box-sizing: border-box; }
+.ep-stack { display: grid; gap: 22px; }
+.ep-section { padding: 24px; }
+.ep-section + .ep-section { border-top: 1px solid var(--ep-border); }
+.ep-section h2 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+.ep-section h3 { font-size: 13px; font-weight: 600; margin: 0 0 8px; }
+.ep-section-intro, .ep-muted { color: var(--ep-muted); font-size: 12px; line-height: 1.8; }
+.ep-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+.ep-field { display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500; min-width: 0; }
+.ep-field-full { grid-column: 1 / -1; }
+.ep-field input:not([type="checkbox"]):not([type="radio"]), .ep-field select, .ep-field textarea { display: block; width: 100%; min-width: 0; border: 1px solid var(--ep-border); background: var(--ep-white); color: var(--ep-text); border-radius: 6px; padding: 11px 12px; font-size: 12px; line-height: 1.6; font-weight: 400; }
+.ep-field textarea { resize: vertical; min-height: 110px; }
+.ep-field small { color: var(--ep-muted); font-size: 10px; font-weight: 400; }
+.ep-field input[readonly] { background: var(--ep-bg); color: var(--ep-muted); }
+.ep-field input[type="file"] { cursor: pointer; }
+.ep-field input::file-selector-button { border: 0; border-radius: 4px; background: var(--ep-blue-soft); color: var(--ep-navy); padding: 6px 9px; margin-right: 9px; font: inherit; }
+.ep-field input[type="checkbox"], .ep-field input[type="radio"] { accent-color: var(--ep-blue); }
+.ep-required { color: var(--ep-orange); }
+.ep-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.ep-toolbar-end { justify-content: flex-end; }
+.ep-pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 5px; background: var(--ep-blue-soft); color: var(--ep-navy); font-size: 10px; padding: 4px 8px; }
+.ep-prototype-note { font-size: 11px; color: var(--ep-muted); padding: 14px 18px; border-radius: 7px; background: var(--ep-bg); margin: 0; line-height: 1.8; }
+.ep-form-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--ep-border); padding: 20px 24px; }
+.ep-form-actions p { color: var(--ep-muted); font-size: 11px; margin: 0; }
+.ep-button:disabled { opacity: .6; cursor: default; }
+.ep-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ep-static-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.ep-static-tabs a { display: inline-flex; border: 1px solid var(--ep-border); border-radius: 6px; padding: 9px 14px; font-size: 12px; color: var(--ep-muted); background: var(--ep-white); }
+.ep-static-tabs a[aria-current], .ep-static-tabs a:hover { border-color: var(--ep-blue); background: var(--ep-blue-soft); color: var(--ep-navy); }
+.ep-divider { border: 0; border-top: 1px solid var(--ep-border); margin: 24px 0; }
+@media (max-width: 600px) {
+  .ep-form-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .ep-section { padding: 20px 16px; }
+  .ep-form-actions { align-items: stretch; flex-direction: column; padding: 18px 16px; }
+  .ep-form-actions .ep-toolbar { justify-content: flex-end; }
+  .ep-field input:not([type="checkbox"]):not([type="radio"]), .ep-field select, .ep-field textarea { font-size: 16px; }
+}

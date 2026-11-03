@@ -1,0 +1,39 @@
+{
+  "name": "CV Nguyễn Minh An",
+  "template_key": "modern",
+  "template_version": 1,
+  "schema_version": 1,
+  "content": {
+    "basics": {
+      "full_name": "Nguyễn Minh An",
+      "headline": "Chuyên viên thiết kế sản phẩm",
+      "email": "minhan@example.test",
+      "phone": "090 123 4567",
+      "city": "Hồ Chí Minh, Việt Nam",
+      "summary": "Thiết kế sản phẩm số với 4 năm kinh nghiệm kết nối nhu cầu người dùng và mục tiêu kinh doanh. Yêu thích những giải pháp đơn giản, dễ tiếp cận và được kiểm chứng bằng dữ liệu.",
+      "links": [{ "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b11", "label": "Portfolio · Minh An", "url": "https://example.test/portfolio" }],
+      "photo_asset_id": null
+    },
+    "experience": [
+      { "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b12", "company": "Công ty công nghệ Sáng Tạo", "position": "Product Designer", "start_month": "2023-06", "end_month": null, "current": true, "description": "Thiết kế trải nghiệm ứng tuyển trên web và di động, tăng 28% tỷ lệ hoàn tất hồ sơ.\nXây dựng hệ thống thiết kế gồm hơn 60 thành phần, phối hợp với đội ngũ kỹ thuật để đảm bảo chất lượng triển khai." },
+      { "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b13", "company": "Studio Mở", "position": "UI/UX Designer", "start_month": "2021-07", "end_month": "2023-05", "current": false, "description": "Nghiên cứu người dùng và thiết kế giao diện cho các sản phẩm giáo dục. Thực hiện phỏng vấn, thử nghiệm nguyên mẫu và bàn giao thiết kế cho nhóm phát triển." }
+    ],
+    "education": [{ "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b14", "school": "Đại học Kiến trúc TP. Hồ Chí Minh", "qualification": "Cử nhân Thiết kế đồ họa", "start_month": "2017-09", "end_month": "2021-06", "current": false, "description": "Tốt nghiệp loại Giỏi · GPA 3.6/4.0" }],
+    "skills": [
+      { "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b15", "name": "Thiết kế sản phẩm", "detail": "User flow, wireframe, prototype" },
+      { "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b16", "name": "Công cụ", "detail": "Figma, FigJam, Adobe Illustrator" },
+      { "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b17", "name": "Nghiên cứu", "detail": "Phỏng vấn, usability testing, phân tích dữ liệu" }
+    ],
+    "projects": [{ "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b18", "name": "Nền tảng học tập Cùng Tiến", "role": "Thiết kế trải nghiệm & giao diện", "url": "", "description": "Thiết kế hành trình học tập cá nhân hóa cho 2.000 học viên. Giảm 35% thời gian tìm kiếm bài học qua hai vòng thử nghiệm với người dùng." }],
+    "certifications": [{ "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b19", "name": "Google UX Design", "issuer": "Google · Coursera", "issued_month": "2022-10", "url": "" }],
+    "languages": [{ "id": "3ab9db01-6ae9-43ea-9885-e3f70a777b20", "name": "Tiếng Anh", "proficiency": "IELTS 7.0 · Giao tiếp tốt" }],
+    "activities": []
+  },
+  "settings": {
+    "accent": "blue",
+    "font_size": "normal",
+    "line_spacing": "normal",
+    "section_order": ["experience", "education", "skills", "projects", "certifications", "languages", "activities"],
+    "hidden_sections": []
+  }
+}

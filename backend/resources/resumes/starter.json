@@ -1,0 +1,87 @@
+{
+  "basics": {
+    "full_name": "Nguyễn Minh An",
+    "headline": "Chuyên viên phát triển phần mềm",
+    "email": "minhan@example.com",
+    "phone": "0901234567",
+    "city": "Hồ Chí Minh",
+    "summary": "Lập trình viên web có kinh nghiệm phát triển ứng dụng bằng React và Laravel, phân tích yêu cầu và kiểm thử API.",
+    "links": [],
+    "photo_asset_id": null
+  },
+  "experience": [
+    {
+      "company": "Công ty An Việt",
+      "position": "Kỹ sư phần mềm",
+      "start_month": "2023-03",
+      "end_month": null,
+      "current": true,
+      "description": "Phát triển các tính năng quản lý khách hàng bằng React và Laravel. Thiết kế API, viết kiểm thử và tối ưu truy vấn MySQL."
+    },
+    {
+      "company": "Công ty Giải pháp Số",
+      "position": "Lập trình viên",
+      "start_month": "2021-07",
+      "end_month": "2023-02",
+      "current": false,
+      "description": "Xây dựng giao diện quản trị, tích hợp API và xử lý lỗi ứng dụng. Viết tài liệu kỹ thuật và hỗ trợ triển khai các bản cập nhật."
+    }
+  ],
+  "education": [
+    {
+      "school": "Trường Đại học Công nghệ",
+      "qualification": "Cử nhân Công nghệ thông tin",
+      "start_month": "2017-09",
+      "end_month": "2021-06",
+      "current": false,
+      "description": "Chuyên ngành Kỹ thuật phần mềm. Đồ án tốt nghiệp: xây dựng hệ thống quản lý tuyển dụng trực tuyến."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Phát triển ứng dụng",
+      "detail": "TypeScript, React, Laravel, RESTful API"
+    },
+    {
+      "name": "Cơ sở dữ liệu",
+      "detail": "MySQL, thiết kế dữ liệu, tối ưu truy vấn"
+    },
+    {
+      "name": "Làm việc nhóm",
+      "detail": "Phân tích yêu cầu, giao tiếp, Scrum"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Tiếng Việt",
+      "proficiency": "Bản ngữ"
+    },
+    {
+      "name": "Tiếng Anh",
+      "proficiency": "Đọc hiểu tài liệu kỹ thuật"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Website tuyển dụng trực tuyến",
+      "role": "Lập trình viên full stack",
+      "url": "https://example.com/du-an",
+      "description": "Xây dựng chức năng tìm kiếm việc làm, quản lý hồ sơ và nhắn tin giữa ứng viên với nhà tuyển dụng. Phụ trách giao diện React, API Laravel và cơ sở dữ liệu MySQL."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Phát triển ứng dụng web",
+      "issuer": "Trung tâm đào tạo công nghệ",
+      "issued_month": "2022-09",
+      "url": ""
+    }
+  ],
+  "activities": [
+    {
+      "name": "Câu lạc bộ lập trình",
+      "role": "Thành viên",
+      "description": "Tổ chức các buổi trao đổi về lập trình web, hỗ trợ thành viên mới và tham gia xây dựng website cho câu lạc bộ."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+/* Shared visual scale for employer and administration workspaces. */
+:root {
+  --workspace-font: var(--font-brand), Arial, sans-serif;
+  --workspace-body-size: 14px;
+  --workspace-heading-size: 25px;
+  --workspace-section-size: 16px;
+  --workspace-control-size: 13px;
+  --workspace-label-size: 12px;
+  --workspace-table-size: 11px;
+  --workspace-row-title-size: 13px;
+  --workspace-meta-size: 12px;
+  --workspace-badge-size: 11px;
+  --workspace-caption-size: 10px;
+  --workspace-eyebrow-size: 9px;
+  --workspace-panel-radius: 14px;
+  --workspace-card-radius: 9px;
+  --workspace-field-radius: 6px;
+  --workspace-table-background: #fafbfd;
+  --workspace-muted-background: #f0f2f5;
+  --workspace-success: #117653;
+  --workspace-success-background: #eaf7f0;
+  --workspace-warning: #9a5a16;
+  --workspace-warning-background: #fff5e4;
+  --workspace-danger: #b4233b;
+  --workspace-danger-background: #fff0f2;
+  --workspace-shadow: 0 3px 12px rgb(22 36 59 / 3%);
+}

@@ -1,0 +1,99 @@
+name: Backend
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'frontend/src/features/resumes/**'
+      - 'frontend/public/fonts/resumes/**'
+      - 'frontend/scripts/**'
+      - 'frontend/package*.json'
+      - 'tests/fixtures/resumes/**'
+      - '.github/workflows/backend.yml'
+  push:
+    branches: [develop, main, feature/backend-integration, feature/cv-builder]
+    paths:
+      - 'backend/**'
+      - 'frontend/src/features/resumes/**'
+      - 'frontend/public/fonts/resumes/**'
+      - 'frontend/scripts/**'
+      - 'frontend/package*.json'
+      - 'tests/fixtures/resumes/**'
+      - '.github/workflows/backend.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: tim_viec_online_test
+          MYSQL_USER: test_runner
+          MYSQL_PASSWORD: disposable_test_password
+          MYSQL_ROOT_PASSWORD: disposable_root_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    env:
+      APP_ENV: testing
+      APP_KEY: base64:MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: tim_viec_online_test
+      TEST_DB_NAME: tim_viec_online_test
+      DB_USERNAME: test_runner
+      DB_PASSWORD: disposable_test_password
+      MAIL_MAILER: array
+      BROADCAST_CONNECTION: log
+      QUEUE_CONNECTION: sync
+      CACHE_STORE: array
+      SESSION_DRIVER: array
+      FILESYSTEM_DISK: local
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring, dom, fileinfo, gd
+          coverage: none
+      - name: Validate dependency manifest
+        run: composer validate --strict --no-check-publish
+      - name: Install locked dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Audit dependencies
+        run: composer audit --locked
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Build CV renderer
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build:cv-renderer
+      - name: Run backend tests
+        # A real render is exercised by the export integration test.
+        run: vendor/bin/phpunit --log-junit phpunit-results.xml
+      - name: Upload failed test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-report
+          path: backend/phpunit-results.xml
+          retention-days: 7

@@ -1,0 +1,349 @@
+.pj-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 24px;
+  align-items: start;
+}
+
+.pj-form {
+  min-width: 0;
+}
+
+.pj-required-note {
+  margin: 0 0 14px;
+  font-size: 11px;
+  color: var(--ep-muted);
+}
+
+.pj-required-note span,
+.pj-fields label > span[aria-hidden],
+.pj-fields [data-salary-required],
+#salary-max-required {
+  color: var(--ep-orange);
+}
+
+.pj-section {
+  margin-bottom: 22px;
+  scroll-margin-top: 100px;
+}
+
+.pj-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--ep-border);
+}
+
+.pj-section-number {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--ep-blue-soft);
+  color: var(--ep-navy);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pj-section-heading h2 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  letter-spacing: -.3px;
+}
+
+.pj-section-heading p {
+  margin: 0;
+  color: var(--ep-muted);
+  font-size: 11px;
+}
+
+.pj-fields {
+  padding: 24px;
+  gap: 21px 20px;
+  margin-top: 0;
+}
+
+.pj-fields .ep-field,
+.pj-salary-fields {
+  min-width: 0;
+}
+
+.pj-input-suffix {
+  position: relative;
+}
+
+.pj-fields .ep-field .pj-input-suffix input {
+  padding-right: 98px;
+}
+
+.pj-input-suffix > span {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ep-muted);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.pj-fields small {
+  font-size: 10px;
+  color: var(--ep-muted);
+  line-height: 1.8;
+}
+
+.pj-fields textarea {
+  min-height: 130px;
+  line-height: 1.9;
+}
+
+.pj-skills {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pj-skills legend {
+  padding: 0;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pj-skills > p {
+  margin: 4px 0 12px;
+  font-size: 10px;
+  color: var(--ep-muted);
+}
+
+.pj-skill-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pj-skill-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid var(--ep-border);
+  border-radius: 5px;
+  color: var(--ep-muted);
+  font-size: 10px;
+  font-weight: 500;
+  background: var(--ep-white);
+  cursor: pointer;
+}
+
+.pj-skill-options label:has(input:checked) {
+  color: var(--ep-navy);
+  background: var(--ep-blue-soft);
+  border-color: var(--ep-blue);
+}
+
+.pj-skill-options input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--ep-blue);
+}
+
+.pj-salary-fields {
+  gap: 14px 20px;
+  margin-top: 0;
+}
+
+.pj-salary-hint {
+  margin: 0;
+  color: var(--ep-muted);
+  font-size: 10px;
+}
+
+.pj-fields .ep-field input:disabled {
+  background: var(--ep-bg);
+  color: var(--ep-muted);
+  cursor: not-allowed;
+}
+
+.pj-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 24px;
+}
+
+.pj-form-footer strong {
+  font-size: 12px;
+}
+
+.pj-form-footer p {
+  margin: 4px 0 0;
+  color: var(--ep-muted);
+  font-size: 10px;
+}
+
+.pj-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pj-form-actions button:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+.pj-form-actions button:disabled:hover {
+  background: var(--ep-orange);
+}
+
+.pj-aside {
+  display: grid;
+  gap: 20px;
+  padding-top: 32px;
+}
+
+.pj-outline,
+.pj-company-card,
+.pj-writing-guide {
+  padding: 22px;
+}
+
+.pj-outline h2 {
+  margin: 0 0 15px;
+  font-size: 12px;
+}
+
+.pj-outline nav {
+  display: grid;
+  gap: 6px;
+}
+
+.pj-outline a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ep-muted);
+  padding: 8px 0;
+  font-size: 10px;
+}
+
+.pj-outline a:hover,
+.pj-outline a:focus-visible {
+  color: var(--ep-navy);
+}
+
+.pj-outline a span {
+  color: var(--ep-navy);
+  font-weight: 600;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pj-company-card p {
+  margin: 14px 0;
+  color: var(--ep-muted);
+  font-size: 10px;
+  line-height: 1.9;
+}
+
+.pj-company-card .ep-company-header {
+  gap: 10px;
+}
+
+.pj-company-card .ep-company-header strong {
+  font-size: 11px;
+}
+
+.pj-writing-guide {
+  border-top: 2px solid var(--ep-navy);
+  background: var(--ep-blue-soft);
+  border-radius: 0 0 8px 8px;
+}
+
+.pj-writing-guide h2 {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -.3px;
+  color: var(--ep-navy);
+}
+
+.pj-writing-guide ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.pj-writing-guide strong {
+  color: var(--ep-navy);
+  font-size: 11px;
+}
+
+.pj-writing-guide p {
+  font-size: 10px;
+  line-height: 1.9;
+  margin: 4px 0 0;
+  color: var(--ep-muted);
+}
+
+@media (max-width: 1200px) {
+  .pj-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pj-aside {
+    padding-top: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pj-outline {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .pj-section-heading {
+    padding: 18px 16px;
+    gap: 10px;
+  }
+
+  .pj-section-heading h2 {
+    font-size: 14px;
+  }
+
+  .pj-section-heading p {
+    font-size: 10px;
+  }
+
+  .pj-fields {
+    padding: 20px 16px;
+  }
+
+  .pj-form-footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 16px;
+  }
+
+  .pj-form-actions {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .pj-form-actions .ep-button {
+    white-space: normal;
+  }
+
+  .pj-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

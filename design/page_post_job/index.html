@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng tin tuyển dụng · TimViecOnline Nhà tuyển dụng</title>
+  <meta name="description" content="Soạn tin tuyển dụng cho doanh nghiệp: thông tin công việc, địa điểm, mức lương và yêu cầu ứng viên.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../page_employer_dashboard/dashboard.css">
+  <link rel="stylesheet" href="../shared/employer.css">
+  <link rel="stylesheet" href="post-job.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="../shared/employer-shell.js" defer></script>
+  <link rel="stylesheet" href="../shared/site-footer.css">
+</head>
+
+<body class="employer-page" data-employer-page="post">
+  <a class="ep-skip" href="#main">Đến nội dung chính</a>
+  <header data-employer-header></header>
+  <div class="ep-layout">
+    <aside data-employer-sidebar></aside>
+    <main class="ep-main" id="main">
+      <nav class="ep-breadcrumb" aria-label="Đường dẫn">
+        <a href="../page_employer_dashboard/index.html">Tổng quan</a>
+        <span aria-hidden="true">/</span>
+        <a href="../page_employer_dashboard/index.html#jobs">Tin tuyển dụng</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Đăng tin mới</span>
+      </nav>
+      <div class="ep-page-heading">
+        <div>
+          <h1>Đăng tin tuyển dụng</h1>
+          <p>Một tin rõ ràng là khởi đầu cho những hồ sơ phù hợp.</p>
+        </div>
+        <a class="ep-button" href="../page_employer_dashboard/index.html#jobs">Quay lại danh sách tin</a>
+      </div>
+
+      <div class="pj-layout">
+        <form class="pj-form" aria-label="Soạn tin tuyển dụng" autocomplete="off" data-design-only>
+          <p class="pj-required-note">Các trường có dấu <span aria-hidden="true">*</span> là bắt buộc.</p>
+          <section class="ep-panel pj-section" id="job-information" aria-labelledby="information-heading">
+            <div class="pj-section-heading">
+              <span class="pj-section-number" aria-hidden="true">01</span>
+              <div>
+                <h2 id="information-heading">Thông tin công việc</h2>
+                <p>Giúp ứng viên nhận diện đúng vị trí bạn đang tìm kiếm.</p>
+              </div>
+            </div>
+            <div class="ep-form-grid pj-fields">
+              <div class="ep-field ep-field-full">
+                <label for="job-title">Tiêu đề việc làm <span aria-hidden="true">*</span></label>
+                <input id="job-title" name="title" type="text" minlength="10" maxlength="200" required
+                  placeholder="VD: Lập trình viên Backend Laravel (Middle)" aria-describedby="title-help">
+                <small id="title-help">Từ 10 đến 200 ký tự. Nên nêu rõ vị trí và chuyên môn chính.</small>
+              </div>
+              <div class="ep-field">
+                <label for="job-category">Ngành nghề <span aria-hidden="true">*</span></label>
+                <select id="job-category" name="category_id" required>
+                  <option value="" selected disabled>Chọn ngành nghề</option>
+                  <option value="1">Công nghệ thông tin / Phần mềm</option>
+                  <option value="2">Marketing &amp; Truyền thông số</option>
+                  <option value="3">Kế toán &amp; Tài chính doanh nghiệp</option>
+                  <option value="4">Thiết kế đồ họa &amp; UI/UX</option>
+                  <option value="5">Quản trị nhân sự &amp; Hành chính</option>
+                </select>
+              </div>
+              <div class="ep-field">
+                <label for="job-level">Cấp bậc <span aria-hidden="true">*</span></label>
+                <select id="job-level" name="job_level" required>
+                  <option value="" selected disabled>Chọn cấp bậc</option>
+                  <option value="Intern">Thực tập sinh · Intern</option>
+                  <option value="Fresher">Mới tốt nghiệp · Fresher</option>
+                  <option value="Junior">Nhân viên · Junior</option>
+                  <option value="Middle">Chuyên viên · Middle</option>
+                  <option value="Senior">Chuyên viên cao cấp · Senior</option>
+                  <option value="Lead">Trưởng nhóm · Lead</option>
+                  <option value="Manager">Quản lý · Manager</option>
+                  <option value="Director">Giám đốc · Director</option>
+                </select>
+              </div>
+              <div class="ep-field">
+                <label for="job-quantity">Số lượng tuyển <span aria-hidden="true">*</span></label>
+                <div class="pj-input-suffix">
+                  <input id="job-quantity" name="quantity" type="number" min="1" step="1" placeholder="VD: 2" required>
+                  <span aria-hidden="true">người</span>
+                </div>
+              </div>
+              <div class="ep-field">
+                <label for="job-type">Hình thức làm việc <span aria-hidden="true">*</span></label>
+                <select id="job-type" name="job_type" required>
+                  <option value="full_time">Toàn thời gian</option>
+                  <option value="part_time">Bán thời gian</option>
+                  <option value="remote">Làm việc từ xa</option>
+                  <option value="internship">Thực tập</option>
+                </select>
+              </div>
+              <fieldset class="ep-field ep-field-full pj-skills" aria-describedby="skills-help">
+                <legend>Kỹ năng yêu cầu</legend>
+                <p id="skills-help">Chọn các kỹ năng chuyên môn phù hợp với công việc.</p>
+                <div class="pj-skill-options">
+                  <label><input type="checkbox" name="skills[]" value="1"> <span>PHP</span></label>
+                  <label><input type="checkbox" name="skills[]" value="2"> <span>Laravel</span></label>
+                  <label><input type="checkbox" name="skills[]" value="3"> <span>ReactJS</span></label>
+                  <label><input type="checkbox" name="skills[]" value="4"> <span>NextJS</span></label>
+                  <label><input type="checkbox" name="skills[]" value="5"> <span>TypeScript</span></label>
+                  <label><input type="checkbox" name="skills[]" value="6"> <span>MySQL</span></label>
+                  <label><input type="checkbox" name="skills[]" value="7"> <span>RESTful API</span></label>
+                  <label><input type="checkbox" name="skills[]" value="8"> <span>Docker</span></label>
+                  <label><input type="checkbox" name="skills[]" value="9"> <span>Figma / UI Design</span></label>
+                  <label><input type="checkbox" name="skills[]" value="10"> <span>SEO &amp; Content</span></label>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+
+          <section class="ep-panel pj-section" id="workplace" aria-labelledby="workplace-heading">
+            <div class="pj-section-heading">
+              <span class="pj-section-number" aria-hidden="true">02</span>
+              <div>
+                <h2 id="workplace-heading">Địa điểm làm việc</h2>
+                <p>Cung cấp địa chỉ cụ thể để ứng viên chủ động cân nhắc.</p>
+              </div>
+            </div>
+            <div class="ep-form-grid pj-fields">
+              <div class="ep-field ep-field-full">
+                <label for="job-city">Tỉnh / Thành phố <span aria-hidden="true">*</span></label>
+                <input id="job-city" name="city" type="text" maxlength="100" list="job-cities" placeholder="Nhập hoặc chọn tỉnh / thành phố" required>
+                <datalist id="job-cities">
+                  <option value="Hà Nội"></option>
+                  <option value="TP. Hồ Chí Minh"></option>
+                  <option value="Đà Nẵng"></option>
+                  <option value="Hải Phòng"></option>
+                  <option value="Cần Thơ"></option>
+                </datalist>
+              </div>
+              <div class="ep-field ep-field-full">
+                <label for="job-address">Địa chỉ làm việc chi tiết <span aria-hidden="true">*</span></label>
+                <input id="job-address" name="address" type="text" maxlength="255" required
+                  placeholder="VD: Khu Công nghệ cao Hòa Lạc, Thạch Thất, Hà Nội">
+              </div>
+            </div>
+          </section>
+
+          <section class="ep-panel pj-section" id="salary-deadline" aria-labelledby="salary-heading">
+            <div class="pj-section-heading">
+              <span class="pj-section-number" aria-hidden="true">03</span>
+              <div>
+                <h2 id="salary-heading">Mức lương &amp; hạn nhận hồ sơ</h2>
+                <p>Thông tin minh bạch giúp hai bên có cùng kỳ vọng.</p>
+              </div>
+            </div>
+            <div class="ep-form-grid pj-fields">
+              <div class="ep-field">
+                <label for="salary-mode">Hình thức hiển thị lương <span aria-hidden="true">*</span></label>
+                <select id="salary-mode" name="salary_mode" aria-controls="salary-fields">
+                  <option value="range">Khoảng lương cụ thể</option>
+                  <option value="starting">Lương khởi điểm</option>
+                  <option value="negotiable">Thỏa thuận</option>
+                </select>
+              </div>
+              <div class="ep-field">
+                <label for="job-deadline">Hạn chót nộp hồ sơ <span aria-hidden="true">*</span></label>
+                <input id="job-deadline" name="deadline" type="date" required aria-describedby="deadline-help">
+                <small id="deadline-help">Hạn nộp hồ sơ phải sau ngày hôm nay.</small>
+              </div>
+              <div class="ep-form-grid ep-field-full pj-salary-fields" id="salary-fields">
+                <div class="ep-field">
+                  <label for="salary-min">Lương tối thiểu <span aria-hidden="true" data-salary-required>*</span></label>
+                  <div class="pj-input-suffix">
+                    <input id="salary-min" name="salary_min" type="number" min="1" step="100000" placeholder="VD: 18000000" required aria-describedby="salary-help">
+                    <span aria-hidden="true">VNĐ / tháng</span>
+                  </div>
+                </div>
+                <div class="ep-field">
+                  <label for="salary-max">Lương tối đa <span aria-hidden="true" id="salary-max-required">*</span></label>
+                  <div class="pj-input-suffix">
+                    <input id="salary-max" name="salary_max" type="number" min="1" step="100000" placeholder="VD: 28000000" required aria-describedby="salary-help">
+                    <span aria-hidden="true">VNĐ / tháng</span>
+                  </div>
+                </div>
+                <p class="pj-salary-hint ep-field-full" id="salary-help" aria-live="polite">Nhập lương theo VNĐ. Lương tối thiểu không được lớn hơn lương tối đa.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="ep-panel pj-section" id="job-content" aria-labelledby="content-heading">
+            <div class="pj-section-heading">
+              <span class="pj-section-number" aria-hidden="true">04</span>
+              <div>
+                <h2 id="content-heading">Nội dung tuyển dụng</h2>
+                <p>Mô tả công việc thực tế, yêu cầu cần thiết và những gì bạn mang lại.</p>
+              </div>
+            </div>
+            <div class="ep-form-grid pj-fields">
+              <div class="ep-field ep-field-full">
+                <label for="job-description">Mô tả công việc <span aria-hidden="true">*</span></label>
+                <textarea id="job-description" name="description" rows="6" required
+                  placeholder="• Nhiệm vụ và trách nhiệm chính của vị trí&#10;• Sản phẩm, dự án hoặc đội ngũ sẽ làm việc cùng&#10;• Kết quả mong đợi từ công việc"></textarea>
+              </div>
+              <div class="ep-field ep-field-full">
+                <label for="job-requirements">Yêu cầu chuyên môn <span aria-hidden="true">*</span></label>
+                <textarea id="job-requirements" name="requirements" rows="6" required
+                  placeholder="• Kinh nghiệm làm việc phù hợp&#10;• Kỹ năng chuyên môn và công cụ cần sử dụng&#10;• Trình độ học vấn, chứng chỉ hoặc ngoại ngữ"></textarea>
+              </div>
+              <div class="ep-field ep-field-full">
+                <label for="job-benefits">Quyền lợi &amp; đãi ngộ <span aria-hidden="true">*</span></label>
+                <textarea id="job-benefits" name="benefits" rows="5" required
+                  placeholder="• Chế độ thưởng và xét tăng lương&#10;• Bảo hiểm, ngày nghỉ và phúc lợi&#10;• Cơ hội đào tạo và phát triển nghề nghiệp"></textarea>
+              </div>
+            </div>
+          </section>
+
+          <div class="ep-panel pj-form-footer">
+            <div>
+              <strong>Sẵn sàng tìm đồng đội mới?</strong>
+              <p id="post-design-note">Bản thiết kế giao diện. Thông tin chưa được gửi hoặc lưu.</p>
+            </div>
+            <div class="pj-form-actions">
+              <a class="ep-button" href="../page_employer_dashboard/index.html#jobs">Hủy</a>
+              <button class="ep-button ep-button-primary" type="button" disabled aria-describedby="post-design-note">Đăng tin tuyển dụng</button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="pj-aside" aria-label="Hướng dẫn đăng tin">
+          <section class="ep-panel pj-outline">
+            <h2>Nội dung tin tuyển dụng</h2>
+            <nav aria-label="Các phần của tin tuyển dụng">
+              <a href="#job-information"><span>01</span> Thông tin công việc</a>
+              <a href="#workplace"><span>02</span> Địa điểm làm việc</a>
+              <a href="#salary-deadline"><span>03</span> Mức lương &amp; thời hạn</a>
+              <a href="#job-content"><span>04</span> Nội dung tuyển dụng</a>
+            </nav>
+          </section>
+          <section class="ep-panel pj-company-card">
+            <span class="ep-eyebrow">Doanh nghiệp đăng tuyển</span>
+            <div class="ep-company-header">
+              <div class="ep-company-logo" aria-hidden="true">FPT</div>
+              <div>
+                <strong>FPT Software</strong>
+                <small>Công nghệ thông tin</small>
+              </div>
+            </div>
+            <p>Tin tuyển dụng sẽ gắn với hồ sơ công ty để ứng viên tìm hiểu về doanh nghiệp.</p>
+            <a class="ep-text-link" href="../page_employer_profile/index.html">Xem hồ sơ công ty <span aria-hidden="true">→</span></a>
+          </section>
+          <section class="pj-writing-guide">
+            <span class="ep-eyebrow">Một tin tốt bắt đầu từ</span>
+            <h2>Rõ vị trí. Đúng kỳ vọng.</h2>
+            <ul>
+              <li><strong>Tiêu đề dễ tìm</strong><p>Dùng tên vị trí quen thuộc, kèm chuyên môn hoặc cấp bậc phù hợp.</p></li>
+              <li><strong>Yêu cầu có trọng tâm</strong><p>Ưu tiên những kỹ năng thực sự cần để hoàn thành công việc.</p></li>
+              <li><strong>Quyền lợi cụ thể</strong><p>Nêu rõ mức lương, môi trường và cơ hội phát triển tại công ty.</p></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách bảo mật</a></div>
+    </div>
+  </footer>
+
+<script>
+    // Chỉ thay đổi cách trình bày các trường lương trong bản thiết kế.
+    const salaryMode = document.getElementById('salary-mode');
+    salaryMode.addEventListener('change', () => {
+      const mode = salaryMode.value;
+      const min = document.getElementById('salary-min');
+      const max = document.getElementById('salary-max');
+      min.disabled = mode === 'negotiable';
+      max.disabled = mode !== 'range';
+      min.required = mode !== 'negotiable';
+      max.required = mode === 'range';
+      document.querySelector('[data-salary-required]').hidden = mode === 'negotiable';
+      document.getElementById('salary-max-required').hidden = mode !== 'range';
+      document.getElementById('salary-help').textContent = {
+        range: 'Nhập lương theo VNĐ. Lương tối thiểu không được lớn hơn lương tối đa.',
+        starting: 'Chỉ cần nhập lương tối thiểu. Ví dụ hiển thị: Từ 18 triệu VNĐ.',
+        negotiable: 'Mức lương hiển thị: Thỏa thuận. Không cần nhập lương tối thiểu và tối đa.'
+      }[mode];
+    });
+  </script>
+</body>
+
+</html>

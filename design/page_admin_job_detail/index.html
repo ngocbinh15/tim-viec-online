@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Đọc toàn bộ nội dung và thông tin liên quan trước khi xử lý.">
+  <title>Chi tiết kiểm duyệt | Quản trị TimViecOnline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../shared/admin.css">
+  <link rel="stylesheet" href="../shared/site-footer.css">
+  <script src="../shared/admin-icons.js" defer></script>
+  <script src="../shared/admin-data.js" defer></script>
+  <script src="../shared/admin-shell.js" defer></script>
+  <script src="../shared/admin.js" defer></script>
+</head>
+
+<body class="admin-page" data-admin-page="job-detail">
+  <a href="#main" class="ap-skip">Đến nội dung chính</a>
+  <header data-admin-header></header>
+  <div class="ap-layout">
+    <aside data-admin-sidebar></aside>
+    <main class="ap-main" id="main" tabindex="-1">
+      <nav class="ap-breadcrumb" aria-label="Vị trí trang"><span data-icon="house" aria-hidden="true"></span><a
+          href="../page_admin_portal/index.html">Quản trị</a><span>/</span><a href="../page_admin_jobs/index.html">Kiểm
+          duyệt tin</a><span>/</span><span>Chi tiết</span></nav>
+      <div class="ap-page-heading">
+        <div>
+          <h1>Chi tiết kiểm duyệt</h1>
+          <p>Đọc toàn bộ nội dung và thông tin liên quan trước khi xử lý.</p>
+        </div><a class="ap-button" href="../page_admin_jobs/index.html"><span data-icon="arrow-left"
+            aria-hidden="true"></span>Danh sách tin</a>
+      </div>
+      <div data-admin-preview></div>
+      <noscript>
+        <div class="ap-notice ap-notice-amber">Bật JavaScript để xem dữ liệu minh họa và sử dụng các bộ lọc trong bản
+          thiết kế quản trị.</div>
+        <nav class="ap-segments" aria-label="Các trang quản trị"><a href="../page_admin_portal/index.html">Tổng
+            quan</a><a href="../page_admin_jobs/index.html">Kiểm duyệt tin</a><a
+            href="../page_admin_users/index.html">Tài khoản</a><a href="../page_admin_categories/index.html">Ngành
+            nghề</a><a href="../page_admin_skills/index.html">Kỹ năng</a></nav>
+      </noscript>
+      <div id="adminError" class="ap-error" role="alert" hidden></div>
+      <div id="adminContent" aria-busy="true">
+        <div id="jobDetail" aria-live="polite"></div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span
+              class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách
+          bảo mật</a></div>
+    </div>
+  </footer>
+</body>
+
+</html>

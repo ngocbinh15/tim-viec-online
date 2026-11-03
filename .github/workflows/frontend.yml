@@ -1,0 +1,92 @@
+name: Frontend
+
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'tests/fixtures/resumes/**'
+      - '.github/workflows/frontend.yml'
+  push:
+    branches: [develop, main, feature/cv-builder]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'tests/fixtures/resumes/**'
+      - '.github/workflows/frontend.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: frontend
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: disposable_root_password
+          MYSQL_ROOT_HOST: '%'
+        ports:
+          - 33063:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    env:
+      FRONTEND_E2E_DB_PASSWORD: disposable_root_password
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring, dom, fileinfo, gd
+          coverage: none
+      - name: Install backend dependencies for CV integration
+        working-directory: backend
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Lint
+        run: npm run lint
+      - name: Unit and server tests
+        run: |
+          npm test
+          npm run test:mock-auth
+      - name: Production build
+        run: npm run build
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: CV renderer and browser worker
+        run: |
+          npm run test:cv-renderer
+          npm run test:cv-preview
+          npm run test:cv-lifecycle
+      - name: Browser regression tests
+        run: |
+          npm run test:e2e
+          npm run test:auth
+          npx playwright test --config playwright.ai.config.ts
+          npm run test:admin-performance
+          npx playwright test --config playwright.backend.config.ts tests/e2e/backend-resume-builder.spec.ts
+      - name: Upload failed browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-browser-diagnostics
+          path: frontend/test-results/
+          retention-days: 7

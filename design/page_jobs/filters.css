@@ -1,0 +1,53 @@
+:root {
+  --filter-accent: #005aff;
+  --filter-selected: #eff5ff;
+  --filter-border: #e2e8f0;
+  --filter-text: #334155;
+  --filter-muted: #64748b;
+  --filter-surface: #fff;
+  --filter-input: #f1f3f5;
+  --filter-shadow: 0 8px 28px rgb(15 23 42 / 13%);
+}
+.job-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.filter-trigger, .filter-reset { font: inherit; cursor: pointer; }
+.filter-trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 6px 13px; border: 1px solid var(--filter-border); border-radius: 8px; background: var(--filter-surface); color: var(--filter-text); }
+.filter-trigger:hover, .filter-trigger[aria-expanded="true"] { border-color: var(--filter-accent); }
+.filter-trigger[data-active="true"] { color: var(--filter-accent); background: var(--filter-selected); border-color: var(--filter-accent); }
+.filter-trigger svg { width: 14px; height: 14px; flex-shrink: 0; }
+.filter-trigger[aria-expanded="true"] .filter-chevron { transform: rotate(180deg); }
+.filter-trigger:focus-visible, .filter-reset:focus-visible, .filter-panel input:focus-visible { outline: 2px solid var(--filter-accent); outline-offset: 3px; }
+.filter-popover { position: relative; }
+.filter-panel { position: absolute; top: calc(100% + 10px); left: 0; width: 340px; max-width: calc(100vw - 32px); padding: 16px; border: 1px solid var(--filter-border); border-radius: 16px; background: var(--filter-surface); color: var(--filter-text); box-shadow: var(--filter-shadow); z-index: 35; font-size: 14px; }
+[hidden] { display: none !important; }
+.filter-search { display: flex; align-items: center; gap: 10px; padding: 12px; margin-bottom: 6px; background: var(--filter-input); border-radius: 10px; }
+.filter-search svg { width: 20px; height: 20px; color: var(--filter-muted); }
+.filter-search input { min-width: 0; width: 100%; background: transparent; border: 0; font: inherit; }
+.filter-options { max-height: 300px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.filter-option { display: flex; align-items: center; gap: 14px; padding: 13px 8px; border-radius: 5px; cursor: pointer; line-height: 1.5; }
+.filter-option:hover { background: var(--filter-input); }
+.filter-option:has(input:checked) { color: var(--filter-accent); background: var(--filter-selected); }
+.filter-option input { width: 20px; height: 20px; margin: 0; accent-color: var(--filter-accent); flex-shrink: 0; }
+.filter-no-options { padding: 18px 8px; color: var(--filter-muted); }
+.filter-panel fieldset { border: 0; margin: 0 0 16px; padding: 0; }
+.filter-panel legend { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.filter-panel select, .filter-panel .filter-keyword { width: 100%; padding: 10px; border: 1px solid var(--filter-border); border-radius: 8px; font: inherit; background: var(--filter-surface); }
+.filter-advanced { width: 370px; max-height: min(640px, calc(100dvh - 180px)); overflow-y: auto; }
+.filter-reset { color: var(--filter-accent); padding: 6px; background: transparent; border: 0; font-weight: 600; }
+.filter-empty { text-align: center; padding: 40px 20px; border: 1px solid var(--filter-border); border-radius: 16px; background: var(--filter-surface); }
+.filter-empty p { margin: 8px 0 16px; color: var(--filter-muted); }
+.filter-note { font-size: 11px; color: var(--filter-muted); margin: 6px 0 0; }
+main > .grid > *, .job-card { min-width: 0; }
+@media (max-width: 1100px) {
+  header form[method="GET"], header a[href="../page_employer_dashboard/index.html"] { display: none; }
+}
+@media (max-width: 640px) {
+  header > div { gap: 8px !important; }
+  header > div > div:last-child { gap: 6px; }
+  #btnAllCategories { padding: 8px; }
+  #btnAllCategories span, #iconCatArrow, header button[title="Ngôn ngữ hiện tại: Tiếng Việt"] { display: none; }
+  #btnAllCategories { font-size: 0; }
+  .job-card { padding: 14px; gap: 8px; }
+  #accountMenuDropdown { max-width: calc(100vw - 32px); }
+  .filter-panel { position: fixed; top: var(--filter-panel-top, 150px); left: 16px; right: 16px; width: auto; max-height: calc(100dvh - var(--filter-panel-top, 150px) - 16px); overflow-y: auto; }
+  .filter-options { max-height: min(300px, 45dvh); }
+}

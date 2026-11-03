@@ -1,0 +1,252 @@
+.cu-title {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.cu-title h1 {
+  font-size: 23px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.cu-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 36px 16px;
+  text-align: center;
+  gap: 12px;
+}
+.cu-empty > svg {
+  width: 52px;
+  height: 52px;
+  color: var(--brand-blue);
+  stroke-width: 1.2;
+  margin-bottom: 8px;
+}
+.cu-empty h2,
+.cu-empty h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.cu-empty p {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  max-width: 400px;
+}
+.cu-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.cu-list-heading h2 {
+  margin: 0;
+  font-size: 15px;
+}
+.cu-list-heading .selection-field {
+  width: 220px;
+}
+.cu-tabs span {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin-left: 4px;
+  font-size: 10px;
+}
+.cu-job {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cu-job-logo {
+  display: grid;
+  place-items: center;
+  background: var(--selection-background);
+  border: 1px solid var(--border);
+  color: var(--brand-navy);
+  border-radius: 8px;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.cu-job-logo {
+  width: 58px;
+  height: 58px;
+  font-size: 13px;
+}
+.cu-job-body {
+  flex: 1;
+  min-width: 0;
+}
+.cu-job h3 {
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.cu-job h3 a:hover {
+  color: var(--brand-blue);
+}
+.cu-job p {
+  margin: 6px 0 0;
+}
+.cu-job-location {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--muted-foreground);
+  font-size: 11px;
+}
+.cu-salary {
+  display: inline-block;
+  color: var(--brand-orange);
+  font-size: 13px;
+  margin-top: 8px;
+}
+.cu-status {
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--selection-background);
+  color: var(--brand-blue);
+}
+.candidate-area {
+  --cu-success-bg: #ecfdf5;
+  --cu-success-text: #166534;
+  --cu-warning-bg: #fff7ed;
+  --cu-warning-text: #9a3412;
+  --cu-error-bg: #fff1f2;
+  --cu-error-text: #9f1239;
+}
+.cu-status[data-status="accepted"] {
+  background: var(--cu-success-bg);
+  color: var(--cu-success-text);
+}
+.cu-status[data-status="waiting"] {
+  background: var(--cu-warning-bg);
+  color: var(--cu-warning-text);
+}
+.cu-status[data-status="rejected"] {
+  background: var(--cu-error-bg);
+  color: var(--cu-error-text);
+}
+.candidate-area .pagination {
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.cu-notification-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.cu-notification-filters a {
+  border-radius: 7px;
+  background: var(--background);
+  padding: 6px 12px;
+  font-size: 11px;
+}
+.cu-notification-filters [aria-current] {
+  color: var(--brand-blue);
+  background: var(--selection-background);
+}
+.cu-notification {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.cu-notification[data-unread="true"] {
+  background: var(--selection-background);
+}
+.cu-notification > svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  color: var(--brand-blue);
+}
+.cu-notification h2 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.cu-notification p {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.cu-preference {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.cu-preference label {
+  cursor: pointer;
+}
+.cu-preference strong {
+  display: block;
+  font-size: 13px;
+}
+.cu-preference span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.candidate-area :is(h2, a, summary, [data-slot="switch"]):focus-visible {
+  outline: 2px solid var(--field-focus-border);
+  outline-offset: 3px;
+}
+.candidate-area [data-slot="switch"] {
+  flex-shrink: 0;
+  box-shadow: none;
+}
+@media (max-width: 700px) {
+  .cu-title h1 {
+    font-size: 20px;
+  }
+  .cu-tabs {
+    gap: 14px;
+  }
+  .cu-tabs a {
+    font-size: 11px;
+  }
+  .cu-job {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cu-job-logo {
+    width: 42px;
+    height: 42px;
+    font-size: 10px;
+  }
+  .cu-job-body {
+    flex-basis: calc(100% - 54px);
+  }
+  .cu-status {
+    margin-left: 54px;
+  }
+  .cu-job > button {
+    margin-left: auto;
+  }
+  .cu-notification {
+    padding: 16px;
+    gap: 10px;
+  }
+  .cu-preference {
+    align-items: flex-start;
+  }
+}

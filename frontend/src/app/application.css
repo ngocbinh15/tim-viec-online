@@ -1,0 +1,249 @@
+.job-apply-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px;
+  gap: 22px;
+  border-radius: 24px;
+  color: var(--brand-navy);
+}
+.job-apply-dialog [data-slot="dialog-header"] {
+  padding-right: 16px;
+  text-align: left;
+}
+.job-apply-dialog [data-slot="dialog-title"] {
+  font-size: 23px;
+  line-height: 1.35;
+  font-weight: 750;
+}
+.job-apply-dialog [data-slot="dialog-description"] {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.apply-eyebrow {
+  color: var(--brand-blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.apply-form {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.application-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.application-summary-actions > * {
+  min-height: 44px;
+}
+.job-apply-dialog.application-summary-preview {
+  width: min(900px, calc(100% - 32px));
+}
+.application-summary-pdf {
+  width: 100%;
+  height: min(60dvh, 640px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.apply-sources {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.apply-sources legend {
+  margin-bottom: 5px;
+  font-weight: 650;
+}
+.apply-sources legend span {
+  color: var(--destructive);
+}
+.apply-hint,
+.apply-count {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.apply-source {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.apply-source[data-selected="true"] {
+  border-color: var(--brand-blue);
+  background: color-mix(in srgb, var(--brand-blue) 5%, var(--card));
+}
+.apply-source:focus-within {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+.apply-source[data-disabled="true"] {
+  color: var(--muted-foreground);
+  cursor: default;
+}
+.apply-source > svg {
+  width: 20px;
+  flex-shrink: 0;
+}
+.apply-source input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--brand-blue);
+  flex-shrink: 0;
+}
+.apply-source span {
+  min-width: 0;
+}
+.apply-source strong,
+.apply-source small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.apply-source strong {
+  font-size: 13px;
+  font-weight: 650;
+}
+.apply-source small {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+.apply-file {
+  padding: 12px;
+  background: var(--muted);
+  border-radius: 12px;
+}
+.apply-resume-picker {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.apply-resume-picker > label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.apply-resume-picker .selection-field {
+  min-width: 0;
+}
+.apply-resume-picker .selection-trigger {
+  height: 44px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+.apply-resume-menu {
+  width: var(--radix-select-trigger-width);
+  max-width: calc(100vw - 32px);
+}
+.apply-resume-menu .selection-option > span:last-child {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.apply-resume-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.apply-resume-preview,
+.apply-resume-library {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  min-height: 28px;
+  color: var(--brand-blue);
+  font-size: 12px;
+  font-weight: 500;
+}
+.apply-resume-preview:hover,
+.apply-resume-library:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .apply-resume-preview,
+  .apply-resume-library {
+    min-height: 44px;
+  }
+}
+.apply-contact {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--muted);
+}
+.apply-contact div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 10px;
+}
+.apply-contact dt {
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.apply-contact dd {
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.apply-count {
+  text-align: right;
+}
+.apply-error {
+  color: var(--destructive);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.apply-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.apply-footer button {
+  min-height: 44px;
+  border-radius: 999px;
+}
+.guest-actions button[aria-pressed="true"],
+.job-save button[aria-pressed="true"],
+.home-save button[aria-pressed="true"] {
+  color: var(--brand-blue);
+}
+@media (min-width: 901px) {
+  body[data-scroll-locked]:has(.job-apply-dialog) {
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 480px) {
+  .job-apply-dialog {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+  .job-apply-dialog [data-slot="dialog-title"] {
+    font-size: 20px;
+  }
+  .apply-contact div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .apply-footer {
+    flex-direction: column-reverse;
+  }
+  .apply-footer button {
+    width: 100%;
+  }
+}

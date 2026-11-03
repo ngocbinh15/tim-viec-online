@@ -1,0 +1,56 @@
+.ec-workspace { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 670px; }
+.ec-conversations { border-right: 1px solid var(--ep-border); display: flex; flex-direction: column; min-width: 0; }
+.ec-list-heading { padding: 22px 20px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ec-list-heading h2, .ec-chat-heading h2 { font-size: 14px; margin: 0; font-weight: 600; }
+.ec-search { padding: 0 20px 20px; }
+.ec-contact { display: flex; gap: 11px; padding: 18px 20px; color: var(--ep-text); border-top: 1px solid var(--ep-border); border-left: 3px solid transparent; }
+.ec-contact > div { min-width: 0; flex: 1; }
+.ec-contact-selected { background: var(--ep-blue-soft); border-left-color: var(--ep-blue); }
+a.ec-contact:hover { background: var(--ep-bg); }
+.ec-contact-top { display: flex; justify-content: space-between; gap: 8px; }
+.ec-contact-top strong { font-size: 11px; font-weight: 600; }
+.ec-contact-top time { font-size: 9px; color: var(--ep-muted); }
+.ec-contact p { margin: 3px 0; font-size: 10px; color: var(--ep-muted); }
+.ec-contact small { display: block; font-size: 10px; color: var(--ep-muted); white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.ec-list-note { margin: auto 20px 20px; padding-top: 24px; display: flex; align-items: flex-start; gap: 8px; color: var(--ep-muted); }
+.ec-list-note p { font-size: 10px; margin: 0; }
+.ec-list-note .ep-icon { width: 15px; height: 15px; }
+.ec-chat { display: flex; flex-direction: column; min-width: 0; }
+.ec-chat-heading { display: flex; align-items: center; gap: 11px; padding: 20px 24px; border-bottom: 1px solid var(--ep-border); }
+.ec-chat-heading p { color: var(--ep-muted); font-size: 11px; margin: 3px 0 0; }
+.ec-chat-heading a { margin-left: auto; }
+.ec-job-context { display: flex; gap: 10px; align-items: center; padding: 16px 24px; background: var(--ep-bg); }
+.ec-job-context strong { font-size: 11px; font-weight: 600; }
+.ec-job-context p { font-size: 10px; color: var(--ep-muted); margin: 3px 0 0; }
+.ec-job-context .ep-badge { margin-left: auto; }
+.ec-job-context > .ep-icon { color: var(--ep-navy); }
+.ec-preserved { display: flex; align-items: flex-start; gap: 7px; color: var(--ep-muted); padding: 11px 24px; border-bottom: 1px solid var(--ep-border); font-size: 10px; margin: 0; }
+.ec-preserved .ep-icon { width: 14px; height: 14px; }
+.ec-messages { padding: 24px; flex: 1; }
+.ec-date { text-align: center; font-size: 10px; color: var(--ep-muted); margin: 0 0 24px; }
+.ec-message { display: flex; gap: 10px; max-width: 85%; margin-bottom: 22px; align-items: flex-end; }
+.ec-message .ep-avatar { width: 29px; height: 29px; font-size: 9px; }
+.ec-message p { font-size: 12px; background: var(--ep-bg); border-radius: 9px 9px 9px 0; padding: 12px 15px; margin: 0 0 5px; line-height: 1.9; }
+.ec-message small { font-size: 9px; color: var(--ep-muted); }
+.ec-message-outgoing { margin-left: auto; }
+.ec-message-outgoing p { background: var(--ep-blue-soft); color: var(--ep-navy); border-radius: 9px 9px 0 9px; }
+.ec-message-outgoing small { display: block; text-align: right; }
+.ec-composer { border-top: 1px solid var(--ep-border); padding: 18px 24px; }
+.ec-composer textarea { width: 100%; min-width: 0; resize: vertical; border: 1px solid var(--ep-border); border-radius: 6px; padding: 12px; font-size: 12px; background: var(--ep-white); color: var(--ep-text); }
+.ec-composer > div { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; }
+.ec-composer > div > span { font-size: 10px; color: var(--ep-muted); }
+@media (max-width: 1100px) { .ec-workspace { grid-template-columns: 245px minmax(0, 1fr); } .ec-contact { padding: 16px 14px; } }
+@media (max-width: 700px) {
+  .ec-workspace { grid-template-columns: minmax(0, 1fr); }
+  .ec-conversations { border-right: 0; border-bottom: 1px solid var(--ep-border); }
+  .ec-list-note { display: none; }
+  .ec-search { padding-bottom: 15px; }
+  .ec-chat-heading { padding: 18px 16px; flex-wrap: wrap; }
+  .ec-chat-heading a { flex-basis: 100%; margin-left: 49px; }
+  .ec-job-context { padding: 15px 16px; flex-wrap: wrap; }
+  .ec-job-context .ep-badge { margin-left: 28px; }
+  .ec-preserved, .ec-messages { padding: 16px; }
+  .ec-message { max-width: 96%; }
+  .ec-composer { padding: 16px; }
+  .ec-composer textarea { font-size: 16px; }
+}

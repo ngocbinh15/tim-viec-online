@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ sơ công ty &amp; tài khoản | TimViecOnline</title>
+  <meta name="description" content="Thông tin doanh nghiệp, người liên hệ và cài đặt tài khoản nhà tuyển dụng tại TimViecOnline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../page_employer_dashboard/dashboard.css">
+  <link rel="stylesheet" href="../shared/employer.css">
+  <link rel="stylesheet" href="profile.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="../shared/employer-shell.js" defer></script>
+  <link rel="stylesheet" href="../shared/site-footer.css">
+</head>
+<body class="employer-page" data-employer-page="profile">
+  <a href="#main" class="ep-skip">Đến nội dung chính</a>
+  <header data-employer-header></header>
+  <div class="ep-layout">
+    <aside data-employer-sidebar></aside>
+    <main class="ep-main" id="main">
+      <nav class="ep-breadcrumb" aria-label="Đường dẫn">
+        <a href="../page_employer_dashboard/index.html">Nhà tuyển dụng</a>
+        <i data-lucide="chevron-right" class="ep-icon" aria-hidden="true"></i>
+        <span aria-current="page">Hồ sơ công ty</span>
+      </nav>
+      <div class="ep-page-heading">
+        <div><h1>Hồ sơ công ty &amp; tài khoản</h1><p>Giới thiệu doanh nghiệp và cập nhật thông tin người quản lý tuyển dụng.</p></div>
+        <a href="../page_company_detail/index.html" class="ep-button"><i data-lucide="external-link" class="ep-icon" aria-hidden="true"></i>Xem trang công ty</a>
+      </div>
+      <p class="profile-demo-note" id="profileDemoNote"><i data-lucide="info" class="ep-icon" aria-hidden="true"></i>Giao diện mẫu; thay đổi chưa được lưu.</p>
+
+      <div class="profile-workspace">
+        <div class="profile-editor">
+          <section class="ep-panel profile-section" id="company" aria-labelledby="companyTitle">
+            <div class="ep-panel-heading">
+              <div><span class="profile-section-number">01 / DOANH NGHIỆP</span><h2 id="companyTitle">Thông tin công ty</h2><p>Thông tin hiển thị trên trang công ty và tin tuyển dụng của bạn.</p></div>
+              <i data-lucide="building-2" class="ep-icon profile-section-icon" aria-hidden="true"></i>
+            </div>
+            <form id="companyForm" data-design-only aria-describedby="profileDemoNote companyRequiredNote">
+              <div class="profile-form-body">
+                <div class="profile-logo-row">
+                  <span class="profile-logo" aria-label="Logo minh họa FPT Software">FPT</span>
+                  <div class="profile-logo-control">
+                    <label for="companyLogo">Logo công ty</label>
+                    <input id="companyLogo" name="logo" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="logoHint">
+                    <small id="logoHint">Chọn ảnh PNG, JPG hoặc WebP. Nên dùng ảnh vuông, nền rõ nét.</small>
+                  </div>
+                </div>
+                <p class="profile-required-note" id="companyRequiredNote"><span aria-hidden="true">*</span> Cần hoàn tất tên, giới thiệu, địa chỉ và tỉnh / thành phố trước khi đăng tin đầu tiên.</p>
+                <div class="ep-form-grid">
+                  <label class="ep-field ep-field-full" for="companyName"><span>Tên công ty <span class="ep-required" aria-hidden="true">*</span></span><input id="companyName" name="name" value="FPT Software" required maxlength="200" autocomplete="organization"></label>
+                  <label class="ep-field" for="companyWebsite"><span>Website</span><input id="companyWebsite" name="website" type="url" value="https://fptsoftware.com" maxlength="255" placeholder="https://congty.vn" autocomplete="url"></label>
+                  <label class="ep-field" for="companySize"><span>Quy mô nhân sự</span><select id="companySize" name="company_size"><option value="">Chọn quy mô</option><option>1-10 nhân viên</option><option>11-50 nhân viên</option><option>51-100 nhân viên</option><option>101-500 nhân viên</option><option>501-1000 nhân viên</option><option selected>1000+ nhân viên</option></select></label>
+                  <label class="ep-field" for="companyCity"><span>Tỉnh / Thành phố <span class="ep-required" aria-hidden="true">*</span></span><select id="companyCity" name="city" required autocomplete="address-level1"><option value="">Chọn tỉnh / thành phố</option><option selected>Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option><option>Hải Phòng</option><option>Cần Thơ</option><option>Huế</option><option>Đồng Nai</option></select></label>
+                  <label class="ep-field" for="companyAddress"><span>Địa chỉ trụ sở <span class="ep-required" aria-hidden="true">*</span></span><input id="companyAddress" name="address" value="Khu Công Nghệ Cao Hòa Lạc" required maxlength="255" autocomplete="street-address"></label>
+                  <label class="ep-field ep-field-full" for="companyDescription"><span>Giới thiệu công ty <span class="ep-required" aria-hidden="true">*</span></span><textarea id="companyDescription" name="description" rows="5" required aria-describedby="companyDescriptionHint">Tập đoàn công nghệ và chuyển đổi số hàng đầu Việt Nam. FPT Software cung cấp các dịch vụ và giải pháp công nghệ, kết nối đội ngũ kỹ sư với các dự án trong nước và quốc tế.</textarea><small id="companyDescriptionHint">Giới thiệu hoạt động, môi trường làm việc và những giá trị mà doanh nghiệp hướng đến.</small></label>
+                </div>
+              </div>
+              <div class="profile-form-footer"><span>Thông tin có dấu <span aria-hidden="true">*</span> là bắt buộc.</span><button type="button" class="ep-button ep-button-primary" disabled aria-describedby="profileDemoNote"><i data-lucide="save" class="ep-icon" aria-hidden="true"></i>Lưu thông tin công ty</button></div>
+            </form>
+          </section>
+
+          <section class="ep-panel profile-section" id="account" aria-labelledby="accountTitle">
+            <div class="ep-panel-heading">
+              <div><span class="profile-section-number">02 / TÀI KHOẢN</span><h2 id="accountTitle">Thông tin người liên hệ</h2><p>Thông tin cá nhân dùng để liên hệ và đăng nhập tài khoản nhà tuyển dụng.</p></div>
+              <i data-lucide="user-round" class="ep-icon profile-section-icon" aria-hidden="true"></i>
+            </div>
+            <form id="accountForm" data-design-only aria-describedby="profileDemoNote">
+              <div class="profile-form-body">
+                <div class="ep-form-grid">
+                  <label class="ep-field" for="accountName"><span>Họ và tên <span class="ep-required" aria-hidden="true">*</span></span><input id="accountName" name="name" value="Nguyễn Minh Anh" required minlength="2" maxlength="100" autocomplete="name"></label>
+                  <label class="ep-field" for="accountEmail"><span>Email <span class="ep-required" aria-hidden="true">*</span></span><input id="accountEmail" name="email" type="email" value="employer@timviec.vn" required maxlength="100" autocomplete="email"></label>
+                  <label class="ep-field" for="accountPhone"><span>Số điện thoại</span><input id="accountPhone" name="phone" type="tel" value="0912345678" maxlength="10" pattern="0[35789][0-9]{8}" inputmode="tel" autocomplete="tel" aria-describedby="phoneHint"><small id="phoneHint">10 chữ số, bắt đầu bằng 03, 05, 07, 08 hoặc 09.</small></label>
+                  <label class="ep-field" for="accountDob"><span>Ngày sinh</span><input id="accountDob" name="dob" type="date" autocomplete="bday" aria-describedby="dobHint"><small id="dobHint">Thông tin tùy chọn; người dùng từ 15 tuổi trở lên.</small></label>
+                </div>
+                <div class="profile-account-meta"><span><i data-lucide="badge-check" class="ep-icon" aria-hidden="true"></i>Vai trò: <strong>Nhà tuyển dụng</strong></span><span class="ep-badge ep-badge-active">Tài khoản đang hoạt động</span></div>
+              </div>
+              <div class="profile-form-footer"><span>Email được dùng để đăng nhập.</span><button type="button" class="ep-button ep-button-primary" disabled aria-describedby="profileDemoNote"><i data-lucide="save" class="ep-icon" aria-hidden="true"></i>Lưu thông tin tài khoản</button></div>
+            </form>
+          </section>
+
+          <section class="ep-panel profile-section" id="password" aria-labelledby="passwordTitle">
+            <div class="ep-panel-heading">
+              <div><span class="profile-section-number">03 / BẢO MẬT</span><h2 id="passwordTitle">Đổi mật khẩu</h2><p>Cập nhật mật khẩu để bảo vệ tài khoản doanh nghiệp.</p></div>
+              <i data-lucide="lock-keyhole" class="ep-icon profile-section-icon" aria-hidden="true"></i>
+            </div>
+            <form id="passwordForm" data-design-only aria-describedby="profileDemoNote passwordHint">
+              <div class="profile-form-body">
+                <div class="ep-form-grid">
+                  <label class="ep-field ep-field-full" for="currentPassword"><span>Mật khẩu hiện tại <span class="ep-required" aria-hidden="true">*</span></span><input id="currentPassword" name="current_password" type="password" required autocomplete="current-password" placeholder="Nhập mật khẩu hiện tại" maxlength="32"></label>
+                  <label class="ep-field" for="newPassword"><span>Mật khẩu mới <span class="ep-required" aria-hidden="true">*</span></span><input id="newPassword" name="new_password" type="password" required minlength="8" maxlength="32" autocomplete="new-password" placeholder="Nhập mật khẩu mới" aria-describedby="passwordHint"></label>
+                  <label class="ep-field" for="confirmPassword"><span>Xác nhận mật khẩu mới <span class="ep-required" aria-hidden="true">*</span></span><input id="confirmPassword" name="new_password_confirmation" type="password" required minlength="8" maxlength="32" autocomplete="new-password" placeholder="Nhập lại mật khẩu mới"></label>
+                </div>
+                <p class="profile-password-hint" id="passwordHint">Mật khẩu mới gồm 8–32 ký tự, có chữ thường, chữ hoa, số và ký tự đặc biệt; khác mật khẩu hiện tại.</p>
+              </div>
+              <div class="profile-form-footer"><span>Không chia sẻ mật khẩu với người khác.</span><button type="button" class="ep-button ep-button-blue" disabled aria-describedby="profileDemoNote">Cập nhật mật khẩu</button></div>
+            </form>
+          </section>
+        </div>
+
+        <aside class="profile-aside" aria-label="Tóm tắt hồ sơ và điều hướng trang">
+          <section class="ep-panel profile-company-preview" aria-labelledby="previewTitle">
+            <span class="profile-preview-label" id="previewTitle">DOANH NGHIỆP CỦA BẠN</span>
+            <span class="profile-logo" aria-hidden="true">FPT</span>
+            <h2>FPT Software</h2>
+            <p>Công nghệ và chuyển đổi số</p>
+            <ul class="profile-company-facts">
+              <li><i data-lucide="map-pin" class="ep-icon" aria-hidden="true"></i><span>Khu Công Nghệ Cao Hòa Lạc, Hà Nội</span></li>
+              <li><i data-lucide="users-round" class="ep-icon" aria-hidden="true"></i><span>1000+ nhân viên</span></li>
+              <li><i data-lucide="globe" class="ep-icon" aria-hidden="true"></i><span>fptsoftware.com</span></li>
+            </ul>
+            <a href="../page_company_detail/index.html" class="ep-button">Xem trang công ty<i data-lucide="arrow-up-right" class="ep-icon" aria-hidden="true"></i></a>
+          </section>
+          <nav class="ep-panel profile-section-nav" aria-label="Các phần trong hồ sơ">
+            <h2>Nội dung hồ sơ</h2>
+            <a href="#company"><span>01</span>Thông tin công ty<i data-lucide="arrow-down-right" class="ep-icon" aria-hidden="true"></i></a>
+            <a href="#account"><span>02</span>Thông tin người liên hệ<i data-lucide="arrow-down-right" class="ep-icon" aria-hidden="true"></i></a>
+            <a href="#password"><span>03</span>Đổi mật khẩu<i data-lucide="arrow-down-right" class="ep-icon" aria-hidden="true"></i></a>
+          </nav>
+          <div class="profile-tip"><i data-lucide="lightbulb" class="ep-icon" aria-hidden="true"></i><p>Hồ sơ rõ ràng giúp ứng viên hiểu doanh nghiệp trước khi gửi CV. Hãy bắt đầu với phần giới thiệu và địa chỉ trụ sở chính xác.</p></div>
+        </aside>
+      </div>
+</main>
+  </div>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách bảo mật</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>

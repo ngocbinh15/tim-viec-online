@@ -1,0 +1,271 @@
+.jf-window,
+.jf-launcher[data-slot="button"] {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 35;
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--brand-navy) 16%, transparent);
+}
+.jf-window {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  height: min(540px, calc(100dvh - 100px));
+  max-width: calc(100vw - 24px);
+  min-height: 0;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--foreground);
+}
+.jf-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 12px 8px 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.jf-heading .company-mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.jf-heading-copy {
+  min-width: 0;
+  flex: 1;
+}
+.jf-heading h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+.jf-heading-copy p {
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.jf-tools {
+  display: flex;
+  flex-shrink: 0;
+}
+.jf-tools [data-slot="button"] {
+  width: 36px;
+  height: 40px;
+  color: var(--brand-blue);
+  border-radius: 8px;
+}
+.jf-tools svg {
+  width: 17px;
+  height: 17px;
+}
+.jf-context {
+  display: grid;
+  gap: 3px;
+  flex-shrink: 0;
+  padding: 10px 16px;
+  background: var(--selection-background);
+  border-bottom: 1px solid var(--border);
+}
+.jf-context > span {
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jf-context small {
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.jf-history {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.jf-messages {
+  height: 100%;
+  overflow-y: auto;
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+  padding: 16px 14px 4px;
+}
+.jf-messages:focus-visible {
+  outline: 2px solid var(--field-focus-border);
+  outline-offset: -3px;
+}
+.jf-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 88%;
+  margin-bottom: 14px;
+}
+.jf-message > p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 9px 12px;
+  background: var(--background);
+  border-radius: 13px 13px 13px 4px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.jf-message small {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.jf-message[data-outgoing="true"] {
+  margin-left: auto;
+  align-items: flex-end;
+}
+.jf-message[data-outgoing="true"] > p {
+  background: var(--brand-blue);
+  color: var(--primary-foreground);
+  border-radius: 13px 13px 4px 13px;
+}
+.jf-bottom[data-slot="button"] {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  font-size: 11px;
+}
+.jf-status {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.jf-empty {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 36px 12px;
+  text-align: center;
+}
+.jf-empty > svg {
+  color: var(--brand-blue);
+}
+.jf-empty strong {
+  font-size: 13px;
+}
+.jf-empty p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.jf-error {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--destructive);
+  overflow-wrap: anywhere;
+}
+.jf-error > span {
+  flex: 1;
+  min-width: 0;
+}
+.jf-composer {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  padding: 12px 14px 10px;
+}
+.jf-composer-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.jf-composer-box:has(textarea:focus-visible) {
+  border-color: var(--field-focus-border);
+  box-shadow: 0 0 0 2px var(--field-focus-halo);
+}
+.jf-composer [data-slot="textarea"],
+.jf-composer [data-slot="textarea"]:focus-visible {
+  field-sizing: content;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  min-height: 40px;
+  max-height: 100px;
+  padding: 10px 8px;
+  resize: none;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 20px;
+  background: transparent;
+}
+.jf-composer-box [data-slot="button"] {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+.jf-composer > p {
+  margin: 6px 2px 0;
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.jf-launcher[data-slot="button"] {
+  height: 48px;
+  border-radius: 24px;
+  padding-inline: 18px;
+  gap: 8px;
+}
+.jf-launcher.jf-minimized {
+  max-width: 280px;
+}
+.jf-minimized > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 600px) {
+  .jf-window,
+  .jf-launcher[data-slot="button"] {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .jf-window {
+    height: min(500px, calc(100dvh - 88px));
+  }
+  .jf-tools [data-slot="button"] {
+    width: 40px;
+    height: 44px;
+  }
+  .jf-heading {
+    gap: 8px;
+    padding-left: 12px;
+  }
+  .jf-heading .company-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .jf-composer [data-slot="textarea"],
+  .jf-composer [data-slot="textarea"]:focus-visible {
+    font-size: 16px;
+  }
+  .jf-composer-box [data-slot="button"] {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (forced-colors: active) {
+  .jf-composer-box:has(textarea:focus-visible) {
+    outline: 2px solid Highlight;
+    box-shadow: none;
+  }
+}

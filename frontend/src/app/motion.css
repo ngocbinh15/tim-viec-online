@@ -1,0 +1,434 @@
+:root {
+  --motion-fast: 120ms;
+  --motion-menu: 160ms;
+  --motion-content: 240ms;
+  --motion-exit: 100ms;
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Keep shared layout and form state in place; animate newly mounted content. */
+.page-intro > .site-container,
+.auth-card,
+.auth-security,
+.detail-summary,
+.job-description,
+.empty-state {
+  animation: content-arrive var(--motion-content) var(--motion-ease-out)
+    backwards;
+}
+.auth-card {
+  animation-delay: 35ms;
+}
+.job-list > .job-card {
+  animation: content-arrive var(--motion-content) var(--motion-ease-out)
+    backwards;
+}
+.job-list > .job-card:nth-child(2) {
+  animation-delay: 24ms;
+}
+.job-list > .job-card:nth-child(3) {
+  animation-delay: 48ms;
+}
+.job-list > .job-card:nth-child(n + 4) {
+  animation-delay: 72ms;
+}
+.auth-status,
+[data-slot="field-error"] {
+  animation: feedback-arrive var(--motion-menu) var(--motion-ease-out);
+}
+[data-slot="skeleton"] {
+  animation-duration: 1.6s;
+}
+[data-sonner-toast] {
+  transition-duration: var(--motion-content);
+  transition-timing-function: var(--motion-ease-out);
+}
+
+/* Radix Presence observes these exit animations before unmounting the portal. */
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+) {
+  --motion-menu-x: 0px;
+  --motion-menu-y: 4px;
+  transition: none;
+  animation-duration: var(--motion-menu);
+  animation-timing-function: var(--motion-ease-out);
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+)[data-side="top"] {
+  --motion-menu-y: -4px;
+}
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+)[data-side="left"] {
+  --motion-menu-x: -4px;
+  --motion-menu-y: 0px;
+}
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+)[data-side="right"] {
+  --motion-menu-x: 4px;
+  --motion-menu-y: 0px;
+}
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+)[data-state="open"] {
+  animation-name: menu-arrive;
+}
+:is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="dropdown-menu-sub-content"],
+  [data-slot="select-content"]
+)[data-state="closed"] {
+  animation-name: menu-leave;
+  animation-duration: var(--motion-exit);
+  animation-timing-function: var(--motion-ease-in);
+  pointer-events: none;
+}
+
+[data-slot="dialog-overlay"],
+[data-slot="alert-dialog-overlay"],
+[data-slot="sheet-overlay"] {
+  transition: none;
+  animation-duration: var(--motion-menu);
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+:is(
+  [data-slot="dialog-overlay"],
+  [data-slot="alert-dialog-overlay"],
+  [data-slot="sheet-overlay"]
+)[data-state="open"] {
+  animation-name: overlay-arrive;
+}
+:is(
+  [data-slot="dialog-overlay"],
+  [data-slot="alert-dialog-overlay"],
+  [data-slot="sheet-overlay"]
+)[data-state="closed"] {
+  animation-name: overlay-leave;
+  animation-duration: var(--motion-exit);
+  pointer-events: none;
+}
+:is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]) {
+  transition: none;
+  animation-duration: var(--motion-content);
+  animation-timing-function: var(--motion-ease-out);
+  animation-fill-mode: both;
+}
+:is(
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"]
+)[data-state="open"] {
+  animation-name: dialog-arrive;
+}
+:is(
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"]
+)[data-state="closed"] {
+  animation-name: menu-leave;
+  animation-duration: var(--motion-exit);
+  animation-timing-function: var(--motion-ease-in);
+  pointer-events: none;
+}
+[data-slot="sheet-content"] {
+  transition: none;
+  --motion-sheet-x: 24px;
+  --motion-sheet-y: 0px;
+  animation-duration: var(--motion-content);
+  animation-timing-function: var(--motion-ease-out);
+  animation-fill-mode: both;
+}
+[data-slot="sheet-content"][data-side="left"] {
+  --motion-sheet-x: -24px;
+}
+[data-slot="sheet-content"][data-side="top"] {
+  --motion-sheet-x: 0px;
+  --motion-sheet-y: -24px;
+}
+[data-slot="sheet-content"][data-side="bottom"] {
+  --motion-sheet-x: 0px;
+  --motion-sheet-y: 24px;
+}
+[data-slot="sheet-content"][data-state="open"] {
+  animation-name: sheet-arrive;
+}
+[data-slot="sheet-content"][data-state="closed"] {
+  animation-name: sheet-leave;
+  animation-duration: var(--motion-fast);
+  animation-timing-function: var(--motion-ease-in);
+  pointer-events: none;
+}
+
+:is(
+  a,
+  [data-slot="button"],
+  [data-slot="input"],
+  [data-slot="checkbox"],
+  .header-pill,
+  .header-circle,
+  .header-search > button[type="submit"],
+  .selection-trigger,
+  .selection-clear,
+  .auth-role-picker > label,
+  .auth-password-toggle,
+  .notification-close
+) {
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--motion-fast);
+  transition-timing-function: ease-out;
+}
+.job-card {
+  transition-property: border-color, box-shadow, translate;
+  transition-duration: var(--motion-menu);
+  transition-timing-function: var(--motion-ease-out);
+}
+.selection-option,
+.selection-check-option,
+[data-slot="dropdown-menu-item"] {
+  transition:
+    background-color 80ms ease-out,
+    color 80ms ease-out;
+}
+
+/* Admin uses the same interaction timing as candidate/employer controls. */
+.admin-page
+  :is(
+    .ap-button,
+    .ap-icon-button,
+    .ap-nav a,
+    .ap-segments button,
+    .pagination button,
+    .ap-table tbody tr
+  ) {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--motion-fast);
+  transition-timing-function: var(--motion-ease-out);
+}
+.admin-page :is(.ap-button, .ap-icon-button, .pagination button) {
+  transition-property: color, background-color, border-color, box-shadow, scale;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .admin-page
+    :is(.ap-button, .ap-icon-button, .pagination button):active:not(
+      :disabled,
+      [aria-disabled="true"]
+    ) {
+    scale: 0.98;
+  }
+}
+.selection-trigger > svg,
+.header-chevron {
+  transition: transform var(--motion-fast) var(--motion-ease-out);
+}
+.selection-trigger[data-state="open"] > svg {
+  transform: rotate(180deg);
+}
+.pagination a,
+.career-note > a > svg {
+  transition:
+    color var(--motion-fast) ease-out,
+    translate var(--motion-fast) var(--motion-ease-out);
+}
+.header-search > button[type="submit"],
+.header-circle,
+[data-slot="button"],
+.pagination a {
+  transition-property:
+    color, background-color, border-color, box-shadow, opacity, scale;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .job-card:hover {
+    translate: 0 -2px;
+  }
+  .career-note > a:hover > svg {
+    translate: 2px 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(
+      [data-slot="button"],
+      .header-circle,
+      .header-search > button[type="submit"],
+      .pagination a
+    ):active:not(:disabled, [aria-disabled="true"]) {
+    scale: 0.98;
+  }
+}
+
+@keyframes content-arrive {
+  from {
+    opacity: 0.65;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes feedback-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes menu-arrive {
+  from {
+    opacity: 0;
+    transform: translate(var(--motion-menu-x), var(--motion-menu-y)) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes menu-leave {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+@keyframes overlay-arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes overlay-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sheet-arrive {
+  from {
+    opacity: 0;
+    transform: translate(var(--motion-sheet-x), var(--motion-sheet-y));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sheet-leave {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--motion-sheet-x), var(--motion-sheet-y));
+  }
+}
+
+/* Keep search sizing out of the generic :is() transition above: its most
+   specific selector would override max-width and make closing snap shut. */
+.header-search[data-mode] {
+  transition:
+    max-width 280ms var(--motion-ease-out),
+    box-shadow var(--motion-fast) ease-out;
+}
+/* Radix keeps the closing panel mounted for --motion-exit. Collapse the
+   search and restore neighbouring controls only after that panel retracts. */
+.header-search[data-mode="idle"],
+.site-header:has(.header-search[data-mode="idle"]) .header-actions,
+.header-search[data-mode="idle"] > button[type="submit"],
+.header-search[data-mode="idle"] > button[type="submit"] > span {
+  transition-delay: var(--motion-exit);
+}
+.header-search > button[type="submit"] {
+  transition:
+    width 280ms var(--motion-ease-out),
+    background-color var(--motion-fast) ease-out;
+}
+.header-search .header-location {
+  transition:
+    width 220ms var(--motion-ease-out),
+    background-color var(--motion-menu) ease-out;
+}
+.header-location-popup[data-state="open"] {
+  animation: header-location-drop 200ms var(--motion-ease-out) 180ms both;
+}
+.header-keyword-panel[data-state="open"] {
+  animation: header-keyword-arrive 240ms var(--motion-ease-out) 100ms both;
+}
+@keyframes header-location-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes header-keyword-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .animate-spin {
+    animation: none !important;
+  }
+}

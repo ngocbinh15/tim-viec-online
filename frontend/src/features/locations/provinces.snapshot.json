@@ -1,0 +1,143 @@
+{
+  "source": "https://www.tinhthanhpho.com/api/v1/new-provinces",
+  "data_version": "2026.10.8",
+  "verified_on": "2026-10-19",
+  "provinces": [
+    {
+      "code": "91",
+      "name": "An Giang"
+    },
+    {
+      "code": "24",
+      "name": "Bắc Ninh"
+    },
+    {
+      "code": "96",
+      "name": "Cà Mau"
+    },
+    {
+      "code": "92",
+      "name": "Cần Thơ"
+    },
+    {
+      "code": "04",
+      "name": "Cao Bằng"
+    },
+    {
+      "code": "48",
+      "name": "Đà Nẵng"
+    },
+    {
+      "code": "66",
+      "name": "Đắk Lắk"
+    },
+    {
+      "code": "11",
+      "name": "Điện Biên"
+    },
+    {
+      "code": "75",
+      "name": "Đồng Nai"
+    },
+    {
+      "code": "82",
+      "name": "Đồng Tháp"
+    },
+    {
+      "code": "52",
+      "name": "Gia Lai"
+    },
+    {
+      "code": "01",
+      "name": "Hà Nội"
+    },
+    {
+      "code": "42",
+      "name": "Hà Tĩnh"
+    },
+    {
+      "code": "31",
+      "name": "Hải Phòng"
+    },
+    {
+      "code": "79",
+      "name": "Hồ Chí Minh"
+    },
+    {
+      "code": "46",
+      "name": "Huế"
+    },
+    {
+      "code": "33",
+      "name": "Hưng Yên"
+    },
+    {
+      "code": "56",
+      "name": "Khánh Hòa"
+    },
+    {
+      "code": "12",
+      "name": "Lai Châu"
+    },
+    {
+      "code": "68",
+      "name": "Lâm Đồng"
+    },
+    {
+      "code": "20",
+      "name": "Lạng Sơn"
+    },
+    {
+      "code": "15",
+      "name": "Lào Cai"
+    },
+    {
+      "code": "40",
+      "name": "Nghệ An"
+    },
+    {
+      "code": "37",
+      "name": "Ninh Bình"
+    },
+    {
+      "code": "25",
+      "name": "Phú Thọ"
+    },
+    {
+      "code": "51",
+      "name": "Quảng Ngãi"
+    },
+    {
+      "code": "22",
+      "name": "Quảng Ninh"
+    },
+    {
+      "code": "44",
+      "name": "Quảng Trị"
+    },
+    {
+      "code": "14",
+      "name": "Sơn La"
+    },
+    {
+      "code": "80",
+      "name": "Tây Ninh"
+    },
+    {
+      "code": "19",
+      "name": "Thái Nguyên"
+    },
+    {
+      "code": "38",
+      "name": "Thanh Hóa"
+    },
+    {
+      "code": "08",
+      "name": "Tuyên Quang"
+    },
+    {
+      "code": "86",
+      "name": "Vĩnh Long"
+    }
+  ]
+}

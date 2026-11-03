@@ -1,0 +1,78 @@
+{
+  "basics": {
+    "full_name": "Nguyễn Minh An",
+    "headline": "Chuyên viên phát triển phần mềm",
+    "email": "minhan@example.com",
+    "phone": "0901234567",
+    "city": "Hồ Chí Minh",
+    "summary": "Nội dung mẫu: Có kinh nghiệm xây dựng ứng dụng web, phân tích yêu cầu và phối hợp cùng đội ngũ sản phẩm. Mong muốn phát triển các giải pháp dễ sử dụng, ổn định và mang lại giá trị cho người dùng.",
+    "links": [],
+    "photo_asset_id": null
+  },
+  "experience": [
+    {
+      "company": "Doanh nghiệp mẫu An Việt",
+      "position": "Kỹ sư phần mềm",
+      "start_month": "2023-03",
+      "end_month": null,
+      "current": true,
+      "description": "Nội dung mẫu: Phát triển tính năng cho ứng dụng web bằng React và Laravel. Phối hợp với nhóm thiết kế, kiểm thử API và cải thiện trải nghiệm người dùng. Thay thế đoạn này bằng công việc và kết quả thực tế của bạn."
+    },
+    {
+      "company": "Nhóm sản phẩm minh họa",
+      "position": "Lập trình viên",
+      "start_month": "2021-07",
+      "end_month": "2023-02",
+      "current": false,
+      "description": "Nội dung mẫu: Tham gia xây dựng giao diện, quản lý dữ liệu và bảo trì hệ thống. Viết tài liệu kỹ thuật và hỗ trợ các thành viên trong nhóm."
+    }
+  ],
+  "education": [
+    {
+      "school": "Trường Đại học Công nghệ (mẫu)",
+      "qualification": "Cử nhân Công nghệ thông tin",
+      "start_month": "2017-09",
+      "end_month": "2021-06",
+      "current": false,
+      "description": "Nội dung mẫu: Kiến thức về lập trình, cơ sở dữ liệu và phát triển phần mềm. Cập nhật tên trường, ngành học và thành tích của bạn."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Phát triển ứng dụng",
+      "detail": "TypeScript, React, Laravel, RESTful API"
+    },
+    {
+      "name": "Cơ sở dữ liệu",
+      "detail": "MySQL, thiết kế dữ liệu, tối ưu truy vấn"
+    },
+    { "name": "Làm việc nhóm", "detail": "Phân tích yêu cầu, giao tiếp, Scrum" }
+  ],
+  "languages": [
+    { "name": "Tiếng Việt", "proficiency": "Thành thạo (mẫu)" },
+    { "name": "Tiếng Anh", "proficiency": "Đọc hiểu tài liệu kỹ thuật (mẫu)" }
+  ],
+  "projects": [
+    {
+      "name": "Nền tảng tuyển dụng (mẫu)",
+      "role": "Lập trình viên full stack",
+      "url": "https://example.com/du-an",
+      "description": "Nội dung mẫu: Xây dựng chức năng tìm kiếm việc làm, quản lý hồ sơ và kết nối ứng viên với doanh nghiệp. Thay bằng dự án, vai trò và đóng góp thực tế của bạn."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Khóa học phát triển web (mẫu)",
+      "issuer": "Đơn vị đào tạo minh họa",
+      "issued_month": "2022-09",
+      "url": ""
+    }
+  ],
+  "activities": [
+    {
+      "name": "Cộng đồng công nghệ (mẫu)",
+      "role": "Thành viên",
+      "description": "Nội dung mẫu: Tham gia chia sẻ kiến thức và hỗ trợ các hoạt động cộng đồng. Cập nhật hoạt động thực tế của bạn."
+    }
+  ]
+}

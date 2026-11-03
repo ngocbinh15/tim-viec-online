@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Theo dõi hoạt động tuyển dụng và những nội dung cần xử lý.">
+  <title>Tổng quan hệ thống | Quản trị TimViecOnline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/admin.css">
+  <link rel="stylesheet" href="../shared/site-footer.css">
+  <script src="../shared/admin-icons.js" defer></script>
+  <script src="../shared/admin-data.js" defer></script>
+  <script src="../shared/admin-shell.js" defer></script>
+  <script src="../shared/admin.js" defer></script>
+</head>
+<body class="admin-page" data-admin-page="overview">
+  <a href="#main" class="ap-skip">Đến nội dung chính</a>
+  <header data-admin-header></header>
+  <div class="ap-layout">
+    <aside data-admin-sidebar></aside>
+    <main class="ap-main" id="main" tabindex="-1">
+      <nav class="ap-breadcrumb" aria-label="Vị trí trang"><span data-icon="house" aria-hidden="true"></span><a href="../page_admin_portal/index.html">Quản trị</a><span>/</span><span>Tổng quan hệ thống</span></nav>
+      <div class="ap-page-heading"><div><h1>Tổng quan hệ thống</h1><p>Theo dõi hoạt động tuyển dụng và những nội dung cần xử lý.</p></div><div class="ap-date"><span data-icon="calendar-days" aria-hidden="true"></span><time data-today></time></div></div>
+      <div data-admin-preview></div>
+      <noscript><div class="ap-notice ap-notice-amber">Bật JavaScript để xem dữ liệu minh họa và sử dụng các bộ lọc trong bản thiết kế quản trị.</div><nav class="ap-segments" aria-label="Các trang quản trị"><a href="../page_admin_portal/index.html">Tổng quan</a><a href="../page_admin_jobs/index.html">Kiểm duyệt tin</a><a href="../page_admin_users/index.html">Tài khoản</a><a href="../page_admin_categories/index.html">Ngành nghề</a><a href="../page_admin_skills/index.html">Kỹ năng</a></nav></noscript>
+      <div id="adminError" class="ap-error" role="alert" hidden></div>
+      <div id="adminContent" aria-busy="true">
+      <section class="ap-metrics" id="overviewMetrics" aria-label="Số liệu tổng quan"></section>
+      <div class="ap-overview-grid">
+        <section class="ap-panel" aria-labelledby="trendTitle">
+          <div class="ap-panel-heading"><div><h2 id="trendTitle">Hoạt động tuyển dụng</h2><p>Tin đăng mới và lượt ứng tuyển theo ngày.</p></div><label class="ap-sr-only" for="trendPeriod">Khoảng thời gian thống kê</label><select id="trendPeriod" class="ap-button"><option value="7">7 ngày gần nhất</option><option value="14">14 ngày gần nhất</option></select></div>
+          <div class="ap-chart"><div class="ap-chart-key"><span><i class="ap-chart-dot" aria-hidden="true"></i>Tin đăng mới</span><span><i class="ap-chart-dot ap-chart-dot-green" aria-hidden="true"></i>Lượt ứng tuyển</span></div><div class="ap-chart-plot" id="trendChart"></div><p class="ap-chart-footnote">Số liệu minh họa đến ngày 16/10/2026.</p><details><summary class="ap-text-link">Xem số liệu dạng bảng</summary><div class="ap-table-wrap" id="trendData"></div></details></div>
+        </section>
+        <section class="ap-panel" aria-labelledby="reportsTitle"><div class="ap-panel-heading"><div><h2 id="reportsTitle">Cần kiểm tra</h2><p>Tin được đánh dấu báo cáo vi phạm.</p></div><span class="ap-badge ap-badge-amber" id="overviewReportCount"></span></div><div class="ap-summary-list" id="reportedSummary"></div><div class="ap-panel-bottom"><a class="ap-text-link" href="../page_admin_jobs/index.html?report=reported">Đi đến kiểm duyệt <span data-icon="arrow-right" aria-hidden="true"></span></a></div></section>
+      </div>
+      <div class="ap-overview-grid">
+        <section class="ap-panel" aria-labelledby="recentTitle"><div class="ap-panel-heading"><div><h2 id="recentTitle">Tài khoản mới</h2><p>Các thành viên vừa tham gia nền tảng.</p></div><a class="ap-text-link" href="../page_admin_users/index.html">Xem tất cả <span data-icon="arrow-right" aria-hidden="true"></span></a></div><div class="ap-table-wrap"><table class="ap-table ap-table-responsive"><caption class="ap-sr-only">Bốn tài khoản đăng ký gần đây</caption><thead><tr><th scope="col">Tài khoản</th><th scope="col">Vai trò</th><th scope="col">Ngày tham gia</th><th scope="col">Thao tác</th></tr></thead><tbody id="recentUsers"></tbody></table></div></section>
+        <section class="ap-panel" aria-labelledby="categoryTitle"><div class="ap-panel-heading"><div><h2 id="categoryTitle">Ngành nghề đang tuyển</h2><p>Phân bổ tin tuyển dụng đang hoạt động.</p></div></div><div class="ap-summary-list" id="categorySummary"></div><div class="ap-panel-bottom"><a class="ap-text-link" href="../page_admin_categories/index.html">Quản lý ngành nghề <span data-icon="arrow-right" aria-hidden="true"></span></a></div></section>
+      </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách bảo mật</a></div>
+    </div>
+  </footer>
+</body>
+</html>

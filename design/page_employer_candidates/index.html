@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quản lý hồ sơ ứng tuyển, xem CV và đánh giá mức độ phù hợp của ứng viên với vị trí tuyển dụng tại FPT Software.">
+  <title>Hồ sơ ứng viên — Nhà tuyển dụng | TimViecOnline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../page_employer_dashboard/dashboard.css">
+  <link rel="stylesheet" href="../shared/employer.css">
+  <link rel="stylesheet" href="candidates.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="../shared/employer-shell.js" defer></script>
+  <link rel="stylesheet" href="../shared/site-footer.css">
+</head>
+<body class="employer-page" data-employer-page="candidates">
+  <a class="ep-skip" href="#main">Chuyển đến nội dung chính</a>
+  <header data-employer-header></header>
+  <div class="ep-layout">
+    <aside data-employer-sidebar></aside>
+    <main class="ep-main" id="main">
+      <nav class="ep-breadcrumb" aria-label="Đường dẫn">
+        <a href="../page_employer_dashboard/index.html">Tổng quan</a><span aria-hidden="true">/</span><span>Hồ sơ ứng viên</span>
+      </nav>
+      <div class="ep-page-heading">
+        <div><h1>Hồ sơ ứng viên</h1><p>Tìm ứng viên phù hợp và theo dõi từng hồ sơ trong quá trình tuyển dụng.</p></div>
+        <a class="ep-button" href="../page_employer_chat/index.html"><i data-lucide="messages-square" class="ep-icon" aria-hidden="true"></i>Tin nhắn ứng viên</a>
+      </div>
+
+      <section class="ec-overview" aria-label="Thống kê hồ sơ">
+        <div class="ec-stat"><span>Tổng hồ sơ</span><strong>6</strong><small>Cho vị trí đang chọn</small></div>
+        <div class="ec-stat"><span>Hồ sơ mới</span><strong>2<span class="ec-stat-dot" aria-hidden="true"></span></strong><small>Chưa xem hồ sơ</small></div>
+        <div class="ec-stat"><span>Phù hợp từ 80%</span><strong>3</strong><small>Dựa trên Match Score</small></div>
+        <div class="ec-stat"><span>Đã trúng tuyển</span><strong>1</strong><small>Hoàn tất xét duyệt</small></div>
+      </section>
+
+      <section class="ep-panel ec-filter-panel" aria-labelledby="filter-heading">
+        <div class="ec-filter-heading"><h2 id="filter-heading">Lọc hồ sơ theo vị trí tuyển dụng</h2><span class="ec-active-job">Đang tuyển</span></div>
+        <div class="ec-filters">
+          <div class="ep-field ec-job-field"><label for="candidate-job">Tin tuyển dụng</label><select id="candidate-job" name="job_id"><option>Senior Fullstack Developer (Laravel &amp; React)</option><option>Frontend Developer (React / Next.js)</option><option>Chuyên viên phân tích nghiệp vụ</option><option>Tất cả tin tuyển dụng</option></select></div>
+          <div class="ep-field"><label for="candidate-search">Tìm ứng viên</label><input id="candidate-search" name="keyword" type="search" placeholder="Họ tên hoặc email"></div>
+          <div class="ep-field"><label for="candidate-status">Trạng thái</label><select id="candidate-status" name="status"><option value="">Tất cả trạng thái</option><option value="applied">Đã ứng tuyển</option><option value="waiting">Đang xem xét</option><option value="accepted">Trúng tuyển</option><option value="rejected">Từ chối</option><option value="withdrawn">Đã rút đơn</option></select></div>
+          <div class="ep-field"><label for="candidate-score">Điểm phù hợp AI</label><select id="candidate-score" name="match_score"><option value="">Tất cả mức điểm</option><option value="80">Từ 80% trở lên</option><option value="60">Từ 60% trở lên</option><option value="0">Dưới 60%</option></select></div>
+        </div>
+        <div class="ec-job-meta"><span>Mã tin <strong>#JOB-1024</strong></span><span>Hồ Chí Minh</span><span>Hạn nhận hồ sơ: <strong>30/10/2026</strong></span><a href="../page_job_detail/index.html">Xem tin tuyển dụng <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <div class="ec-workspace">
+        <section class="ep-panel ec-list" aria-labelledby="candidate-list-heading">
+          <div class="ec-list-heading"><div><h2 id="candidate-list-heading">Danh sách ứng viên <span>6</span></h2><p>Mở hồ sơ để xem thông tin ứng tuyển.</p></div><div class="ec-sort"><label for="candidate-sort">Sắp xếp</label><select id="candidate-sort" name="sort"><option>Điểm AI cao nhất</option><option>Ngày nộp mới nhất</option><option>Ngày nộp cũ nhất</option></select></div></div>
+          <div class="ec-candidate-list">
+            <details class="ec-candidate" open>
+              <summary><span class="ec-avatar ec-avatar-blue">MA</span><span class="ec-person"><strong>Nguyễn Minh Anh</strong><small>Fullstack Developer · 4 năm kinh nghiệm</small><span class="ec-person-meta">Hồ Chí Minh <span aria-hidden="true">·</span> Nộp 15/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-high">92% <small>phù hợp</small></span><span class="ec-status ec-status-waiting">Đang xem xét</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>Laravel</span><span>React</span><span>TypeScript</span><span>MySQL</span></div><p><a href="mailto:minhanh.dev@example.com">minhanh.dev@example.com</a><span>090 123 4567</span></p><div class="ec-inline-actions"><a class="ec-detail-link" href="#candidate-profile">Xem chi tiết hồ sơ <span aria-hidden="true">→</span></a><a href="../page_employer_chat/index.html">Nhắn tin</a></div></div>
+            </details>
+            <details class="ec-candidate">
+              <summary><span class="ec-avatar ec-avatar-green">QB</span><span class="ec-person"><strong>Trần Quốc Bảo <span class="ec-new-label">Mới</span></strong><small>Backend Developer · 3 năm kinh nghiệm</small><span class="ec-person-meta">Hồ Chí Minh <span aria-hidden="true">·</span> Nộp 15/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-high">88% <small>phù hợp</small></span><span class="ec-status ec-status-applied">Đã ứng tuyển</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>PHP</span><span>Laravel</span><span>Docker</span><span>MySQL</span></div><p><a href="mailto:quocbao.dev@example.com">quocbao.dev@example.com</a><span>091 234 5678</span></p><p>Có kinh nghiệm phát triển RESTful API và tối ưu truy vấn cơ sở dữ liệu.</p><div class="ec-inline-actions"><a href="../page_ai_cv_report/index.html">Xem phân tích AI</a><a href="../page_employer_chat/index.html">Nhắn tin</a></div></div>
+            </details>
+            <details class="ec-candidate">
+              <summary><span class="ec-avatar ec-avatar-orange">TH</span><span class="ec-person"><strong>Lê Thu Hà</strong><small>Software Engineer · 4 năm kinh nghiệm</small><span class="ec-person-meta">Hồ Chí Minh <span aria-hidden="true">·</span> Nộp 13/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-high">84% <small>phù hợp</small></span><span class="ec-status ec-status-accepted">Trúng tuyển</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>React</span><span>Laravel</span><span>Git</span></div><p><a href="mailto:thuha.dev@example.com">thuha.dev@example.com</a><span>092 345 6789</span></p><p>Ứng viên đã được xác nhận trúng tuyển cho vị trí này.</p><div class="ec-inline-actions"><a href="../page_ai_cv_report/index.html">Xem phân tích AI</a><a href="../page_employer_chat/index.html">Nhắn tin</a></div></div>
+            </details>
+            <details class="ec-candidate">
+              <summary><span class="ec-avatar ec-avatar-blue">HN</span><span class="ec-person"><strong>Phạm Hoàng Nam <span class="ec-new-label">Mới</span></strong><small>Frontend Developer · 2 năm kinh nghiệm</small><span class="ec-person-meta">Đà Nẵng <span aria-hidden="true">·</span> Nộp 14/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-mid">73% <small>phù hợp</small></span><span class="ec-status ec-status-applied">Đã ứng tuyển</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>React</span><span>Next.js</span><span>Tailwind CSS</span></div><p><a href="mailto:hoangnam.dev@example.com">hoangnam.dev@example.com</a><span>093 456 7890</span></p><p>Có nền tảng frontend tốt, cần bổ sung kinh nghiệm backend Laravel.</p><div class="ec-inline-actions"><a href="../page_ai_cv_report/index.html">Xem phân tích AI</a><a href="../page_employer_chat/index.html">Nhắn tin</a></div></div>
+            </details>
+            <details class="ec-candidate">
+              <summary><span class="ec-avatar ec-avatar-orange">NM</span><span class="ec-person"><strong>Võ Ngọc Mai</strong><small>Web Developer · 1 năm kinh nghiệm</small><span class="ec-person-meta">Hà Nội <span aria-hidden="true">·</span> Nộp 12/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-mid">65% <small>phù hợp</small></span><span class="ec-status ec-status-rejected">Từ chối</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>JavaScript</span><span>PHP</span><span>HTML / CSS</span></div><p><a href="mailto:ngocmai.dev@example.com">ngocmai.dev@example.com</a><span>094 567 8901</span></p><p>Hồ sơ chưa đáp ứng yêu cầu kinh nghiệm của vị trí Senior Fullstack Developer.</p><div class="ec-inline-actions"><a href="../page_ai_cv_report/index.html">Xem phân tích AI</a><a href="../page_employer_chat/index.html">Nhắn tin</a></div></div>
+            </details>
+            <details class="ec-candidate">
+              <summary><span class="ec-avatar ec-avatar-neutral">TK</span><span class="ec-person"><strong>Đặng Tuấn Kiệt</strong><small>Junior Developer · 1 năm kinh nghiệm</small><span class="ec-person-meta">Hồ Chí Minh <span aria-hidden="true">·</span> Nộp 11/10/2026</span></span><span class="ec-row-status"><span class="ec-score ec-score-low">58% <small>phù hợp</small></span><span class="ec-status ec-status-withdrawn">Đã rút đơn</span></span><span class="ec-chevron" aria-hidden="true">⌄</span></summary>
+              <div class="ec-candidate-details"><div class="ec-skill-list"><span>PHP</span><span>JavaScript</span><span>Git</span></div><p>Ứng viên đã chủ động rút hồ sơ. Đơn ứng tuyển không còn trong quá trình xét duyệt.</p></div>
+            </details>
+          </div>
+          <div class="ec-list-footer"><span>Hiển thị 6 trên 6 hồ sơ</span><span>Được sắp xếp theo điểm phù hợp AI</span></div>
+        </section>
+
+        <aside class="ec-profile-column" aria-labelledby="candidate-profile-heading">
+          <section class="ep-panel ec-profile" id="candidate-profile">
+            <div class="ec-profile-top"><span class="ec-eyebrow">HỒ SƠ ĐANG XEM</span><span class="ec-status ec-status-waiting">Đang xem xét</span></div>
+            <div class="ec-profile-person"><span class="ec-avatar ec-avatar-large ec-avatar-blue">MA</span><div><h2 id="candidate-profile-heading">Nguyễn Minh Anh</h2><p>Fullstack Developer</p><span>Hồ Chí Minh · 4 năm kinh nghiệm</span></div></div>
+            <div class="ec-contact"><a href="mailto:minhanh.dev@example.com"><i data-lucide="mail" class="ep-icon" aria-hidden="true"></i>minhanh.dev@example.com</a><a href="tel:0901234567"><i data-lucide="phone" class="ep-icon" aria-hidden="true"></i>090 123 4567</a></div>
+            <a class="ep-button ep-button-blue ec-chat-button" href="../page_employer_chat/index.html"><i data-lucide="message-square" class="ep-icon" aria-hidden="true"></i>Nhắn tin cho ứng viên</a>
+            <div class="ec-profile-section"><h3>CV ứng tuyển</h3><div class="ec-cv-file"><span class="ec-pdf-label">PDF</span><div><strong>Nguyen_Minh_Anh_CV.pdf</strong><small>Nộp ngày 15/10/2026 · 1,2 MB</small></div><i data-lucide="file-text" class="ep-icon" aria-hidden="true"></i></div><details class="ec-cv-preview"><summary>Xem trước nội dung hồ sơ <span aria-hidden="true">⌄</span></summary><div><strong>Nguyễn Minh Anh — Fullstack Developer</strong><p>4 năm phát triển ứng dụng web với Laravel và React. Thành thạo thiết kế RESTful API, TypeScript và tối ưu truy vấn MySQL.</p><h4>Kinh nghiệm</h4><p>2022–2026: Phát triển hệ thống quản lý doanh nghiệp, tích hợp API và xây dựng giao diện React.</p><h4>Học vấn</h4><p>Cử nhân Công nghệ thông tin, Đại học Bách khoa TP.HCM.</p></div></details></div>
+            <div class="ec-profile-section"><h3>Thư giới thiệu</h3><p class="ec-cover-letter">Tôi mong muốn ứng tuyển vị trí Senior Fullstack Developer tại FPT Software. Với 4 năm phát triển ứng dụng Laravel và React, tôi hy vọng có thể đóng góp vào các sản phẩm của công ty và cùng đội ngũ giải quyết những bài toán thực tế.</p></div>
+            <div class="ec-profile-section ec-review"><label for="profile-status">Trạng thái xét duyệt</label><select id="profile-status" name="application_status"><option value="applied">Đã ứng tuyển</option><option value="waiting" selected>Đang xem xét</option><option value="accepted">Trúng tuyển</option><option value="rejected">Từ chối</option></select><button class="ep-button ep-button-primary" type="button">Cập nhật trạng thái</button></div>
+          </section>
+          <section class="ep-panel ec-ai-panel" aria-labelledby="ai-summary-heading">
+            <div class="ec-ai-title"><i data-lucide="sparkles" class="ep-icon" aria-hidden="true"></i><h2 id="ai-summary-heading">Đánh giá độ phù hợp</h2></div>
+            <div class="ec-ai-score"><div><strong>92<span>%</span></strong><p>Rất phù hợp với vị trí</p></div><span class="ec-ai-label">Match Score</span></div>
+            <div class="ec-score-track" role="meter" aria-label="Điểm phù hợp với vị trí" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92"><span></span></div>
+            <h3>Điểm mạnh</h3><ul class="ec-ai-strengths"><li>4 năm kinh nghiệm Laravel, đáp ứng yêu cầu của vị trí.</li><li>Thành thạo React, TypeScript và xây dựng RESTful API.</li><li>Có kinh nghiệm tối ưu truy vấn MySQL.</li></ul>
+            <h3>Kỹ năng cần bổ sung</h3><div class="ec-skill-list ec-missing-skills"><span>Redis</span><span>CI/CD</span></div>
+            <p class="ec-ai-note">Điểm AI hỗ trợ sàng lọc ban đầu. Hãy kết hợp xem CV và trao đổi trực tiếp để đánh giá ứng viên.</p>
+            <a class="ec-detail-link" href="../page_ai_cv_report/index.html">Xem phân tích chi tiết <span aria-hidden="true">→</span></a>
+          </section>
+        </aside>
+      </div>
+</main>
+  </div>
+
+  <footer class="site-footer" aria-label="Thông tin TimViecOnline">
+    <div class="sf-container sf-grid">
+      <div class="sf-about">
+        <a href="../page_home/index.html" class="sf-brand">
+          <svg class="sf-brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="10" fill="#005AFF" />
+            <path d="M10 18L16 24L26 12" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="26" cy="12" r="3" fill="#FF6A39" />
+          </svg>
+          <span class="sf-brand-copy"><span class="sf-brand-name">TimViec<span>Online</span></span><span class="sf-brand-tagline">Cổng Việc Làm & Tuyển Dụng</span></span>
+        </a>
+        <p>Cổng thông tin việc làm và tuyển dụng thông minh tại Việt Nam. Kết nối ứng viên và doanh nghiệp hàng đầu.</p>
+        <div class="sf-contact">
+          <div>Trụ sở: Tòa nhà E.Town Central, 11 Đoàn Văn Bơ, Quận 4, TP.HCM</div>
+          <div>Tổng đài hỗ trợ: <strong>1900 6868</strong></div>
+          <div>Email: <strong>support@timvieconline.vn</strong></div>
+        </div>
+      </div>
+      <nav aria-label="Dành cho ứng viên">
+        <h2 class="sf-heading">Dành Cho Ứng Viên</h2>
+        <ul class="sf-links">
+          <li><a href="../page_jobs/index.html">Tìm việc làm mới nhất</a></li>
+          <li><a href="../page_saved_jobs/index.html">Việc làm đã lưu</a></li>
+          <li><a href="../page_candidate_dashboard/index.html">Quản lý hồ sơ & CV</a></li>
+          <li><a href="../page_companies/index.html">Danh bạ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Dành cho doanh nghiệp">
+        <h2 class="sf-heading">Dành Cho Doanh Nghiệp</h2>
+        <ul class="sf-links">
+          <li><a href="../page_post_job/index.html">Đăng tin tuyển dụng</a></li>
+          <li><a href="../page_employer_dashboard/index.html">Quản lý tin tuyển dụng</a></li>
+          <li><a href="../page_employer_candidates/index.html">Sàng lọc ứng viên AI</a></li>
+          <li><a href="../page_company_detail/index.html">Trang hồ sơ công ty</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Về TimViecOnline">
+        <h2 class="sf-heading">Về TimViecOnline</h2>
+        <ul class="sf-links">
+          <li><a href="../page_home/index.html">Giới thiệu</a></li>
+          <li><a href="../page_login/index.html">Đăng nhập tài khoản</a></li>
+          <li><a href="../page_register/index.html">Đăng ký thành viên</a></li>
+          <li><a href="../page_admin_portal/index.html">Cổng quản trị</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sf-container sf-bottom">
+      <div>© 2026 TimViecOnline. Nền tảng kết nối việc làm và tuyển dụng hàng đầu.</div>
+      <div class="sf-legal"><a href="#">Điều khoản sử dụng</a><span aria-hidden="true">•</span><a href="#">Chính sách bảo mật</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>

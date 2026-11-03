@@ -1,0 +1,46 @@
+{
+  "name": "CV tổng hợp kiểm thử",
+  "template_key": "classic",
+  "template_version": 1,
+  "schema_version": 1,
+  "content": {
+    "basics": {
+      "full_name": "Nguyễn Minh An",
+      "headline": "Kỹ sư phần mềm",
+      "email": "an@example.test",
+      "phone": "",
+      "city": "Hà Nội",
+      "summary": "Phát triển phần mềm phục vụ cộng đồng.",
+      "links": [],
+      "photo_asset_id": null
+    },
+    "experience": [],
+    "education": [],
+    "skills": [
+      {
+        "id": "1b4835f3-33e7-465f-a425-06f04dc329de",
+        "name": "TypeScript",
+        "detail": "Laravel, MySQL"
+      }
+    ],
+    "projects": [],
+    "certifications": [],
+    "languages": [],
+    "activities": []
+  },
+  "settings": {
+    "accent": "blue",
+    "font_size": "normal",
+    "line_spacing": "normal",
+    "section_order": [
+      "experience",
+      "education",
+      "skills",
+      "projects",
+      "certifications",
+      "languages",
+      "activities"
+    ],
+    "hidden_sections": []
+  }
+}

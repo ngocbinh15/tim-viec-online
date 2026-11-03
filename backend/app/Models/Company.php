@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Company extends Model
+{
+    use HasFactory;
+
+    protected $table = 'companies';
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'logo',
+        'avatar',
+        'website',
+        'company_size',
+        'address',
+        'city',
+        'description',
+    ];
+
+    protected function casts(): array
+    {
+        return ['reference_sources' => 'array', 'is_demo' => 'boolean'];
+    }
+
+    /**
+     * FR-04.1: Kiểm tra hồ sơ công ty đã cập nhật đủ thông tin bắt buộc chưa
+     * (Tên công ty, Giới thiệu công ty, Địa chỉ trụ sở, Tỉnh/Thành phố)
+     */
+    public function isComplete(): bool
+    {
+        return ! empty(trim((string) $this->name)) &&
+               ! empty(trim((string) $this->description)) &&
+               ! empty(trim((string) $this->address)) &&
+               ! empty(trim((string) $this->city));
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'company_id');
+    }
+}

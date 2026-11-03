@@ -15,7 +15,8 @@
 /frontend/.env.production.local
 
 # Build & Cache Outputs
-/backend/bootstrap/cache/
+/backend/bootstrap/cache/*
+!/backend/bootstrap/cache/.gitignore
 /backend/storage/*.key
 /backend/storage/framework/cache/*
 /backend/storage/framework/sessions/*
@@ -26,6 +27,7 @@
 /frontend/out/
 /frontend/build/
 /frontend/dist/
+/frontend/public/pdf-viewer/
 
 .agents/
 .agent/
