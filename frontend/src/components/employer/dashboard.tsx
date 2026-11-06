@@ -147,9 +147,8 @@ export function EmployerDashboard() {
                 </Link>
               </div>
               {!featured.length && (
-                <p className="ep-subtle">
-                  Ch?a c? k?t qu? ph?n t?ch CV. K?t qu? s? xu?t hi?n sau khi h?
-                  s? ???c x? l?.
+                <p className="ep-panel-heading">
+                  Chưa có kết quả phân tích CV. Kết quả sẽ xuất hiện sau khi hồ sơ được xử lý.
                 </p>
               )}
               {featured.map((app) => (
