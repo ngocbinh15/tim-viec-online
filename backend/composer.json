@@ -5,12 +5,12 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.5",
+        "php": "^8.2",
         "laravel/framework": "^12.70.1",
         "laravel/reverb": "^1.12",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "openspout/openspout": "^5.13.0",
+        "openspout/openspout": "~4.28.0",
         "smalot/pdfparser": "^2.13"
     },
     "require-dev": {
@@ -60,6 +60,9 @@
         }
     },
     "config": {
+        "platform": {
+            "php": "8.2.0"
+        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
